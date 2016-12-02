@@ -1,0 +1,48 @@
+[
+    {
+        "type": "section",
+        "items": [
+            {
+                "type": "heading",
+                "defaultValue": "General"
+            },
+            {
+                "type": "color",
+                "messageKey": "BACKGROUND_COLOR",
+                "label": "Background",
+                "defaultValue": "000000",
+                "sunlight": false
+            },
+            {
+                "type": "toggle",
+                "messageKey": "HOURLY_VIBE",
+                "label": "Vibrate on the Hour",
+                "defaultValue": true
+            },
+            {
+                "type": "radiogroup",
+                "messageKey": "CONNECTION_VIBE",
+                "label": "Bluetooth Vibrate",
+                "defaultValue": "1",
+                "options": [
+                    {
+                        "label": "On Disconnect",
+                        "value": "1"
+                    },
+                    {
+                        "label": "On Disconnect & Reconnect",
+                        "value": "2"
+                    },
+                    {
+                        "label": "Neither",
+                        "value": "0"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "submit",
+        "defaultValue": "Save"
+    }
+]

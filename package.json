@@ -8,8 +8,11 @@
   "private": true,
   "dependencies": {
     "@smallstoneapps/linked-list": "^1.4.0",
+    "enamel": "^1.2.5",
+    "pebble-connection-vibes": "^1.1.0",
     "pebble-events": "^1.2.0",
-    "pebble-fctx": "^1.6.2"
+    "pebble-fctx": "^1.6.2",
+    "pebble-hourly-vibes": "^1.1.0"
   },
   "pebble": {
     "displayName": "Constructor",
@@ -26,7 +29,11 @@
     "watchapp": {
       "watchface": true
     },
-    "messageKeys": [],
+    "messageKeys": [
+      "BACKGROUND_COLOR",
+      "HOURLY_VIBE",
+      "CONNECTION_VIBE"
+    ],
     "resources": {
       "media": [
         {
