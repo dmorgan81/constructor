@@ -9,7 +9,7 @@
             {
                 "type": "color",
                 "messageKey": "BACKGROUND_COLOR",
-                "label": "Background",
+                "label": "Background Color",
                 "defaultValue": "000000",
                 "sunlight": false
             },
@@ -42,7 +42,130 @@
         ]
     },
     {
+        "type": "section",
+        "items": [
+            {
+                "type": "heading",
+                "defaultValue": "Time"
+            },
+            {
+                "type": "color",
+                "messageKey": "TIME_COLOR",
+                "label": "Color",
+                "defaultValue": "FFFFFF",
+                "sunlight": false
+            },
+            {
+                "type": "toggle",
+                "messageKey": "TIME_LEADING_ZERO",
+                "label": "Leading Zero",
+                "defaultValue": true
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 52,
+                "min": 0,
+                "max": 52,
+                "capabilities": [ "DISPLAY_144x168" ]
+            },
+            {
+                "type": "select",
+                "messageKey": "TIME_ALIGNMENT",
+                "label": "Text Alignment",
+                "defaultValue": "1",
+                "options": [
+                    {
+                        "label": "Left",
+                        "value": "0"
+                    },
+                    {
+                        "label": "Center",
+                        "value": "1"
+                    },
+                    {
+                        "label": "Right",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 64,
+                "min": 0,
+                "max": 64,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 72,
+                "min": 0,
+                "max": 72,
+                "capabilities": [ "DISPLAY_200x228" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_X",
+                "label": "X Position",
+                "defaultValue": 0,
+                "min": -72,
+                "max": 72,
+                "capabilities": [ "DISPLAY_144x168" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_X",
+                "label": "X Position",
+                "defaultValue": 0,
+                "min": -90,
+                "max": 90,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_X",
+                "label": "X Position",
+                "defaultValue": 0,
+                "min": -100,
+                "max": 100,
+                "capabilities": [ "DISPLAY_200x228" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_Y",
+                "label": "Y Position",
+                "defaultValue": 0,
+                "min": -84,
+                "max": 84,
+                "capabilities": [ "DISPLAY_144x168" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_Y",
+                "label": "Y Position",
+                "defaultValue": 0,
+                "min": -90,
+                "max": 90,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_Y",
+                "label": "Y Position",
+                "defaultValue": 0,
+                "min": -114,
+                "max": 114,
+                "capabilities": [ "DISPLAY_200x228" ]
+            }
+        ]
+    },
+    {
         "type": "submit",
-        "defaultValue": "Save"
+        "defaultValue": "Close"
     }
 ]

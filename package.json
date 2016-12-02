@@ -32,7 +32,13 @@
     "messageKeys": [
       "BACKGROUND_COLOR",
       "HOURLY_VIBE",
-      "CONNECTION_VIBE"
+      "CONNECTION_VIBE",
+      "TIME_COLOR",
+      "TIME_LEADING_ZERO",
+      "TIME_ALIGNMENT",
+      "TIME_FONT_SIZE",
+      "TIME_X",
+      "TIME_Y"
     ],
     "resources": {
       "media": [
