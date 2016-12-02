@@ -5,11 +5,13 @@
 #include "fonts.h"
 #include "fctx-layer.h"
 #include "time-layer.h"
+#include "date-layer.h"
 
 static Window *s_window;
 
 static FctxLayer *s_root_layer;
 static TimeLayer *s_time_layer;
+static DateLayer *s_date_layer;
 
 static EventHandle s_settings_event_handle;
 
@@ -28,6 +30,9 @@ static void window_load(Window *window) {
     s_time_layer = time_layer_create();
     fctx_layer_add_child(s_root_layer, s_time_layer);
 
+    s_date_layer = date_layer_create();
+    fctx_layer_add_child(s_root_layer, s_date_layer);
+
     settings_handler(NULL);
     s_settings_event_handle = enamel_settings_received_subscribe(settings_handler, NULL);
 }
@@ -36,6 +41,7 @@ static void window_unload(Window *window) {
     log_func();
     enamel_settings_received_unsubscribe(s_settings_event_handle);
 
+    date_layer_destroy(s_date_layer);
     time_layer_destroy(s_time_layer);
     fctx_layer_destroy(s_root_layer);
 }

@@ -11,7 +11,8 @@
                 "messageKey": "BACKGROUND_COLOR",
                 "label": "Background Color",
                 "defaultValue": "000000",
-                "sunlight": false
+                "sunlight": false,
+                "allowGray": true
             },
             {
                 "type": "toggle",
@@ -53,7 +54,8 @@
                 "messageKey": "TIME_COLOR",
                 "label": "Color",
                 "defaultValue": "FFFFFF",
-                "sunlight": false
+                "sunlight": false,
+                "allowGray": true
             },
             {
                 "type": "toggle",
@@ -69,6 +71,24 @@
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 64,
+                "min": 0,
+                "max": 64,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 72,
+                "min": 0,
+                "max": 72,
+                "capabilities": [ "DISPLAY_200x228" ]
             },
             {
                 "type": "select",
@@ -89,24 +109,6 @@
                         "value": "2"
                     }
                 ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "TIME_FONT_SIZE",
-                "label": "Font Size",
-                "defaultValue": 64,
-                "min": 0,
-                "max": 64,
-                "capabilities": [ "DISPLAY_180x180_ROUND" ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "TIME_FONT_SIZE",
-                "label": "Font Size",
-                "defaultValue": 72,
-                "min": 0,
-                "max": 72,
-                "capabilities": [ "DISPLAY_200x228" ]
             },
             {
                 "type": "slider",
@@ -139,7 +141,7 @@
                 "type": "slider",
                 "messageKey": "TIME_Y",
                 "label": "Y Position",
-                "defaultValue": 0,
+                "defaultValue": -16,
                 "min": -84,
                 "max": 84,
                 "capabilities": [ "DISPLAY_144x168" ]
@@ -148,7 +150,7 @@
                 "type": "slider",
                 "messageKey": "TIME_Y",
                 "label": "Y Position",
-                "defaultValue": 0,
+                "defaultValue": -16,
                 "min": -90,
                 "max": 90,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ]
@@ -158,6 +160,149 @@
                 "messageKey": "TIME_Y",
                 "label": "Y Position",
                 "defaultValue": 0,
+                "min": -114,
+                "max": 114,
+                "capabilities": [ "DISPLAY_200x228" ]
+            }
+        ]
+    },
+    {
+        "type": "section",
+        "items": [
+            {
+                "type": "heading",
+                "defaultValue": "Date"
+            },
+            {
+                "type": "color",
+                "messageKey": "DATE_COLOR",
+                "label": "Color",
+                "defaultValue": "FFFFFF",
+                "sunlight": false,
+                "allowGray": true
+            },
+            {
+                "type": "select",
+                "messageKey": "DATE_FORMAT",
+                "label": "Format",
+                "defaultValue": "%a %b %d",
+                "options": [
+                    {
+                        "label": "Sun Jan 01",
+                        "value": "%a %b %d"
+                    },
+                    {
+                        "label": "Sun 01 Jan",
+                        "value": "%a %d %b"
+                    },
+                    {
+                        "label": "Sunday January 01",
+                        "value": "%A %B %d"
+                    }
+                    ,
+                    {
+                        "label": "Sunday 01 January",
+                        "value": "%A %d %B"
+                    }
+                ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 26,
+                "min": 0,
+                "max": 52,
+                "capabilities": [ "DISPLAY_144x168" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 30,
+                "min": 0,
+                "max": 64,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 36,
+                "min": 0,
+                "max": 72,
+                "capabilities": [ "DISPLAY_200x228" ]
+            },
+            {
+                "type": "select",
+                "messageKey": "DATE_ALIGNMENT",
+                "label": "Text Alignment",
+                "defaultValue": "1",
+                "options": [
+                    {
+                        "label": "Left",
+                        "value": "0"
+                    },
+                    {
+                        "label": "Center",
+                        "value": "1"
+                    },
+                    {
+                        "label": "Right",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_X",
+                "label": "X Position",
+                "defaultValue": 0,
+                "min": -72,
+                "max": 72,
+                "capabilities": [ "DISPLAY_144x168" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_X",
+                "label": "X Position",
+                "defaultValue": 0,
+                "min": -90,
+                "max": 90,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_X",
+                "label": "X Position",
+                "defaultValue": 0,
+                "min": -100,
+                "max": 100,
+                "capabilities": [ "DISPLAY_200x228" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_Y",
+                "label": "Y Position",
+                "defaultValue": 18,
+                "min": -84,
+                "max": 84,
+                "capabilities": [ "DISPLAY_144x168" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_Y",
+                "label": "Y Position",
+                "defaultValue": 24,
+                "min": -90,
+                "max": 90,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_Y",
+                "label": "Y Position",
+                "defaultValue": 28,
                 "min": -114,
                 "max": 114,
                 "capabilities": [ "DISPLAY_200x228" ]

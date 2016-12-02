@@ -3,5 +3,5 @@
 
 typedef FctxLayer TimeLayer;
 
-TimeLayer *time_layer_create();
+TimeLayer *time_layer_create(void);
 void time_layer_destroy(TimeLayer *this);

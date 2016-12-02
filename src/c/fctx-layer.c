@@ -26,6 +26,9 @@ static bool linked_list_update_proc_callback(void *this, void *context) {
 static void update_proc(Layer *this, GContext *ctx) {
     log_func();
     Data *data = layer_get_data(this);
+#ifdef PBL_COLOR
+    fctx_enable_aa(false);
+#endif
     FContext fctx;
     fctx_init_context(&fctx, ctx);
     if (data->children) linked_list_foreach(data->children, linked_list_update_proc_callback, &fctx);

@@ -39,7 +39,13 @@
       "TIME_ALIGNMENT",
       "TIME_FONT_SIZE",
       "TIME_X",
-      "TIME_Y"
+      "TIME_Y",
+      "DATE_COLOR",
+      "DATE_FORMAT",
+      "DATE_ALIGNMENT",
+      "DATE_FONT_SIZE",
+      "DATE_X",
+      "DATE_Y"
     ],
     "resources": {
       "media": [
