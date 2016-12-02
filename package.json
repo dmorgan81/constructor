@@ -2,11 +2,17 @@
   "name": "constructor",
   "author": "David Morgan",
   "version": "1.0.0",
-  "keywords": ["pebble-app"],
+  "keywords": [
+    "pebble-app"
+  ],
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@smallstoneapps/linked-list": "^1.4.0",
+    "pebble-events": "^1.2.0",
+    "pebble-fctx": "^1.6.2"
+  },
   "pebble": {
-    "displayName": "constructor",
+    "displayName": "Constructor",
     "uuid": "61157530-4dc4-45c5-bc65-70555a0d58d2",
     "sdkVersion": "3",
     "enableMultiJS": true,
@@ -20,10 +26,18 @@
     "watchapp": {
       "watchface": true
     },
-    "messageKeys": [
-    ],
+    "messageKeys": [],
     "resources": {
-      "media": []
+      "media": [
+        {
+          "type": "raw",
+          "name": "LECO_FFONT",
+          "file": "LECO1976-Regular.ffont"
+        }
+      ]
     }
+  },
+  "devDependencies": {
+    "pebble-fctx-compiler": "^1.2.1"
   }
 }
