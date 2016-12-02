@@ -15,6 +15,7 @@ static EventHandle s_settings_event_handle;
 
 static void settings_handler(void *context) {
     log_func();
+    light_enable_interaction();
     window_set_background_color(s_window, enamel_get_BACKGROUND_COLOR());
     connection_vibes_set_state(atoi(enamel_get_CONNECTION_VIBE()));
     hourly_vibes_set_enabled(enamel_get_HOURLY_VIBE());
