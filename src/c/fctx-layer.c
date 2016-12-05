@@ -94,6 +94,16 @@ void fctx_layer_add_child(FctxLayer *this, FctxLayer *child) {
     layer_mark_dirty(this);
 }
 
+void fctx_layer_remove_child(FctxLayer *this, FctxLayer *child) {
+    log_func();
+    Data *data = layer_get_data(this);
+    if (!data->children) return;
+    int16_t index = linked_list_find(data->children, child);
+    if (index != -1) {
+        linked_list_remove(data->children, index);
+    }
+}
+
 void *fctx_layer_get_data(FctxLayer *this) {
     log_func();
     Data *data = layer_get_data(this);

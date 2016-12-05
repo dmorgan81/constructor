@@ -47,7 +47,15 @@
       "DATE_ROTATION",
       "DATE_FONT_SIZE",
       "DATE_X",
-      "DATE_Y"
+      "DATE_Y",
+      "BATTERY_ENABLED",
+      "BATTERY_COLOR",
+      "BATTERY_FORMAT",
+      "BATTERY_ALIGNMENT",
+      "BATTERY_ROTATION",
+      "BATTERY_FONT_SIZE",
+      "BATTERY_X",
+      "BATTERY_Y"
     ],
     "resources": {
       "media": [

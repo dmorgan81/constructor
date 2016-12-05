@@ -6,12 +6,14 @@
 #include "fctx-layer.h"
 #include "time-layer.h"
 #include "date-layer.h"
+#include "battery-layer.h"
 
 static Window *s_window;
 
 static FctxLayer *s_root_layer;
 static TimeLayer *s_time_layer;
 static DateLayer *s_date_layer;
+static BatteryLayer *s_battery_layer = NULL;
 
 static EventHandle s_settings_event_handle;
 
@@ -21,6 +23,15 @@ static void settings_handler(void *context) {
     window_set_background_color(s_window, enamel_get_BACKGROUND_COLOR());
     connection_vibes_set_state(atoi(enamel_get_CONNECTION_VIBE()));
     hourly_vibes_set_enabled(enamel_get_HOURLY_VIBE());
+
+    if (enamel_get_BATTERY_ENABLED() && !s_battery_layer) {
+        s_battery_layer = battery_layer_create();
+        fctx_layer_add_child(s_root_layer, s_battery_layer);
+    } else if (!enamel_get_BATTERY_ENABLED() && s_battery_layer) {
+        fctx_layer_remove_child(s_root_layer, s_battery_layer);
+        battery_layer_destroy(s_battery_layer);
+        s_battery_layer = NULL;
+    }
 }
 
 static void window_load(Window *window) {
@@ -41,6 +52,7 @@ static void window_unload(Window *window) {
     log_func();
     enamel_settings_received_unsubscribe(s_settings_event_handle);
 
+    if (s_battery_layer) battery_layer_destroy(s_battery_layer);
     date_layer_destroy(s_date_layer);
     time_layer_destroy(s_time_layer);
     fctx_layer_destroy(s_root_layer);

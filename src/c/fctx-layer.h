@@ -23,6 +23,7 @@ FctxLayer *fctx_layer_create_with_data(size_t data_size);
 void fctx_layer_destroy(FctxLayer *this);
 void fctx_layer_set_update_proc(FctxLayer *this, FctxLayerUpdateProc update_proc);
 void fctx_layer_add_child(FctxLayer *this, FctxLayer *child);
+void fctx_layer_remove_child(FctxLayer *this, FctxLayer *child);
 void *fctx_layer_get_data(FctxLayer *this);
 FRect fctx_layer_get_bounds(FctxLayer *this);
 #ifdef PBL_PLATFORM_APLITE
