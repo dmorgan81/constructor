@@ -62,7 +62,14 @@
       "CONNECTION_ROTATION",
       "CONNECTION_FONT_SIZE",
       "CONNECTION_X",
-      "CONNECTION_Y"
+      "CONNECTION_Y",
+      "STEPS_ENABLED",
+      "STEPS_COLOR",
+      "STEPS_ALIGNMENT",
+      "STEPS_ROTATION",
+      "STEPS_FONT_SIZE",
+      "STEPS_X",
+      "STEPS_Y"
     ],
     "resources": {
       "media": [
