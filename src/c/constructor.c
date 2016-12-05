@@ -7,6 +7,7 @@
 #include "time-layer.h"
 #include "date-layer.h"
 #include "battery-layer.h"
+#include "connection-layer.h"
 
 static Window *s_window;
 
@@ -14,6 +15,7 @@ static FctxLayer *s_root_layer;
 static TimeLayer *s_time_layer;
 static DateLayer *s_date_layer;
 static BatteryLayer *s_battery_layer;
+static ConnectionLayer *s_connection_layer;
 
 static EventHandle s_settings_event_handle;
 
@@ -41,6 +43,15 @@ static void settings_handler(void *context) {
         battery_layer_destroy(s_battery_layer);
         s_battery_layer = NULL;
     }
+
+    if (enamel_get_CONNECTION_ENABLED() && !s_connection_layer) {
+        s_connection_layer = connection_layer_create();
+        fctx_layer_add_child(s_root_layer, s_connection_layer);
+    } else if (!enamel_get_CONNECTION_ENABLED() && s_connection_layer) {
+        fctx_layer_remove_child(s_root_layer, s_connection_layer);
+        connection_layer_destroy(s_connection_layer);
+        s_connection_layer = NULL;
+    }
 }
 
 static void window_load(Window *window) {
@@ -58,6 +69,7 @@ static void window_unload(Window *window) {
     log_func();
     enamel_settings_received_unsubscribe(s_settings_event_handle);
 
+    if (s_connection_layer) connection_layer_destroy(s_connection_layer);
     if (s_battery_layer) battery_layer_destroy(s_battery_layer);
     if (s_date_layer) date_layer_destroy(s_date_layer);
     time_layer_destroy(s_time_layer);

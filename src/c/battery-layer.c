@@ -1,7 +1,6 @@
 #include "common.h"
 #include <pebble-events/pebble-events.h>
 #include <pebble-fctx/fctx.h>
-#include <pebble-fctx/ffont.h>
 #include "fonts.h"
 #include "fctx-text-layer.h"
 #include "battery-layer.h"

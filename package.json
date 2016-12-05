@@ -51,12 +51,18 @@
       "DATE_Y",
       "BATTERY_ENABLED",
       "BATTERY_COLOR",
-      "BATTERY_FORMAT",
       "BATTERY_ALIGNMENT",
       "BATTERY_ROTATION",
       "BATTERY_FONT_SIZE",
       "BATTERY_X",
-      "BATTERY_Y"
+      "BATTERY_Y",
+      "CONNECTION_ENABLED",
+      "CONNECTION_COLOR",
+      "CONNECTION_ALIGNMENT",
+      "CONNECTION_ROTATION",
+      "CONNECTION_FONT_SIZE",
+      "CONNECTION_X",
+      "CONNECTION_Y"
     ],
     "resources": {
       "media": [
