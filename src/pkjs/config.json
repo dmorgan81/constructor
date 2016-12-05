@@ -112,6 +112,14 @@
             },
             {
                 "type": "slider",
+                "messageKey": "TIME_ROTATION",
+                "label": "Rotation",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 359
+            },
+            {
+                "type": "slider",
                 "messageKey": "TIME_X",
                 "label": "X Position",
                 "defaultValue": 72,
@@ -252,6 +260,14 @@
                         "value": "2"
                     }
                 ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_ROTATION",
+                "label": "Rotation",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 359
             },
             {
                 "type": "slider",

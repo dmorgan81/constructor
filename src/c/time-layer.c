@@ -35,6 +35,7 @@ static void update_proc(FctxLayer *this, FContext* fctx) {
     Data *data = fctx_layer_get_data(this);
     FPoint offset = FPointI(enamel_get_TIME_X(), enamel_get_TIME_Y());
 
+    fctx_set_rotation(fctx, DEG_TO_TRIGANGLE(-enamel_get_TIME_ROTATION()));
     fctx_set_offset(fctx, offset);
     fctx_set_text_em_height(fctx, data->font, enamel_get_TIME_FONT_SIZE());
     fctx_set_fill_color(fctx, enamel_get_TIME_COLOR());
