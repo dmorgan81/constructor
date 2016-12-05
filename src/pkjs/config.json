@@ -76,7 +76,7 @@
                 "type": "slider",
                 "messageKey": "TIME_FONT_SIZE",
                 "label": "Font Size",
-                "defaultValue": 64,
+                "defaultValue": 60,
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ]
@@ -114,54 +114,54 @@
                 "type": "slider",
                 "messageKey": "TIME_X",
                 "label": "X Position",
-                "defaultValue": 0,
-                "min": -72,
-                "max": 72,
+                "defaultValue": 72,
+                "min": 0,
+                "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ]
             },
             {
                 "type": "slider",
                 "messageKey": "TIME_X",
                 "label": "X Position",
-                "defaultValue": 0,
-                "min": -90,
-                "max": 90,
+                "defaultValue": 90,
+                "min": 0,
+                "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ]
             },
             {
                 "type": "slider",
                 "messageKey": "TIME_X",
                 "label": "X Position",
-                "defaultValue": 0,
-                "min": -100,
-                "max": 100,
+                "defaultValue": 100,
+                "min": 0,
+                "max": 200,
                 "capabilities": [ "DISPLAY_200x228" ]
             },
             {
                 "type": "slider",
                 "messageKey": "TIME_Y",
                 "label": "Y Position",
-                "defaultValue": -16,
-                "min": -84,
-                "max": 84,
+                "defaultValue": 68,
+                "min": 0,
+                "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ]
             },
             {
                 "type": "slider",
                 "messageKey": "TIME_Y",
                 "label": "Y Position",
-                "defaultValue": -16,
-                "min": -90,
-                "max": 90,
+                "defaultValue": 80,
+                "min": 0,
+                "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ]
             },
             {
                 "type": "slider",
                 "messageKey": "TIME_Y",
                 "label": "Y Position",
-                "defaultValue": 0,
-                "min": -114,
-                "max": 114,
+                "defaultValue": 100,
+                "min": 0,
+                "max": 228,
                 "capabilities": [ "DISPLAY_200x228" ]
             }
         ]
@@ -210,7 +210,7 @@
                 "type": "slider",
                 "messageKey": "DATE_FONT_SIZE",
                 "label": "Font Size",
-                "defaultValue": 26,
+                "defaultValue": 24,
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ]
@@ -219,7 +219,7 @@
                 "type": "slider",
                 "messageKey": "DATE_FONT_SIZE",
                 "label": "Font Size",
-                "defaultValue": 30,
+                "defaultValue": 28,
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ]
@@ -228,7 +228,7 @@
                 "type": "slider",
                 "messageKey": "DATE_FONT_SIZE",
                 "label": "Font Size",
-                "defaultValue": 36,
+                "defaultValue": 34,
                 "min": 0,
                 "max": 72,
                 "capabilities": [ "DISPLAY_200x228" ]
@@ -257,54 +257,54 @@
                 "type": "slider",
                 "messageKey": "DATE_X",
                 "label": "X Position",
-                "defaultValue": 0,
-                "min": -72,
-                "max": 72,
+                "defaultValue": 72,
+                "min": 0,
+                "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ]
             },
             {
                 "type": "slider",
                 "messageKey": "DATE_X",
                 "label": "X Position",
-                "defaultValue": 0,
-                "min": -90,
-                "max": 90,
+                "defaultValue": 90,
+                "min": 0,
+                "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ]
             },
             {
                 "type": "slider",
                 "messageKey": "DATE_X",
                 "label": "X Position",
-                "defaultValue": 0,
-                "min": -100,
-                "max": 100,
+                "defaultValue": 100,
+                "min": 0,
+                "max": 200,
                 "capabilities": [ "DISPLAY_200x228" ]
             },
             {
                 "type": "slider",
                 "messageKey": "DATE_Y",
                 "label": "Y Position",
-                "defaultValue": 18,
-                "min": -84,
-                "max": 84,
+                "defaultValue": 100,
+                "min": 0,
+                "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ]
             },
             {
                 "type": "slider",
                 "messageKey": "DATE_Y",
                 "label": "Y Position",
-                "defaultValue": 24,
-                "min": -90,
-                "max": 90,
+                "defaultValue": 114,
+                "min": 0,
+                "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ]
             },
             {
                 "type": "slider",
                 "messageKey": "DATE_Y",
                 "label": "Y Position",
-                "defaultValue": 28,
-                "min": -114,
-                "max": 114,
+                "defaultValue": 144,
+                "min": 0,
+                "max": 228,
                 "capabilities": [ "DISPLAY_200x228" ]
             }
         ]

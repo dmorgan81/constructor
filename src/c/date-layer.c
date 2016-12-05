@@ -29,11 +29,9 @@ static void settings_handler(void *this) {
 static void update_proc(FctxLayer *this, FContext* fctx) {
     log_func();
     Data *data = fctx_layer_get_data(this);
-    FRect bounds = fctx_layer_get_bounds(this);
-    FPoint center = FPoint(bounds.size.w / 2, bounds.size.h / 2);
-    FPoint offset = FPoint(INT_TO_FIXED(enamel_get_DATE_X()), INT_TO_FIXED(enamel_get_DATE_Y()));
+    FPoint offset = FPointI(enamel_get_DATE_X(), enamel_get_DATE_Y());
 
-    fctx_set_offset(fctx, fpoint_add(center, offset));
+    fctx_set_offset(fctx, offset);
     fctx_set_text_em_height(fctx, data->font, enamel_get_DATE_FONT_SIZE());
     fctx_set_fill_color(fctx, enamel_get_DATE_COLOR());
     fctx_begin_fill(fctx);
