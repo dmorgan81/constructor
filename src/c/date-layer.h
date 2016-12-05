@@ -1,7 +1,7 @@
 #pragma once
-#include "fctx-layer.h"
+#include "fctx-text-layer.h"
 
-typedef FctxLayer DateLayer;
+typedef FctxTextLayer DateLayer;
 
 DateLayer *date_layer_create(void);
 void date_layer_destroy(DateLayer *this);
