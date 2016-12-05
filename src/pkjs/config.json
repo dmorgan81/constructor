@@ -182,12 +182,20 @@
                 "defaultValue": "Date"
             },
             {
+                "type": "toggle",
+                "messageKey": "DATE_ENABLED",
+                "label": "Enabled",
+                "defaultValue": true,
+                "group": "date"
+            },
+            {
                 "type": "color",
                 "messageKey": "DATE_COLOR",
                 "label": "Color",
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
-                "allowGray": true
+                "allowGray": true,
+                "group": "date"
             },
             {
                 "type": "select",
@@ -212,7 +220,8 @@
                         "label": "Sunday 01 January",
                         "value": "%A %d %B"
                     }
-                ]
+                ],
+                "group": "date"
             },
             {
                 "type": "slider",
@@ -221,7 +230,8 @@
                 "defaultValue": 24,
                 "min": 0,
                 "max": 52,
-                "capabilities": [ "DISPLAY_144x168" ]
+                "capabilities": [ "DISPLAY_144x168" ],
+                "group": "date"
             },
             {
                 "type": "slider",
@@ -230,7 +240,8 @@
                 "defaultValue": 28,
                 "min": 0,
                 "max": 64,
-                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "group": "date"
             },
             {
                 "type": "slider",
@@ -239,7 +250,8 @@
                 "defaultValue": 34,
                 "min": 0,
                 "max": 72,
-                "capabilities": [ "DISPLAY_200x228" ]
+                "capabilities": [ "DISPLAY_200x228" ],
+                "group": "date"
             },
             {
                 "type": "select",
@@ -259,7 +271,8 @@
                         "label": "Right",
                         "value": "2"
                     }
-                ]
+                ],
+                "group": "date"
             },
             {
                 "type": "slider",
@@ -267,7 +280,8 @@
                 "label": "Rotation",
                 "defaultValue": 0,
                 "min": 0,
-                "max": 359
+                "max": 359,
+                "group": "date"
             },
             {
                 "type": "slider",
@@ -276,7 +290,8 @@
                 "defaultValue": 72,
                 "min": 0,
                 "max": 144,
-                "capabilities": [ "DISPLAY_144x168" ]
+                "capabilities": [ "DISPLAY_144x168" ],
+                "group": "date"
             },
             {
                 "type": "slider",
@@ -285,7 +300,8 @@
                 "defaultValue": 90,
                 "min": 0,
                 "max": 180,
-                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "group": "date"
             },
             {
                 "type": "slider",
@@ -294,7 +310,8 @@
                 "defaultValue": 100,
                 "min": 0,
                 "max": 200,
-                "capabilities": [ "DISPLAY_200x228" ]
+                "capabilities": [ "DISPLAY_200x228" ],
+                "group": "date"
             },
             {
                 "type": "slider",
@@ -303,7 +320,8 @@
                 "defaultValue": 100,
                 "min": 0,
                 "max": 168,
-                "capabilities": [ "DISPLAY_144x168" ]
+                "capabilities": [ "DISPLAY_144x168" ],
+                "group": "date"
             },
             {
                 "type": "slider",
@@ -312,7 +330,8 @@
                 "defaultValue": 114,
                 "min": 0,
                 "max": 180,
-                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "group": "date"
             },
             {
                 "type": "slider",
@@ -321,7 +340,8 @@
                 "defaultValue": 144,
                 "min": 0,
                 "max": 228,
-                "capabilities": [ "DISPLAY_200x228" ]
+                "capabilities": [ "DISPLAY_200x228" ],
+                "group": "date"
             }
         ]
     },
@@ -336,7 +356,8 @@
                 "type": "toggle",
                 "messageKey": "BATTERY_ENABLED",
                 "label": "Enabled",
-                "defaultValue": true
+                "defaultValue": true,
+                "group": "battery"
             },
             {
                 "type": "color",
@@ -344,7 +365,8 @@
                 "label": "Color",
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
-                "allowGray": true
+                "allowGray": true,
+                "group": "battery"
             },
             {
                 "type": "slider",
@@ -353,7 +375,8 @@
                 "defaultValue": 24,
                 "min": 0,
                 "max": 52,
-                "capabilities": [ "DISPLAY_144x168" ]
+                "capabilities": [ "DISPLAY_144x168" ],
+                "group": "battery"
             },
             {
                 "type": "slider",
@@ -362,7 +385,8 @@
                 "defaultValue": 28,
                 "min": 0,
                 "max": 64,
-                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "group": "battery"
             },
             {
                 "type": "slider",
@@ -371,7 +395,8 @@
                 "defaultValue": 34,
                 "min": 0,
                 "max": 72,
-                "capabilities": [ "DISPLAY_200x228" ]
+                "capabilities": [ "DISPLAY_200x228" ],
+                "group": "battery"
             },
             {
                 "type": "select",
@@ -391,7 +416,8 @@
                         "label": "Right",
                         "value": "2"
                     }
-                ]
+                ],
+                "group": "battery"
             },
             {
                 "type": "slider",
@@ -399,7 +425,8 @@
                 "label": "Rotation",
                 "defaultValue": 0,
                 "min": 0,
-                "max": 359
+                "max": 359,
+                "group": "battery"
             },
             {
                 "type": "slider",
@@ -408,7 +435,8 @@
                 "defaultValue": 144,
                 "min": 0,
                 "max": 144,
-                "capabilities": [ "DISPLAY_144x168" ]
+                "capabilities": [ "DISPLAY_144x168" ],
+                "group": "battery"
             },
             {
                 "type": "slider",
@@ -417,7 +445,8 @@
                 "defaultValue": 160,
                 "min": 0,
                 "max": 180,
-                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "group": "battery"
             },
             {
                 "type": "slider",
@@ -426,7 +455,8 @@
                 "defaultValue": 200,
                 "min": 0,
                 "max": 200,
-                "capabilities": [ "DISPLAY_200x228" ]
+                "capabilities": [ "DISPLAY_200x228" ],
+                "group": "battery"
             },
             {
                 "type": "slider",
@@ -435,7 +465,8 @@
                 "defaultValue": 10,
                 "min": 0,
                 "max": 168,
-                "capabilities": [ "DISPLAY_144x168" ]
+                "capabilities": [ "DISPLAY_144x168" ],
+                "group": "battery"
             },
             {
                 "type": "slider",
@@ -444,7 +475,8 @@
                 "defaultValue": 44,
                 "min": 0,
                 "max": 180,
-                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "group": "battery"
             },
             {
                 "type": "slider",
@@ -453,7 +485,8 @@
                 "defaultValue": 14,
                 "min": 0,
                 "max": 228,
-                "capabilities": [ "DISPLAY_200x228" ]
+                "capabilities": [ "DISPLAY_200x228" ],
+                "group": "battery"
             }
         ]
     },

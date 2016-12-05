@@ -41,6 +41,7 @@
       "TIME_FONT_SIZE",
       "TIME_X",
       "TIME_Y",
+      "DATE_ENABLED",
       "DATE_COLOR",
       "DATE_FORMAT",
       "DATE_ALIGNMENT",
