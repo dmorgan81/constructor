@@ -212,13 +212,16 @@
                         "value": "%a %d %b"
                     },
                     {
-                        "label": "Sunday January 01",
-                        "value": "%A %B %d"
-                    }
-                    ,
+                        "label": "2000-01-01",
+                        "value": "%F"
+                    },
                     {
-                        "label": "Sunday 01 January",
-                        "value": "%A %d %B"
+                        "label": "01/01/2000",
+                        "value": "%d/%m/%y"
+                    },
+                    {
+                        "label": "01/01/2000",
+                        "value": "%m/%d/%y"
                     }
                 ],
                 "group": "date"
