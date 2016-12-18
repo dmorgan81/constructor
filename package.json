@@ -69,7 +69,14 @@
       "STEPS_ROTATION",
       "STEPS_FONT_SIZE",
       "STEPS_X",
-      "STEPS_Y"
+      "STEPS_Y",
+      "QUIET_TIME_ENABLED",
+      "QUIET_TIME_COLOR",
+      "QUIET_TIME_ALIGNMENT",
+      "QUIET_TIME_ROTATION",
+      "QUIET_TIME_FONT_SIZE",
+      "QUIET_TIME_X",
+      "QUIET_TIME_Y"
     ],
     "resources": {
       "media": [

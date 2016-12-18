@@ -18,3 +18,4 @@ void fctx_text_layer_set_font(FctxTextLayer *this, FFont *font);
 void fctx_text_layer_set_em_height(FctxTextLayer *this, int16_t pixels);
 void fctx_text_layer_set_alignment(FctxTextLayer *this, GTextAlignment alignment);
 void fctx_text_layer_set_anchor(FctxTextLayer *this, FTextAnchor anchor);
+void fctx_text_layer_draw(FctxLayer *this, FContext* fctx);

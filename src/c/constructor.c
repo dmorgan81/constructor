@@ -8,6 +8,9 @@
 #include "date-layer.h"
 #include "battery-layer.h"
 #include "connection-layer.h"
+#ifndef PBL_PLATFORM_APLITE
+#include "quiet-time-layer.h"
+#endif
 #ifdef PBL_HEALTH
 #include "step-layer.h"
 #endif
@@ -19,6 +22,9 @@ static TimeLayer *s_time_layer;
 static DateLayer *s_date_layer;
 static BatteryLayer *s_battery_layer;
 static ConnectionLayer *s_connection_layer;
+#ifndef PBL_PLATFORM_APLITE
+static QuietTimeLayer *s_quiet_time_layer;
+#endif
 #ifdef PBL_HEALTH
 static StepLayer *s_step_layer;
 #endif
@@ -59,6 +65,17 @@ static void settings_handler(void *context) {
         s_connection_layer = NULL;
     }
 
+#ifndef PBL_PLATFORM_APLITE
+    if (enamel_get_QUIET_TIME_ENABLED() && !s_quiet_time_layer) {
+        s_quiet_time_layer = quiet_time_layer_create();
+        fctx_layer_add_child(s_root_layer, s_quiet_time_layer);
+    } else if (!enamel_get_QUIET_TIME_ENABLED() && s_quiet_time_layer) {
+        fctx_layer_remove_child(s_root_layer, s_quiet_time_layer);
+        quiet_time_layer_destroy(s_quiet_time_layer);
+        s_quiet_time_layer = NULL;
+    }
+#endif
+
 #ifdef PBL_HEALTH
     if (enamel_get_STEPS_ENABLED() && !s_step_layer) {
         s_step_layer = step_layer_create();
@@ -91,6 +108,9 @@ static void window_unload(Window *window) {
 
 #ifdef PBL_HEALTH
     if (s_step_layer) step_layer_destroy(s_step_layer);
+#endif
+#ifndef PBL_PLATFORM_APLITE
+    if (s_quiet_time_layer) quiet_time_layer_destroy(s_quiet_time_layer);
 #endif
     if (s_connection_layer) connection_layer_destroy(s_connection_layer);
     if (s_battery_layer) battery_layer_destroy(s_battery_layer);

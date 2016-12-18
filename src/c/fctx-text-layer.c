@@ -14,7 +14,7 @@ typedef struct {
     void *data;
 } Data;
 
-static void update_proc(FctxLayer *this, FContext* fctx) {
+void fctx_text_layer_draw(FctxLayer *this, FContext* fctx) {
     log_func();
     Data *data = fctx_layer_get_data(this);
     if (data->text && data->font && data->em_height > 0) {
@@ -31,7 +31,7 @@ static void update_proc(FctxLayer *this, FContext* fctx) {
 FctxTextLayer *fctx_text_layer_create() {
     log_func();
     FctxTextLayer *this = fctx_layer_create_with_data(sizeof(Data));
-    fctx_layer_set_update_proc(this, update_proc);
+    fctx_layer_set_update_proc(this, fctx_text_layer_draw);
     Data *data = fctx_layer_get_data(this);
     data->text = NULL;
     data->fill_color = GColorBlack;
