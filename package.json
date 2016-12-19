@@ -10,6 +10,7 @@
   "dependencies": {
     "@smallstoneapps/linked-list": "^1.4.0",
     "enamel": "^1.2.5",
+    "pebble-clay": "file:///home/david/code/pebble/clay",
     "pebble-connection-vibes": "^1.1.0",
     "pebble-events": "^1.2.0",
     "pebble-fctx": "^1.6.2",
@@ -57,6 +58,7 @@
       "BATTERY_X",
       "BATTERY_Y",
       "CONNECTION_ENABLED",
+      "CONNECTION_QT_HIDDEN",
       "CONNECTION_COLOR",
       "CONNECTION_ALIGNMENT",
       "CONNECTION_ROTATION",

@@ -14,7 +14,6 @@ typedef struct {
 
 static void update_proc(FctxLayer *this, FContext* fctx) {
     log_func();
-    logd("%d", quiet_time_is_active());
     if (quiet_time_is_active()) {
         Data *data = fctx_layer_get_data(this);
         fctx_text_layer_draw(data->text_layer, fctx);
@@ -41,6 +40,7 @@ QuietTimeLayer *quiet_time_layer_create() {
     data->text_layer = fctx_text_layer_create();
     fctx_text_layer_set_text(data->text_layer, "QT");
     fctx_text_layer_set_font(data->text_layer, fonts_get(RESOURCE_ID_LECO_FFONT));
+    fctx_text_layer_set_anchor(data->text_layer, FTextAnchorMiddle);
 
     settings_handler(this);
     data->settings_event_handle = enamel_settings_received_subscribe(settings_handler, this);

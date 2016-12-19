@@ -27,16 +27,19 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
             });
         };
 
-        var toggles = Clay.getItemsByType('toggle');
+        var toggles = Clay.getItemsByGroup('section-toggle');
         toggles.forEach(function(toggle) {
-            var group = toggle.config.group;
-            if (!group) return;
+            var groups = toggle.config.groups;
+            if (!groups) return;
+            groups = groups.filter(function(group) { return group != 'section-toggle'; });
             toggle.on('change', function() {
                 var enabled = this.get();
-                Clay.getItemsByGroup(group).forEach(function(item) {
-                    if (item === toggle) return;
-                    if (enabled) item.show();
-                    else item.hide();
+                groups.forEach(function(group) {
+                    Clay.getItemsByGroup(group).forEach(function(item) {
+                        if (item === toggle) return;
+                        if (enabled) item.show();
+                        else item.hide();
+                    });
                 });
             }).trigger('change');
         });

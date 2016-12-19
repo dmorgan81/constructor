@@ -186,7 +186,7 @@
                 "messageKey": "DATE_ENABLED",
                 "label": "Enabled",
                 "defaultValue": true,
-                "group": "date"
+                "groups": [ "date", "section-toggle" ]
             },
             {
                 "type": "color",
@@ -195,7 +195,7 @@
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
                 "allowGray": true,
-                "group": "date"
+                "groups": [ "date" ]
             },
             {
                 "type": "select",
@@ -224,7 +224,7 @@
                         "value": "%m/%d/%y"
                     }
                 ],
-                "group": "date"
+                "groups": [ "date" ]
             },
             {
                 "type": "slider",
@@ -234,7 +234,7 @@
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "date"
+                "groups": [ "date" ]
             },
             {
                 "type": "slider",
@@ -244,7 +244,7 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "date"
+                "groups": [ "date" ]
             },
             {
                 "type": "slider",
@@ -254,7 +254,7 @@
                 "min": 0,
                 "max": 72,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "date"
+                "groups": [ "date" ]
             },
             {
                 "type": "select",
@@ -275,7 +275,7 @@
                         "value": "2"
                     }
                 ],
-                "group": "date"
+                "groups": [ "date" ]
             },
             {
                 "type": "slider",
@@ -284,7 +284,7 @@
                 "defaultValue": 0,
                 "min": 0,
                 "max": 359,
-                "group": "date"
+                "groups": [ "date" ]
             },
             {
                 "type": "slider",
@@ -294,7 +294,7 @@
                 "min": 0,
                 "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "date"
+                "groups": [ "date" ]
             },
             {
                 "type": "slider",
@@ -304,7 +304,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "date"
+                "groups": [ "date" ]
             },
             {
                 "type": "slider",
@@ -314,7 +314,7 @@
                 "min": 0,
                 "max": 200,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "date"
+                "groups": [ "date" ]
             },
             {
                 "type": "slider",
@@ -324,7 +324,7 @@
                 "min": 0,
                 "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "date"
+                "groups": [ "date" ]
             },
             {
                 "type": "slider",
@@ -334,7 +334,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "date"
+                "groups": [ "date" ]
             },
             {
                 "type": "slider",
@@ -344,7 +344,7 @@
                 "min": 0,
                 "max": 228,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "date"
+                "groups": [ "date" ]
             }
         ]
     },
@@ -360,7 +360,7 @@
                 "messageKey": "BATTERY_ENABLED",
                 "label": "Enabled",
                 "defaultValue": true,
-                "group": "battery"
+                "groups": [ "battery", "section-toggle" ]
             },
             {
                 "type": "color",
@@ -369,7 +369,7 @@
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
                 "allowGray": true,
-                "group": "battery"
+                "groups": [ "battery" ]
             },
             {
                 "type": "slider",
@@ -379,7 +379,7 @@
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "battery"
+                "groups": [ "battery" ]
             },
             {
                 "type": "slider",
@@ -389,7 +389,7 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "battery"
+                "groups": [ "battery" ]
             },
             {
                 "type": "slider",
@@ -399,7 +399,7 @@
                 "min": 0,
                 "max": 72,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "battery"
+                "groups": [ "battery" ]
             },
             {
                 "type": "select",
@@ -420,7 +420,7 @@
                         "value": "2"
                     }
                 ],
-                "group": "battery"
+                "groups": [ "battery" ]
             },
             {
                 "type": "slider",
@@ -429,7 +429,7 @@
                 "defaultValue": 0,
                 "min": 0,
                 "max": 359,
-                "group": "battery"
+                "groups": [ "battery" ]
             },
             {
                 "type": "slider",
@@ -439,7 +439,7 @@
                 "min": 0,
                 "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "battery"
+                "groups": [ "battery" ]
             },
             {
                 "type": "slider",
@@ -449,7 +449,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "battery"
+                "groups": [ "battery" ]
             },
             {
                 "type": "slider",
@@ -459,7 +459,7 @@
                 "min": 0,
                 "max": 200,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "battery"
+                "groups": [ "battery" ]
             },
             {
                 "type": "slider",
@@ -469,7 +469,7 @@
                 "min": 0,
                 "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "battery"
+                "groups": [ "battery" ]
             },
             {
                 "type": "slider",
@@ -479,7 +479,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "battery"
+                "groups": [ "battery" ]
             },
             {
                 "type": "slider",
@@ -489,7 +489,7 @@
                 "min": 0,
                 "max": 228,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "battery"
+                "groups": [ "battery" ]
             }
         ]
     },
@@ -506,7 +506,14 @@
                 "label": "Enabled",
                 "description": "Hidden when there is no connection",
                 "defaultValue": true,
-                "group": "connection"
+                "groups": [ "connection", "section-toggle" ]
+            },
+            {
+                "type": "toggle",
+                "messageKey": "CONNECTION_QT_HIDDEN",
+                "label": "Hide during Quiet Time",
+                "defaultValue": false,
+                "groups": [ "connection" ]
             },
             {
                 "type": "color",
@@ -515,7 +522,7 @@
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
                 "allowGray": true,
-                "group": "connection"
+                "groups": [ "connection" ]
             },
             {
                 "type": "slider",
@@ -525,7 +532,7 @@
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "connection"
+                "groups": [ "connection" ]
             },
             {
                 "type": "slider",
@@ -535,7 +542,7 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "connection"
+                "groups": [ "connection" ]
             },
             {
                 "type": "slider",
@@ -545,7 +552,7 @@
                 "min": 0,
                 "max": 72,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "connection"
+                "groups": [ "connection" ]
             },
             {
                 "type": "select",
@@ -566,7 +573,7 @@
                         "value": "2"
                     }
                 ],
-                "group": "connection"
+                "groups": [ "connection" ]
             },
             {
                 "type": "slider",
@@ -575,7 +582,7 @@
                 "defaultValue": 0,
                 "min": 0,
                 "max": 359,
-                "group": "connection"
+                "groups": [ "connection" ]
             },
             {
                 "type": "slider",
@@ -585,7 +592,7 @@
                 "min": 0,
                 "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "connection"
+                "groups": [ "connection" ]
             },
             {
                 "type": "slider",
@@ -595,7 +602,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "connection"
+                "groups": [ "connection" ]
             },
             {
                 "type": "slider",
@@ -605,7 +612,7 @@
                 "min": 0,
                 "max": 200,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "connection"
+                "groups": [ "connection" ]
             },
             {
                 "type": "slider",
@@ -615,7 +622,7 @@
                 "min": 0,
                 "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "connection"
+                "groups": [ "connection" ]
             },
             {
                 "type": "slider",
@@ -625,7 +632,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "connection"
+                "groups": [ "connection" ]
             },
             {
                 "type": "slider",
@@ -635,7 +642,7 @@
                 "min": 0,
                 "max": 228,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "connection"
+                "groups": [ "connection" ]
             }
         ]
     },
@@ -653,7 +660,7 @@
                 "label": "Enabled",
                 "description": "Shown when Quiet Time is active",
                 "defaultValue": false,
-                "group": "quiet-time"
+                "groups": [ "quiet-time", "section-toggle" ]
             },
             {
                 "type": "color",
@@ -662,7 +669,7 @@
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
                 "allowGray": true,
-                "group": "quiet-time"
+                "groups": [ "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -672,7 +679,7 @@
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "quiet-time"
+                "groups": [ "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -682,7 +689,7 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "quiet-time"
+                "groups": [ "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -692,7 +699,7 @@
                 "min": 0,
                 "max": 72,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "quiet-time"
+                "groups": [ "quiet-time" ]
             },
             {
                 "type": "select",
@@ -713,7 +720,7 @@
                         "value": "2"
                     }
                 ],
-                "group": "quiet-time"
+                "groups": [ "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -722,7 +729,7 @@
                 "defaultValue": 0,
                 "min": 0,
                 "max": 359,
-                "group": "quiet-time"
+                "groups": [ "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -732,7 +739,7 @@
                 "min": 0,
                 "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "quiet-time"
+                "groups": [ "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -742,7 +749,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "quiet-time"
+                "groups": [ "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -752,7 +759,7 @@
                 "min": 0,
                 "max": 200,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "quiet-time"
+                "groups": [ "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -762,7 +769,7 @@
                 "min": 0,
                 "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "quiet-time"
+                "groups": [ "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -772,7 +779,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "quiet-time"
+                "groups": [ "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -782,7 +789,7 @@
                 "min": 0,
                 "max": 228,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "quiet-time"
+                "groups": [ "quiet-time" ]
             }
         ]
     },
@@ -799,7 +806,7 @@
                 "messageKey": "STEPS_ENABLED",
                 "label": "Enabled",
                 "defaultValue": false,
-                "group": "steps"
+                "groups": [ "steps", "section-toggle" ]
             },
             {
                 "type": "color",
@@ -808,7 +815,7 @@
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
                 "allowGray": true,
-                "group": "steps"
+                "groups": [ "steps" ]
             },
             {
                 "type": "slider",
@@ -818,7 +825,7 @@
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "steps"
+                "groups": [ "steps" ]
             },
             {
                 "type": "slider",
@@ -828,7 +835,7 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "steps"
+                "groups": [ "steps" ]
             },
             {
                 "type": "slider",
@@ -838,7 +845,7 @@
                 "min": 0,
                 "max": 72,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "steps"
+                "groups": [ "steps" ]
             },
             {
                 "type": "select",
@@ -859,7 +866,7 @@
                         "value": "2"
                     }
                 ],
-                "group": "steps"
+                "groups": [ "steps" ]
             },
             {
                 "type": "slider",
@@ -868,7 +875,7 @@
                 "defaultValue": 0,
                 "min": 0,
                 "max": 359,
-                "group": "steps"
+                "groups": [ "steps" ]
             },
             {
                 "type": "slider",
@@ -878,7 +885,7 @@
                 "min": 0,
                 "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "steps"
+                "groups": [ "steps" ]
             },
             {
                 "type": "slider",
@@ -888,7 +895,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "steps"
+                "groups": [ "steps" ]
             },
             {
                 "type": "slider",
@@ -898,7 +905,7 @@
                 "min": 0,
                 "max": 200,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "steps"
+                "groups": [ "steps" ]
             },
             {
                 "type": "slider",
@@ -908,7 +915,7 @@
                 "min": 0,
                 "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "group": "steps"
+                "groups": [ "steps" ]
             },
             {
                 "type": "slider",
@@ -918,7 +925,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "group": "steps"
+                "groups": [ "steps" ]
             },
             {
                 "type": "slider",
@@ -928,7 +935,7 @@
                 "min": 0,
                 "max": 228,
                 "capabilities": [ "DISPLAY_200x228" ],
-                "group": "steps"
+                "groups": [ "steps" ]
             }
         ]
     },

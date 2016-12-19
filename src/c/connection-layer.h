@@ -1,7 +1,7 @@
 #pragma once
-#include "fctx-text-layer.h"
+#include "fctx-layer.h"
 
-typedef FctxTextLayer ConnectionLayer;
+typedef FctxLayer ConnectionLayer;
 
 ConnectionLayer *connection_layer_create();
 void connection_layer_destroy(ConnectionLayer *this);
