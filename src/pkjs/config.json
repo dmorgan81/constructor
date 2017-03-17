@@ -1096,6 +1096,122 @@
         ]
     },
     {
+        "type": "section",
+        "capabilities": [ "NOT_PLATFORM_APLITE" ],
+        "items": [
+            {
+                "type": "heading",
+                "defaultValue": "Current Conditions"
+            },
+            {
+                "type": "toggle",
+                "messageKey": "CONDITION_ENABLED",
+                "label": "Enabled",
+                "defaultValue": false,
+                "groups": [ "live", "condition", "section-toggle" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "CONDITION_COLOR",
+                "label": "Color",
+                "defaultValue": "FFFFFF",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 24,
+                "min": 0,
+                "max": 52,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 28,
+                "min": 0,
+                "max": 64,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "select",
+                "messageKey": "CONDITION_ALIGNMENT",
+                "label": "Text Alignment",
+                "defaultValue": "0",
+                "options": [
+                    {
+                        "label": "Left",
+                        "value": "0"
+                    },
+                    {
+                        "label": "Center",
+                        "value": "1"
+                    },
+                    {
+                        "label": "Right",
+                        "value": "2"
+                    }
+                ],
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_ROTATION",
+                "label": "Rotation",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 359,
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_X",
+                "label": "X Position",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 144,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_X",
+                "label": "X Position",
+                "defaultValue": 32,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_Y",
+                "label": "Y Position",
+                "defaultValue": 136,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_Y",
+                "label": "Y Position",
+                "defaultValue": 44,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "condition" ]
+            }
+        ]
+    },
+    {
         "type": "submit",
         "defaultValue": "Save"
     }

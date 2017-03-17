@@ -12,6 +12,7 @@
 #ifndef PBL_PLATFORM_APLITE
 #include "quiet-time-layer.h"
 #include "temperature-layer.h"
+#include "condition-layer.h"
 #endif
 #ifdef PBL_HEALTH
 #include "step-layer.h"
@@ -28,6 +29,7 @@ static ConnectionLayer *s_connection_layer;
 #ifndef PBL_PLATFORM_APLITE
 static QuietTimeLayer *s_quiet_time_layer;
 static TemperatureLayer *s_temperature_layer;
+static ConditionLayer *s_condition_layer;
 #endif
 #ifdef PBL_HEALTH
 static StepLayer *s_step_layer;
@@ -88,6 +90,15 @@ static void settings_handler(void *context) {
         temperature_layer_destroy(s_temperature_layer);
         s_temperature_layer = NULL;
     }
+
+     if (enamel_get_CONDITION_ENABLED() && !s_condition_layer) {
+        s_condition_layer = condition_layer_create();
+        fctx_layer_add_child(s_root_layer, s_condition_layer);
+    } else if (!enamel_get_CONDITION_ENABLED() && s_condition_layer) {
+        fctx_layer_remove_child(s_root_layer, s_condition_layer);
+        condition_layer_destroy(s_condition_layer);
+        s_condition_layer = NULL;
+    }
 #endif
 
 #ifdef PBL_HEALTH
@@ -136,6 +147,7 @@ static void window_unload(Window *window) {
 #ifndef PBL_PLATFORM_APLITE
     if (s_quiet_time_layer) quiet_time_layer_destroy(s_quiet_time_layer);
     if (s_temperature_layer) temperature_layer_destroy(s_temperature_layer);
+    if (s_condition_layer) condition_layer_destroy(s_condition_layer);
 #endif
     if (s_connection_layer) connection_layer_destroy(s_connection_layer);
     if (s_battery_layer) battery_layer_destroy(s_battery_layer);

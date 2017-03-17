@@ -98,7 +98,14 @@
       "TEMPERATURE_ROTATION",
       "TEMPERATURE_FONT_SIZE",
       "TEMPERATURE_X",
-      "TEMPERATURE_Y"
+      "TEMPERATURE_Y",
+      "CONDITION_ENABLED",
+      "CONDITION_COLOR",
+      "CONDITION_ALIGNMENT",
+      "CONDITION_ROTATION",
+      "CONDITION_FONT_SIZE",
+      "CONDITION_X",
+      "CONDITION_Y"
     ],
     "resources": {
       "media": [
