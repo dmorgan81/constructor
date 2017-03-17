@@ -82,15 +82,6 @@
                 "capabilities": [ "DISPLAY_180x180_ROUND" ]
             },
             {
-                "type": "slider",
-                "messageKey": "TIME_FONT_SIZE",
-                "label": "Font Size",
-                "defaultValue": 72,
-                "min": 0,
-                "max": 72,
-                "capabilities": [ "DISPLAY_200x228" ]
-            },
-            {
                 "type": "select",
                 "messageKey": "TIME_ALIGNMENT",
                 "label": "Text Alignment",
@@ -138,15 +129,6 @@
             },
             {
                 "type": "slider",
-                "messageKey": "TIME_X",
-                "label": "X Position",
-                "defaultValue": 100,
-                "min": 0,
-                "max": 200,
-                "capabilities": [ "DISPLAY_200x228" ]
-            },
-            {
-                "type": "slider",
                 "messageKey": "TIME_Y",
                 "label": "Y Position",
                 "defaultValue": 68,
@@ -162,15 +144,6 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "TIME_Y",
-                "label": "Y Position",
-                "defaultValue": 100,
-                "min": 0,
-                "max": 228,
-                "capabilities": [ "DISPLAY_200x228" ]
             }
         ]
     },
@@ -247,16 +220,6 @@
                 "groups": [ "date" ]
             },
             {
-                "type": "slider",
-                "messageKey": "DATE_FONT_SIZE",
-                "label": "Font Size",
-                "defaultValue": 34,
-                "min": 0,
-                "max": 72,
-                "capabilities": [ "DISPLAY_200x228" ],
-                "groups": [ "date" ]
-            },
-            {
                 "type": "select",
                 "messageKey": "DATE_ALIGNMENT",
                 "label": "Text Alignment",
@@ -308,16 +271,6 @@
             },
             {
                 "type": "slider",
-                "messageKey": "DATE_X",
-                "label": "X Position",
-                "defaultValue": 100,
-                "min": 0,
-                "max": 200,
-                "capabilities": [ "DISPLAY_200x228" ],
-                "groups": [ "date" ]
-            },
-            {
-                "type": "slider",
                 "messageKey": "DATE_Y",
                 "label": "Y Position",
                 "defaultValue": 100,
@@ -334,16 +287,6 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "date" ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "DATE_Y",
-                "label": "Y Position",
-                "defaultValue": 144,
-                "min": 0,
-                "max": 228,
-                "capabilities": [ "DISPLAY_200x228" ],
                 "groups": [ "date" ]
             }
         ]
@@ -389,16 +332,6 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "battery" ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "BATTERY_FONT_SIZE",
-                "label": "Font Size",
-                "defaultValue": 34,
-                "min": 0,
-                "max": 72,
-                "capabilities": [ "DISPLAY_200x228" ],
                 "groups": [ "battery" ]
             },
             {
@@ -453,16 +386,6 @@
             },
             {
                 "type": "slider",
-                "messageKey": "BATTERY_X",
-                "label": "X Position",
-                "defaultValue": 200,
-                "min": 0,
-                "max": 200,
-                "capabilities": [ "DISPLAY_200x228" ],
-                "groups": [ "battery" ]
-            },
-            {
-                "type": "slider",
                 "messageKey": "BATTERY_Y",
                 "label": "Y Position",
                 "defaultValue": 10,
@@ -479,16 +402,6 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "battery" ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "BATTERY_Y",
-                "label": "Y Position",
-                "defaultValue": 14,
-                "min": 0,
-                "max": 228,
-                "capabilities": [ "DISPLAY_200x228" ],
                 "groups": [ "battery" ]
             }
         ]
@@ -545,16 +458,6 @@
                 "groups": [ "connection" ]
             },
             {
-                "type": "slider",
-                "messageKey": "CONNECTION_FONT_SIZE",
-                "label": "Font Size",
-                "defaultValue": 34,
-                "min": 0,
-                "max": 72,
-                "capabilities": [ "DISPLAY_200x228" ],
-                "groups": [ "connection" ]
-            },
-            {
                 "type": "select",
                 "messageKey": "CONNECTION_ALIGNMENT",
                 "label": "Text Alignment",
@@ -606,16 +509,6 @@
             },
             {
                 "type": "slider",
-                "messageKey": "CONNECTION_X",
-                "label": "X Position",
-                "defaultValue": 0,
-                "min": 0,
-                "max": 200,
-                "capabilities": [ "DISPLAY_200x228" ],
-                "groups": [ "connection" ]
-            },
-            {
-                "type": "slider",
                 "messageKey": "CONNECTION_Y",
                 "label": "Y Position",
                 "defaultValue": 10,
@@ -632,16 +525,6 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "connection" ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "CONNECTION_Y",
-                "label": "Y Position",
-                "defaultValue": 14,
-                "min": 0,
-                "max": 228,
-                "capabilities": [ "DISPLAY_200x228" ],
                 "groups": [ "connection" ]
             }
         ]
@@ -689,16 +572,6 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "quiet-time" ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "QUIET_TIME_FONT_SIZE",
-                "label": "Font Size",
-                "defaultValue": 34,
-                "min": 0,
-                "max": 72,
-                "capabilities": [ "DISPLAY_200x228" ],
                 "groups": [ "quiet-time" ]
             },
             {
@@ -753,16 +626,6 @@
             },
             {
                 "type": "slider",
-                "messageKey": "QUIET_TIME_X",
-                "label": "X Position",
-                "defaultValue": 0,
-                "min": 0,
-                "max": 200,
-                "capabilities": [ "DISPLAY_200x228" ],
-                "groups": [ "quiet-time" ]
-            },
-            {
-                "type": "slider",
                 "messageKey": "QUIET_TIME_Y",
                 "label": "Y Position",
                 "defaultValue": 10,
@@ -779,16 +642,6 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "quiet-time" ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "QUIET_TIME_Y",
-                "label": "Y Position",
-                "defaultValue": 14,
-                "min": 0,
-                "max": 228,
-                "capabilities": [ "DISPLAY_200x228" ],
                 "groups": [ "quiet-time" ]
             }
         ]
@@ -835,16 +688,6 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "steps" ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "STEPS_FONT_SIZE",
-                "label": "Font Size",
-                "defaultValue": 34,
-                "min": 0,
-                "max": 72,
-                "capabilities": [ "DISPLAY_200x228" ],
                 "groups": [ "steps" ]
             },
             {
@@ -899,16 +742,6 @@
             },
             {
                 "type": "slider",
-                "messageKey": "STEPS_X",
-                "label": "X Position",
-                "defaultValue": 0,
-                "min": 0,
-                "max": 200,
-                "capabilities": [ "DISPLAY_200x228" ],
-                "groups": [ "steps" ]
-            },
-            {
-                "type": "slider",
                 "messageKey": "STEPS_Y",
                 "label": "Y Position",
                 "defaultValue": 158,
@@ -925,16 +758,6 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "steps" ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "STEPS_Y",
-                "label": "Y Position",
-                "defaultValue": 214,
-                "min": 0,
-                "max": 228,
-                "capabilities": [ "DISPLAY_200x228" ],
                 "groups": [ "steps" ]
             }
         ]
@@ -981,16 +804,6 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "distance" ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "DISTANCE_FONT_SIZE",
-                "label": "Font Size",
-                "defaultValue": 34,
-                "min": 0,
-                "max": 72,
-                "capabilities": [ "DISPLAY_200x228" ],
                 "groups": [ "distance" ]
             },
             {
@@ -1045,16 +858,6 @@
             },
             {
                 "type": "slider",
-                "messageKey": "DISTANCE_X",
-                "label": "X Position",
-                "defaultValue": 200,
-                "min": 0,
-                "max": 200,
-                "capabilities": [ "DISPLAY_200x228" ],
-                "groups": [ "distance" ]
-            },
-            {
-                "type": "slider",
                 "messageKey": "DISTANCE_Y",
                 "label": "Y Position",
                 "defaultValue": 158,
@@ -1071,16 +874,6 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "distance" ]
-            },
-            {
-                "type": "slider",
-                "messageKey": "DISTANCE_Y",
-                "label": "Y Position",
-                "defaultValue": 214,
-                "min": 0,
-                "max": 228,
-                "capabilities": [ "DISPLAY_200x228" ],
                 "groups": [ "distance" ]
             }
         ]
