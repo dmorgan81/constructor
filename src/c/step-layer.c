@@ -40,7 +40,7 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_rotation(this, DEG_TO_TRIGANGLE(enamel_get_STEPS_ROTATION()));
 }
 
-StepLayer *step_layer_create() {
+StepLayer *step_layer_create(void) {
     log_func();
     StepLayer *this = fctx_text_layer_create_with_data(sizeof(Data));
     fctx_text_layer_set_anchor(this, FTextAnchorMiddle);

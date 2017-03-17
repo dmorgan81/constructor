@@ -28,7 +28,7 @@ void fctx_text_layer_draw(FctxLayer *this, FContext* fctx) {
     }
 }
 
-FctxTextLayer *fctx_text_layer_create() {
+FctxTextLayer *fctx_text_layer_create(void) {
     log_func();
     FctxTextLayer *this = fctx_layer_create_with_data(sizeof(Data));
     fctx_layer_set_update_proc(this, fctx_text_layer_draw);

@@ -6,7 +6,7 @@
 
 typedef FctxLayer FctxTextLayer;
 
-FctxTextLayer *fctx_text_layer_create();
+FctxTextLayer *fctx_text_layer_create(void);
 FctxTextLayer *fctx_text_layer_create_with_data(size_t data_size);
 void fctx_text_layer_destroy(FctxTextLayer *this);
 void *fctx_text_layer_get_data(FctxTextLayer *this);

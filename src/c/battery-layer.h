@@ -3,5 +3,5 @@
 
 typedef FctxTextLayer BatteryLayer;
 
-BatteryLayer *battery_layer_create();
+BatteryLayer *battery_layer_create(void);
 void battery_layer_destroy(BatteryLayer *this);

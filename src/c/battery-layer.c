@@ -27,7 +27,7 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_rotation(this, DEG_TO_TRIGANGLE(enamel_get_BATTERY_ROTATION()));
 }
 
-BatteryLayer *battery_layer_create() {
+BatteryLayer *battery_layer_create(void) {
     log_func();
     BatteryLayer *this = fctx_text_layer_create_with_data(sizeof(Data));
     fctx_text_layer_set_anchor(this, FTextAnchorMiddle);

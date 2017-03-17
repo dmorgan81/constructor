@@ -31,7 +31,7 @@ static void settings_handler(void *this) {
     layer_mark_dirty(this);
 }
 
-QuietTimeLayer *quiet_time_layer_create() {
+QuietTimeLayer *quiet_time_layer_create(void) {
     log_func();
     QuietTimeLayer *this = fctx_layer_create_with_data(sizeof(Data));
     fctx_layer_set_update_proc(this, update_proc);
