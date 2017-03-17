@@ -1,3 +1,4 @@
+#ifndef PBL_PLATFORM_APLITE
 #include "common.h"
 #include <pebble-events/pebble-events.h>
 #include <pebble-generic-weather/pebble-generic-weather.h>
@@ -164,3 +165,4 @@ void events_weather_unsubscribe(EventHandle handle) {
 
     if (linked_list_count(s_handler_list) == 0) cancel_timer();
 }
+#endif // PBL_PLATFORM_APLITE

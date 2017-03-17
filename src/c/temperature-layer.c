@@ -1,3 +1,4 @@
+#ifndef PBL_PLATFORM_APLITE
 #include "common.h"
 #include <pebble-fctx/fctx.h>
 #include <pebble-generic-weather/pebble-generic-weather.h>
@@ -66,3 +67,4 @@ void temperature_layer_destroy(TemperatureLayer *this) {
     enamel_settings_received_unsubscribe(data->settings_event_handle);
     fctx_text_layer_destroy(this);
 }
+#endif // PBL_PLATFORM_APLITE
