@@ -14,6 +14,7 @@
     "pebble-connection-vibes": "^1.1.0",
     "pebble-events": "^1.2.0",
     "pebble-fctx": "^1.6.2",
+    "pebble-generic-weather": "file:///home/david/code/pebble/pebble-generic-weather",
     "pebble-hourly-vibes": "^1.1.0"
   },
   "pebble": {
@@ -31,6 +32,12 @@
       "watchface": true
     },
     "messageKeys": [
+      "APP_READY",
+      "WEATHER_KEY",
+      "WEATHER_UNIT",
+      "WEATHER_FEELS_LIKE",
+      "WEATHER_INTERVAL",
+      "WEATHER_PROVIDER",
       "BACKGROUND_COLOR",
       "HOURLY_VIBE",
       "CONNECTION_VIBE",
@@ -84,7 +91,14 @@
       "DISTANCE_ROTATION",
       "DISTANCE_FONT_SIZE",
       "DISTANCE_X",
-      "DISTANCE_Y"
+      "DISTANCE_Y",
+      "TEMPERATURE_ENABLED",
+      "TEMPERATURE_COLOR",
+      "TEMPERATURE_ALIGNMENT",
+      "TEMPERATURE_ROTATION",
+      "TEMPERATURE_FONT_SIZE",
+      "TEMPERATURE_X",
+      "TEMPERATURE_Y"
     ],
     "resources": {
       "media": [

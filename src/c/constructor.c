@@ -3,6 +3,7 @@
 #include <pebble-connection-vibes/connection-vibes.h>
 #include <pebble-hourly-vibes/hourly-vibes.h>
 #include "fonts.h"
+#include "weather.h"
 #include "fctx-layer.h"
 #include "time-layer.h"
 #include "date-layer.h"
@@ -15,6 +16,7 @@
 #include "step-layer.h"
 #include "distance-layer.h"
 #endif
+#include "temperature-layer.h"
 
 static Window *s_window;
 
@@ -30,6 +32,7 @@ static QuietTimeLayer *s_quiet_time_layer;
 static StepLayer *s_step_layer;
 static DistanceLayer *s_distance_layer;
 #endif
+static TemperatureLayer *s_temperature_layer;
 
 static EventHandle s_settings_event_handle;
 
@@ -100,6 +103,15 @@ static void settings_handler(void *context) {
     connection_vibes_enable_health(s_step_layer != NULL || s_distance_layer != NULL);
     hourly_vibes_enable_health(s_step_layer != NULL || s_distance_layer != NULL);
 #endif
+
+    if (enamel_get_TEMPERATURE_ENABLED() && !s_temperature_layer) {
+        s_temperature_layer = temperature_layer_create();
+        fctx_layer_add_child(s_root_layer, s_temperature_layer);
+    } else if (!enamel_get_TEMPERATURE_ENABLED() && s_temperature_layer) {
+        fctx_layer_remove_child(s_root_layer, s_temperature_layer);
+        temperature_layer_destroy(s_temperature_layer);
+        s_temperature_layer = NULL;
+    }
 }
 
 static void window_load(Window *window) {
@@ -117,6 +129,7 @@ static void window_unload(Window *window) {
     log_func();
     enamel_settings_received_unsubscribe(s_settings_event_handle);
 
+    if (s_temperature_layer) temperature_layer_destroy(s_temperature_layer);
 #ifdef PBL_HEALTH
     if (s_distance_layer) distance_layer_destroy(s_distance_layer);
     if (s_step_layer) step_layer_destroy(s_step_layer);
@@ -135,6 +148,7 @@ static void init(void) {
     log_func();
     fonts_init();
     enamel_init();
+    weather_init();
     connection_vibes_init();
     hourly_vibes_init();
     uint32_t const pattern[] = { 100 };
@@ -159,6 +173,7 @@ static void deinit(void) {
 
     hourly_vibes_deinit();
     connection_vibes_deinit();
+    weather_deinit();
     enamel_deinit();
     fonts_deinit();
 }

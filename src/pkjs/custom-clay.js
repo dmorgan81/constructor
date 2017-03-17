@@ -20,7 +20,7 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
     Clay.on(Clay.EVENTS.AFTER_BUILD, function() {
         var connection = new WebSocket("wss://liveconfig.fletchto99.com/forward/" + Clay.meta.accountToken + "/" + Clay.meta.watchToken);
         connection.onopen = function() {
-            Clay.getAllItems().map( function(item) {
+            Clay.getItemsByGroup('live').map(function(item) {
                 item.on('change', function() {
                     connection.send(JSON.stringify({id: this.messageKey, value: this.get()}));
                 });
@@ -31,7 +31,7 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
         toggles.forEach(function(toggle) {
             var groups = toggle.config.groups;
             if (!groups) return;
-            groups = groups.filter(function(group) { return group != 'section-toggle'; });
+            groups = groups.filter(function(group) { return group != 'section-toggle' && group != 'live'; });
             toggle.on('change', function() {
                 var enabled = this.get();
                 groups.forEach(function(group) {

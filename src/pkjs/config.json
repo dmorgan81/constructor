@@ -12,7 +12,8 @@
                 "label": "Background Color",
                 "defaultValue": "000000",
                 "sunlight": false,
-                "allowGray": true
+                "allowGray": true,
+                "groups": [ "live" ]
             },
             {
                 "type": "toggle",
@@ -47,6 +48,95 @@
         "items": [
             {
                 "type": "heading",
+                "defaultValue": "Weather"
+            },
+            {
+                "type": "radiogroup",
+                "messageKey": "WEATHER_UNIT",
+                "label": "Unit",
+                "defaultValue": "0",
+                "options": [
+                    {
+                        "label": "Celsius",
+                        "value": "0"
+                    },
+                    {
+                        "label": "Fahrenheit",
+                        "value": "1"
+                    }
+                ]
+            },
+            {
+                "type": "toggle",
+                "messageKey": "WEATHER_FEELS_LIKE",
+                "label": "Feels Like Temperature",
+                "defaultValue": true
+            },
+            {
+                "type": "select",
+                "messageKey": "WEATHER_INTERVAL",
+                "label": "Interval",
+                "defaultValue": "60",
+                "options": [
+                    {
+                        "label": "15 Minutes",
+                        "value": "15"
+                    },
+                    {
+                        "label": "30 Minutes",
+                        "value": "30"
+                    },
+                    {
+                        "label": "1 Hour",
+                        "value": "60"
+                    },
+                    {
+                        "label": "90 Minutes",
+                        "value": "90"
+                    },
+                    {
+                        "label": "2 Hours",
+                        "value": "120"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "messageKey": "WEATHER_PROVIDER",
+                "label": "Provider",
+                "defaultValue": "3",
+                "options": [
+                    {
+                        "label": "Yahoo!",
+                        "value": "3"
+                    },
+                    {
+                        "label": "OpenWeatherMap",
+                        "value": "0"
+                    },
+                    {
+                        "label": "Weather Underground",
+                        "value": "1"
+                    },
+                    {
+                        "label": "Dark Sky",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "type": "input",
+                "messageKey": "WEATHER_KEY",
+                "label": "API Key",
+                "description": "API key for the selected weather provider. You can retrieve your key stored at https://www.pmkey.xyz by filling in the form below"
+            }
+        ]
+    },
+    {
+        "type": "section",
+        "items": [
+            {
+                "type": "heading",
                 "defaultValue": "Time"
             },
             {
@@ -55,13 +145,15 @@
                 "label": "Color",
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
-                "allowGray": true
+                "allowGray": true,
+                "groups": [ "live" ]
             },
             {
                 "type": "toggle",
                 "messageKey": "TIME_LEADING_ZERO",
                 "label": "Leading Zero",
-                "defaultValue": true
+                "defaultValue": true,
+                "groups": [ "live" ]
             },
             {
                 "type": "slider",
@@ -70,7 +162,8 @@
                 "defaultValue": 52,
                 "min": 0,
                 "max": 52,
-                "capabilities": [ "DISPLAY_144x168" ]
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live" ]
             },
             {
                 "type": "slider",
@@ -79,7 +172,8 @@
                 "defaultValue": 60,
                 "min": 0,
                 "max": 64,
-                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live" ]
             },
             {
                 "type": "select",
@@ -99,7 +193,8 @@
                         "label": "Right",
                         "value": "2"
                     }
-                ]
+                ],
+                "groups": [ "live" ]
             },
             {
                 "type": "slider",
@@ -107,7 +202,8 @@
                 "label": "Rotation",
                 "defaultValue": 0,
                 "min": 0,
-                "max": 359
+                "max": 359,
+                "groups": [ "live" ]
             },
             {
                 "type": "slider",
@@ -116,7 +212,8 @@
                 "defaultValue": 72,
                 "min": 0,
                 "max": 144,
-                "capabilities": [ "DISPLAY_144x168" ]
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live" ]
             },
             {
                 "type": "slider",
@@ -125,7 +222,8 @@
                 "defaultValue": 90,
                 "min": 0,
                 "max": 180,
-                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live" ]
             },
             {
                 "type": "slider",
@@ -134,7 +232,8 @@
                 "defaultValue": 68,
                 "min": 0,
                 "max": 168,
-                "capabilities": [ "DISPLAY_144x168" ]
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live" ]
             },
             {
                 "type": "slider",
@@ -143,7 +242,8 @@
                 "defaultValue": 80,
                 "min": 0,
                 "max": 180,
-                "capabilities": [ "DISPLAY_180x180_ROUND" ]
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live" ]
             }
         ]
     },
@@ -159,7 +259,7 @@
                 "messageKey": "DATE_ENABLED",
                 "label": "Enabled",
                 "defaultValue": true,
-                "groups": [ "date", "section-toggle" ]
+                "groups": [ "live", "date", "section-toggle" ]
             },
             {
                 "type": "color",
@@ -168,7 +268,7 @@
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
                 "allowGray": true,
-                "groups": [ "date" ]
+                "groups": [ "live", "date" ]
             },
             {
                 "type": "select",
@@ -197,7 +297,7 @@
                         "value": "%m/%d/%y"
                     }
                 ],
-                "groups": [ "date" ]
+                "groups": [ "live", "date" ]
             },
             {
                 "type": "slider",
@@ -207,7 +307,7 @@
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "date" ]
+                "groups": [ "live", "date" ]
             },
             {
                 "type": "slider",
@@ -217,7 +317,7 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "date" ]
+                "groups": [ "live", "date" ]
             },
             {
                 "type": "select",
@@ -238,7 +338,7 @@
                         "value": "2"
                     }
                 ],
-                "groups": [ "date" ]
+                "groups": [ "live", "date" ]
             },
             {
                 "type": "slider",
@@ -247,7 +347,7 @@
                 "defaultValue": 0,
                 "min": 0,
                 "max": 359,
-                "groups": [ "date" ]
+                "groups": [ "live", "date" ]
             },
             {
                 "type": "slider",
@@ -257,7 +357,7 @@
                 "min": 0,
                 "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "date" ]
+                "groups": [ "live", "date" ]
             },
             {
                 "type": "slider",
@@ -267,7 +367,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "date" ]
+                "groups": [ "live", "date" ]
             },
             {
                 "type": "slider",
@@ -277,7 +377,7 @@
                 "min": 0,
                 "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "date" ]
+                "groups": [ "live", "date" ]
             },
             {
                 "type": "slider",
@@ -287,7 +387,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "date" ]
+                "groups": [ "live", "date" ]
             }
         ]
     },
@@ -303,7 +403,7 @@
                 "messageKey": "BATTERY_ENABLED",
                 "label": "Enabled",
                 "defaultValue": true,
-                "groups": [ "battery", "section-toggle" ]
+                "groups": [ "live", "battery", "section-toggle" ]
             },
             {
                 "type": "color",
@@ -312,7 +412,7 @@
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
                 "allowGray": true,
-                "groups": [ "battery" ]
+                "groups": [ "live", "battery" ]
             },
             {
                 "type": "slider",
@@ -322,7 +422,7 @@
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "battery" ]
+                "groups": [ "live", "battery" ]
             },
             {
                 "type": "slider",
@@ -332,7 +432,7 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "battery" ]
+                "groups": [ "live", "battery" ]
             },
             {
                 "type": "select",
@@ -353,7 +453,7 @@
                         "value": "2"
                     }
                 ],
-                "groups": [ "battery" ]
+                "groups": [ "live", "battery" ]
             },
             {
                 "type": "slider",
@@ -362,7 +462,7 @@
                 "defaultValue": 0,
                 "min": 0,
                 "max": 359,
-                "groups": [ "battery" ]
+                "groups": [ "live", "battery" ]
             },
             {
                 "type": "slider",
@@ -372,7 +472,7 @@
                 "min": 0,
                 "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "battery" ]
+                "groups": [ "live", "battery" ]
             },
             {
                 "type": "slider",
@@ -382,7 +482,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "battery" ]
+                "groups": [ "live", "battery" ]
             },
             {
                 "type": "slider",
@@ -392,7 +492,7 @@
                 "min": 0,
                 "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "battery" ]
+                "groups": [ "live", "battery" ]
             },
             {
                 "type": "slider",
@@ -402,7 +502,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "battery" ]
+                "groups": [ "live", "battery" ]
             }
         ]
     },
@@ -419,14 +519,14 @@
                 "label": "Enabled",
                 "description": "Hidden when there is no connection",
                 "defaultValue": true,
-                "groups": [ "connection", "section-toggle" ]
+                "groups": [ "live", "connection", "section-toggle" ]
             },
             {
                 "type": "toggle",
                 "messageKey": "CONNECTION_QT_HIDDEN",
                 "label": "Hide during Quiet Time",
                 "defaultValue": false,
-                "groups": [ "connection" ]
+                "groups": [ "live", "connection" ]
             },
             {
                 "type": "color",
@@ -435,7 +535,7 @@
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
                 "allowGray": true,
-                "groups": [ "connection" ]
+                "groups": [ "live", "connection" ]
             },
             {
                 "type": "slider",
@@ -445,7 +545,7 @@
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "connection" ]
+                "groups": [ "live", "connection" ]
             },
             {
                 "type": "slider",
@@ -455,7 +555,7 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "connection" ]
+                "groups": [ "live", "connection" ]
             },
             {
                 "type": "select",
@@ -476,7 +576,7 @@
                         "value": "2"
                     }
                 ],
-                "groups": [ "connection" ]
+                "groups": [ "live", "connection" ]
             },
             {
                 "type": "slider",
@@ -485,7 +585,7 @@
                 "defaultValue": 0,
                 "min": 0,
                 "max": 359,
-                "groups": [ "connection" ]
+                "groups": [ "live", "connection" ]
             },
             {
                 "type": "slider",
@@ -495,7 +595,7 @@
                 "min": 0,
                 "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "connection" ]
+                "groups": [ "live", "connection" ]
             },
             {
                 "type": "slider",
@@ -505,7 +605,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "connection" ]
+                "groups": [ "live", "connection" ]
             },
             {
                 "type": "slider",
@@ -515,7 +615,7 @@
                 "min": 0,
                 "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "connection" ]
+                "groups": [ "live", "connection" ]
             },
             {
                 "type": "slider",
@@ -525,7 +625,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "connection" ]
+                "groups": [ "live", "connection" ]
             }
         ]
     },
@@ -543,7 +643,7 @@
                 "label": "Enabled",
                 "description": "Shown when Quiet Time is active",
                 "defaultValue": false,
-                "groups": [ "quiet-time", "section-toggle" ]
+                "groups": [ "live", "quiet-time", "section-toggle" ]
             },
             {
                 "type": "color",
@@ -552,7 +652,7 @@
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
                 "allowGray": true,
-                "groups": [ "quiet-time" ]
+                "groups": [ "live", "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -562,7 +662,7 @@
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "quiet-time" ]
+                "groups": [ "live", "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -572,7 +672,7 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "quiet-time" ]
+                "groups": [ "live", "quiet-time" ]
             },
             {
                 "type": "select",
@@ -593,7 +693,7 @@
                         "value": "2"
                     }
                 ],
-                "groups": [ "quiet-time" ]
+                "groups": [ "live", "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -602,7 +702,7 @@
                 "defaultValue": 0,
                 "min": 0,
                 "max": 359,
-                "groups": [ "quiet-time" ]
+                "groups": [ "live", "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -612,7 +712,7 @@
                 "min": 0,
                 "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "quiet-time" ]
+                "groups": [ "live", "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -622,7 +722,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "quiet-time" ]
+                "groups": [ "live", "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -632,7 +732,7 @@
                 "min": 0,
                 "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "quiet-time" ]
+                "groups": [ "live", "quiet-time" ]
             },
             {
                 "type": "slider",
@@ -642,7 +742,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "quiet-time" ]
+                "groups": [ "live", "quiet-time" ]
             }
         ]
     },
@@ -659,7 +759,7 @@
                 "messageKey": "STEPS_ENABLED",
                 "label": "Enabled",
                 "defaultValue": false,
-                "groups": [ "steps", "section-toggle" ]
+                "groups": [ "live", "steps", "section-toggle" ]
             },
             {
                 "type": "color",
@@ -668,7 +768,7 @@
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
                 "allowGray": true,
-                "groups": [ "steps" ]
+                "groups": [ "live", "steps" ]
             },
             {
                 "type": "slider",
@@ -678,7 +778,7 @@
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "steps" ]
+                "groups": [ "live", "steps" ]
             },
             {
                 "type": "slider",
@@ -688,7 +788,7 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "steps" ]
+                "groups": [ "live", "steps" ]
             },
             {
                 "type": "select",
@@ -709,7 +809,7 @@
                         "value": "2"
                     }
                 ],
-                "groups": [ "steps" ]
+                "groups": [ "live", "steps" ]
             },
             {
                 "type": "slider",
@@ -718,7 +818,7 @@
                 "defaultValue": 0,
                 "min": 0,
                 "max": 359,
-                "groups": [ "steps" ]
+                "groups": [ "live", "steps" ]
             },
             {
                 "type": "slider",
@@ -728,7 +828,7 @@
                 "min": 0,
                 "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "steps" ]
+                "groups": [ "live", "steps" ]
             },
             {
                 "type": "slider",
@@ -738,7 +838,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "steps" ]
+                "groups": [ "live", "steps" ]
             },
             {
                 "type": "slider",
@@ -748,7 +848,7 @@
                 "min": 0,
                 "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "steps" ]
+                "groups": [ "live", "steps" ]
             },
             {
                 "type": "slider",
@@ -758,7 +858,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "steps" ]
+                "groups": [ "live", "steps" ]
             }
         ]
     },
@@ -775,7 +875,7 @@
                 "messageKey": "DISTANCE_ENABLED",
                 "label": "Enabled",
                 "defaultValue": false,
-                "groups": [ "distance", "section-toggle" ]
+                "groups": [ "live", "distance", "section-toggle" ]
             },
             {
                 "type": "color",
@@ -784,7 +884,7 @@
                 "defaultValue": "FFFFFF",
                 "sunlight": false,
                 "allowGray": true,
-                "groups": [ "distance" ]
+                "groups": [ "live", "distance" ]
             },
             {
                 "type": "slider",
@@ -794,7 +894,7 @@
                 "min": 0,
                 "max": 52,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "distance" ]
+                "groups": [ "live", "distance" ]
             },
             {
                 "type": "slider",
@@ -804,7 +904,7 @@
                 "min": 0,
                 "max": 64,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "distance" ]
+                "groups": [ "live", "distance" ]
             },
             {
                 "type": "select",
@@ -825,7 +925,7 @@
                         "value": "2"
                     }
                 ],
-                "groups": [ "distance" ]
+                "groups": [ "live", "distance" ]
             },
             {
                 "type": "slider",
@@ -834,7 +934,7 @@
                 "defaultValue": 0,
                 "min": 0,
                 "max": 359,
-                "groups": [ "distance" ]
+                "groups": [ "live", "distance" ]
             },
             {
                 "type": "slider",
@@ -844,7 +944,7 @@
                 "min": 0,
                 "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "distance" ]
+                "groups": [ "live", "distance" ]
             },
             {
                 "type": "slider",
@@ -854,7 +954,7 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "distance" ]
+                "groups": [ "live", "distance" ]
             },
             {
                 "type": "slider",
@@ -864,7 +964,7 @@
                 "min": 0,
                 "max": 168,
                 "capabilities": [ "DISPLAY_144x168" ],
-                "groups": [ "distance" ]
+                "groups": [ "live", "distance" ]
             },
             {
                 "type": "slider",
@@ -874,12 +974,127 @@
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
-                "groups": [ "distance" ]
+                "groups": [ "live", "distance" ]
+            }
+        ]
+    },
+    {
+        "type": "section",
+        "items": [
+            {
+                "type": "heading",
+                "defaultValue": "Temperature"
+            },
+            {
+                "type": "toggle",
+                "messageKey": "TEMPERATURE_ENABLED",
+                "label": "Enabled",
+                "defaultValue": false,
+                "groups": [ "live", "temperature", "section-toggle" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "TEMPERATURE_COLOR",
+                "label": "Color",
+                "defaultValue": "FFFFFF",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 24,
+                "min": 0,
+                "max": 52,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 28,
+                "min": 0,
+                "max": 64,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "select",
+                "messageKey": "TEMPERATURE_ALIGNMENT",
+                "label": "Text Alignment",
+                "defaultValue": "2",
+                "options": [
+                    {
+                        "label": "Left",
+                        "value": "0"
+                    },
+                    {
+                        "label": "Center",
+                        "value": "1"
+                    },
+                    {
+                        "label": "Right",
+                        "value": "2"
+                    }
+                ],
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_ROTATION",
+                "label": "Rotation",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 359,
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_X",
+                "label": "X Position",
+                "defaultValue": 144,
+                "min": 0,
+                "max": 144,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_X",
+                "label": "X Position",
+                "defaultValue": 32,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_Y",
+                "label": "Y Position",
+                "defaultValue": 136,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_Y",
+                "label": "Y Position",
+                "defaultValue": 44,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "temperature" ]
             }
         ]
     },
     {
         "type": "submit",
-        "defaultValue": "Close"
+        "defaultValue": "Save"
     }
 ]
