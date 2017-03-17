@@ -11,6 +11,8 @@ typedef struct {
 
 static bool linked_list_update_proc_callback(void *this, void *context) {
     log_func();
+    if (layer_get_hidden(this)) return true;
+
     Data *data = layer_get_data(this);
     if (data->update_proc) {
         fctx_set_pivot(context, FPointOne);
