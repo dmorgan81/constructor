@@ -13,6 +13,7 @@
 #endif
 #ifdef PBL_HEALTH
 #include "step-layer.h"
+#include "distance-layer.h"
 #endif
 
 static Window *s_window;
@@ -27,6 +28,7 @@ static QuietTimeLayer *s_quiet_time_layer;
 #endif
 #ifdef PBL_HEALTH
 static StepLayer *s_step_layer;
+static DistanceLayer *s_distance_layer;
 #endif
 
 static EventHandle s_settings_event_handle;
@@ -86,8 +88,17 @@ static void settings_handler(void *context) {
         s_step_layer = NULL;
     }
 
-    connection_vibes_enable_health(s_step_layer != NULL);
-    hourly_vibes_enable_health(s_step_layer != NULL);
+    if (enamel_get_DISTANCE_ENABLED() && !s_distance_layer) {
+        s_distance_layer = distance_layer_create();
+        fctx_layer_add_child(s_root_layer, s_distance_layer);
+    } else if (!enamel_get_DISTANCE_ENABLED() && s_distance_layer) {
+        fctx_layer_remove_child(s_root_layer, s_distance_layer);
+        distance_layer_destroy(s_distance_layer);
+        s_distance_layer = NULL;
+    }
+
+    connection_vibes_enable_health(s_step_layer != NULL || s_distance_layer != NULL);
+    hourly_vibes_enable_health(s_step_layer != NULL || s_distance_layer != NULL);
 #endif
 }
 
@@ -107,6 +118,7 @@ static void window_unload(Window *window) {
     enamel_settings_received_unsubscribe(s_settings_event_handle);
 
 #ifdef PBL_HEALTH
+    if (s_distance_layer) distance_layer_destroy(s_distance_layer);
     if (s_step_layer) step_layer_destroy(s_step_layer);
 #endif
 #ifndef PBL_PLATFORM_APLITE

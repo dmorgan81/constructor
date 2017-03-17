@@ -851,7 +851,7 @@
                 "type": "select",
                 "messageKey": "STEPS_ALIGNMENT",
                 "label": "Text Alignment",
-                "defaultValue": "2",
+                "defaultValue": "0",
                 "options": [
                     {
                         "label": "Left",
@@ -881,7 +881,7 @@
                 "type": "slider",
                 "messageKey": "STEPS_X",
                 "label": "X Position",
-                "defaultValue": 144,
+                "defaultValue": 0,
                 "min": 0,
                 "max": 144,
                 "capabilities": [ "DISPLAY_144x168" ],
@@ -891,7 +891,7 @@
                 "type": "slider",
                 "messageKey": "STEPS_X",
                 "label": "X Position",
-                "defaultValue": 148,
+                "defaultValue": 32,
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
@@ -901,7 +901,7 @@
                 "type": "slider",
                 "messageKey": "STEPS_X",
                 "label": "X Position",
-                "defaultValue": 200,
+                "defaultValue": 0,
                 "min": 0,
                 "max": 200,
                 "capabilities": [ "DISPLAY_200x228" ],
@@ -936,6 +936,152 @@
                 "max": 228,
                 "capabilities": [ "DISPLAY_200x228" ],
                 "groups": [ "steps" ]
+            }
+        ]
+    },
+    {
+        "type": "section",
+        "capabilities": [ "HEALTH" ],
+        "items": [
+            {
+                "type": "heading",
+                "defaultValue": "Distance"
+            },
+            {
+                "type": "toggle",
+                "messageKey": "DISTANCE_ENABLED",
+                "label": "Enabled",
+                "defaultValue": false,
+                "groups": [ "distance", "section-toggle" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "DISTANCE_COLOR",
+                "label": "Color",
+                "defaultValue": "FFFFFF",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 24,
+                "min": 0,
+                "max": 52,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 28,
+                "min": 0,
+                "max": 64,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 34,
+                "min": 0,
+                "max": 72,
+                "capabilities": [ "DISPLAY_200x228" ],
+                "groups": [ "distance" ]
+            },
+            {
+                "type": "select",
+                "messageKey": "DISTANCE_ALIGNMENT",
+                "label": "Text Alignment",
+                "defaultValue": "2",
+                "options": [
+                    {
+                        "label": "Left",
+                        "value": "0"
+                    },
+                    {
+                        "label": "Center",
+                        "value": "1"
+                    },
+                    {
+                        "label": "Right",
+                        "value": "2"
+                    }
+                ],
+                "groups": [ "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_ROTATION",
+                "label": "Rotation",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 359,
+                "groups": [ "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_X",
+                "label": "X Position",
+                "defaultValue": 144,
+                "min": 0,
+                "max": 144,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_X",
+                "label": "X Position",
+                "defaultValue": 148,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_X",
+                "label": "X Position",
+                "defaultValue": 200,
+                "min": 0,
+                "max": 200,
+                "capabilities": [ "DISPLAY_200x228" ],
+                "groups": [ "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_Y",
+                "label": "Y Position",
+                "defaultValue": 158,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_Y",
+                "label": "Y Position",
+                "defaultValue": 138,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_Y",
+                "label": "Y Position",
+                "defaultValue": 214,
+                "min": 0,
+                "max": 228,
+                "capabilities": [ "DISPLAY_200x228" ],
+                "groups": [ "distance" ]
             }
         ]
     },

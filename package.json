@@ -78,7 +78,14 @@
       "QUIET_TIME_ROTATION",
       "QUIET_TIME_FONT_SIZE",
       "QUIET_TIME_X",
-      "QUIET_TIME_Y"
+      "QUIET_TIME_Y",
+      "DISTANCE_ENABLED",
+      "DISTANCE_COLOR",
+      "DISTANCE_ALIGNMENT",
+      "DISTANCE_ROTATION",
+      "DISTANCE_FONT_SIZE",
+      "DISTANCE_X",
+      "DISTANCE_Y"
     ],
     "resources": {
       "media": [
