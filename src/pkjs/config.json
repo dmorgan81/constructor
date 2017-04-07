@@ -1236,6 +1236,16 @@
                 "groups": [ "live", "weather-time" ]
             },
             {
+                "type": "color",
+                "messageKey": "WEATHER_TIME_STALE_COLOR",
+                "label": "Color",
+                "defaultValue": "555555",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "weather-time" ],
+                "capabilities": [ "COLOR" ]
+            },
+            {
                 "type": "toggle",
                 "messageKey": "WEATHER_TIME_LEADING_ZERO",
                 "label": "Leading Zero",
