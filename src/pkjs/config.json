@@ -1212,6 +1212,129 @@
         ]
     },
     {
+        "type": "section",
+        "capabilities": [ "NOT_PLATFORM_APLITE" ],
+        "items": [
+            {
+                "type": "heading",
+                "defaultValue": "Weather Update Time"
+            },
+            {
+                "type": "toggle",
+                "messageKey": "WEATHER_TIME_ENABLED",
+                "label": "Enabled",
+                "defaultValue": false,
+                "groups": [ "live", "weather-time", "section-toggle" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "WEATHER_TIME_COLOR",
+                "label": "Color",
+                "defaultValue": "FFFFFF",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "toggle",
+                "messageKey": "WEATHER_TIME_LEADING_ZERO",
+                "label": "Leading Zero",
+                "defaultValue": true,
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 20,
+                "min": 0,
+                "max": 52,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 20,
+                "min": 0,
+                "max": 64,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "select",
+                "messageKey": "WEATHER_TIME_ALIGNMENT",
+                "label": "Text Alignment",
+                "defaultValue": "1",
+                "options": [
+                    {
+                        "label": "Left",
+                        "value": "0"
+                    },
+                    {
+                        "label": "Center",
+                        "value": "1"
+                    },
+                    {
+                        "label": "Right",
+                        "value": "2"
+                    }
+                ],
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_ROTATION",
+                "label": "Rotation",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 359,
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_X",
+                "label": "X Position",
+                "defaultValue": 72,
+                "min": 0,
+                "max": 144,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_X",
+                "label": "X Position",
+                "defaultValue": 90,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_Y",
+                "label": "Y Position",
+                "defaultValue": 158,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_Y",
+                "label": "Y Position",
+                "defaultValue": 134,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "weather-time" ]
+            }
+        ]
+    },
+    {
         "type": "submit",
         "defaultValue": "Save"
     }

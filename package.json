@@ -105,7 +105,15 @@
       "CONDITION_ROTATION",
       "CONDITION_FONT_SIZE",
       "CONDITION_X",
-      "CONDITION_Y"
+      "CONDITION_Y",
+      "WEATHER_TIME_ENABLED",
+      "WEATHER_TIME_COLOR",
+      "WEATHER_TIME_LEADING_ZERO",
+      "WEATHER_TIME_ALIGNMENT",
+      "WEATHER_TIME_ROTATION",
+      "WEATHER_TIME_FONT_SIZE",
+      "WEATHER_TIME_X",
+      "WEATHER_TIME_Y"
     ],
     "resources": {
       "media": [
