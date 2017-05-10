@@ -19,6 +19,9 @@
 #include "step-layer.h"
 #include "distance-layer.h"
 #endif
+#ifdef PBL_PLATFORM_DIORITE
+#include "heart-rate-layer.h"
+#endif
 
 static Window *s_window;
 
@@ -36,6 +39,9 @@ static WeatherTimeLayer *s_weather_time_layer;
 #ifdef PBL_HEALTH
 static StepLayer *s_step_layer;
 static DistanceLayer *s_distance_layer;
+#endif
+#ifdef PBL_PLATFORM_DIORITE
+static HeartRateLayer *s_heart_rate_layer;
 #endif
 
 static EventHandle s_settings_event_handle;
@@ -131,9 +137,23 @@ static void settings_handler(void *context) {
         s_distance_layer = NULL;
     }
 
+#ifdef PBL_PLATFORM_DIORITE
+    if (enamel_get_HEART_RATE_ENABLED() && !s_heart_rate_layer) {
+        s_heart_rate_layer = heart_rate_layer_create();
+        fctx_layer_add_child(s_root_layer, s_heart_rate_layer);
+    } else if (!enamel_get_HEART_RATE_ENABLED() && s_heart_rate_layer) {
+        fctx_layer_remove_child(s_root_layer, s_heart_rate_layer);
+        heart_rate_layer_destroy(s_heart_rate_layer);
+        s_heart_rate_layer = NULL;
+    }
+
+    connection_vibes_enable_health(s_step_layer != NULL || s_distance_layer != NULL || s_heart_rate_layer != NULL);
+    hourly_vibes_enable_health(s_step_layer != NULL || s_distance_layer != NULL || s_heart_rate_layer != NULL);
+#else
     connection_vibes_enable_health(s_step_layer != NULL || s_distance_layer != NULL);
     hourly_vibes_enable_health(s_step_layer != NULL || s_distance_layer != NULL);
-#endif
+#endif // PBL_PLATFORM_DIORITE
+#endif // PBL_HEATH
 }
 
 static void window_load(Window *window) {
@@ -151,6 +171,9 @@ static void window_unload(Window *window) {
     log_func();
     enamel_settings_received_unsubscribe(s_settings_event_handle);
 
+#ifdef PBL_PLATFORM_DIORITE
+    if (s_heart_rate_layer) heart_rate_layer_destroy(s_heart_rate_layer);
+#endif
 #ifdef PBL_HEALTH
     if (s_distance_layer) distance_layer_destroy(s_distance_layer);
     if (s_step_layer) step_layer_destroy(s_step_layer);

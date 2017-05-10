@@ -981,6 +981,89 @@
     },
     {
         "type": "section",
+        "capabilities": [ "PLATFORM_DIORITE" ],
+        "items": [
+            {
+                "type": "heading",
+                "defaultValue": "Heart Rate"
+            },
+            {
+                "type": "toggle",
+                "messageKey": "HEART_RATE_ENABLED",
+                "label": "Enabled",
+                "defaultValue": false,
+                "groups": [ "live", "heart-rate", "section-toggle" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "HEART_RATE_COLOR",
+                "label": "Color",
+                "defaultValue": "FFFFFF",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "heart-rate" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "HEART_RATE_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 24,
+                "min": 0,
+                "max": 52,
+                "groups": [ "live", "heart-rate" ]
+            },
+            {
+                "type": "select",
+                "messageKey": "HEART_RATE_ALIGNMENT",
+                "label": "Text Alignment",
+                "defaultValue": "0",
+                "options": [
+                    {
+                        "label": "Left",
+                        "value": "0"
+                    },
+                    {
+                        "label": "Center",
+                        "value": "1"
+                    },
+                    {
+                        "label": "Right",
+                        "value": "2"
+                    }
+                ],
+                "groups": [ "live", "heart-rate" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "HEART_RATE_ROTATION",
+                "label": "Rotation",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 359,
+                "groups": [ "live", "heart-rate" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "HEART_RATE_X",
+                "label": "X Position",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 144,
+                "groups": [ "live", "heart-rate" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "HEART_RATE_Y",
+                "label": "Y Position",
+                "defaultValue": 158,
+                "min": 0,
+                "max": 168,
+                "groups": [ "live", "heart-rate" ]
+            }
+        ]
+    },
+    {
+        "type": "section",
         "capabilities": [ "NOT_PLATFORM_APLITE" ],
         "items": [
             {

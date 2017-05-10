@@ -114,7 +114,14 @@
       "WEATHER_TIME_ROTATION",
       "WEATHER_TIME_FONT_SIZE",
       "WEATHER_TIME_X",
-      "WEATHER_TIME_Y"
+      "WEATHER_TIME_Y",
+      "HEART_RATE_ENABLED",
+      "HEART_RATE_COLOR",
+      "HEART_RATE_ALIGNMENT",
+      "HEART_RATE_ROTATION",
+      "HEART_RATE_FONT_SIZE",
+      "HEART_RATE_X",
+      "HEART_RATE_Y"
     ],
     "resources": {
       "media": [
