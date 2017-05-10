@@ -55,6 +55,9 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_em_height(this, enamel_get_WEATHER_TIME_FONT_SIZE());
     fctx_text_layer_set_offset(this, FPointI(enamel_get_WEATHER_TIME_X(), enamel_get_WEATHER_TIME_Y()));
     fctx_text_layer_set_rotation(this, DEG_TO_TRIGANGLE(enamel_get_WEATHER_TIME_ROTATION()));
+#ifndef PBL_COLOR
+    fctx_text_layer_set_fill_color(this, enamel_get_WEATHER_TIME_COLOR());
+#endif
 
     weather_handler(weather_peek(), GenericWeatherStatusAvailable, this);
 
