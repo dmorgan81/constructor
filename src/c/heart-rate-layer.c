@@ -18,9 +18,8 @@ static void health_handler(HealthEventType event, void *this) {
         health_handler(HealthEventHeartRateUpdate, this);
     } else if (event == HealthEventHeartRateUpdate) {
         Data *data = fctx_text_layer_get_data(this);
-        time_t start = time_start_of_today();
-        time_t end = time(NULL);
-        HealthServiceAccessibilityMask mask = health_service_metric_accessible(HealthMetricHeartRateBPM, start, end);
+        time_t now = time(NULL);
+        HealthServiceAccessibilityMask mask = health_service_metric_accessible(HealthMetricHeartRateBPM, now, now);
         if (mask & HealthServiceAccessibilityMaskAvailable) {
             HealthValue value = health_service_peek_current_value(HealthMetricHeartRateBPM);
             snprintf(data->buf, sizeof(data->buf), "%ld", value);
