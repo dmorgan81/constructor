@@ -6,6 +6,7 @@
 #include "weather.h"
 
 static const uint32_t PERSIST_KEY_WEATHER_INFO = 2;
+static const uint32_t PERSIST_KEY_WEATHER_STATUS = 3;
 
 typedef struct {
     EventWeatherHandler handler;
@@ -16,6 +17,8 @@ typedef struct {
     GenericWeatherInfo *info;
     GenericWeatherStatus status;
 } WeatherBundle;
+
+static GenericWeatherStatus s_status = GenericWeatherStatusNotYetFetched;
 
 static LinkedRoot *s_handler_list;
 
@@ -45,6 +48,8 @@ static bool each_weather_fetched(void *this, void *context) {
 
 static void generic_weather_fetch_callback(GenericWeatherInfo *info, GenericWeatherStatus status) {
     log_func();
+    s_status = status;
+
     WeatherBundle bundle = {
         .info = info,
         .status = status
@@ -105,6 +110,8 @@ static void inbox_received(DictionaryIterator *iterator, void *context) {
 
 void weather_init(void) {
     log_func();
+    s_status = persist_exists(PERSIST_KEY_WEATHER_STATUS) ? persist_read_int(PERSIST_KEY_WEATHER_STATUS) : GenericWeatherStatusNotYetFetched;
+
     s_handler_list = linked_list_create_root();
     generic_weather_init();
 
@@ -138,6 +145,8 @@ void weather_deinit(void) {
     generic_weather_save(PERSIST_KEY_WEATHER_INFO);
     generic_weather_deinit();
 
+    persist_write_int(PERSIST_KEY_WEATHER_STATUS, s_status);
+
     free(s_handler_list);
 }
 
@@ -164,5 +173,10 @@ void events_weather_unsubscribe(EventHandle handle) {
     linked_list_remove(s_handler_list, index);
 
     if (linked_list_count(s_handler_list) == 0) cancel_timer();
+}
+
+GenericWeatherStatus weather_status_peek(void) {
+    log_func();
+    return s_status;
 }
 #endif // PBL_PLATFORM_APLITE

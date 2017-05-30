@@ -7,7 +7,7 @@
 #include "step-layer.h"
 
 typedef struct {
-    char buf[8];
+    char buf[32];
     EventHandle health_event_handle;
     EventHandle settings_event_handle;
 } Data;
@@ -20,13 +20,15 @@ static void health_handler(HealthEventType event, void *this) {
         Data *data = fctx_text_layer_get_data(this);
         time_t start = time_start_of_today();
         time_t end = time(NULL);
+        char s[8];
         HealthServiceAccessibilityMask mask = health_service_metric_accessible(HealthMetricStepCount, start, end);
         if (mask & HealthServiceAccessibilityMaskAvailable) {
             HealthValue sum = health_service_sum_today(HealthMetricStepCount);
-            snprintf(data->buf, sizeof(data->buf), "%ld", sum);
+            snprintf(s, sizeof(s), "%ld", sum);
         } else {
-            data->buf[0] = '\0';
+            s[0] = '\0';
         }
+        snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_STEPS_PREFIX(), s, enamel_get_STEPS_SUFFIX());
         layer_mark_dirty(this);
     }
 }
@@ -38,6 +40,8 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_fill_color(this, enamel_get_STEPS_COLOR());
     fctx_text_layer_set_offset(this, FPointI(enamel_get_STEPS_X(), enamel_get_STEPS_Y()));
     fctx_text_layer_set_rotation(this, DEG_TO_TRIGANGLE(enamel_get_STEPS_ROTATION()));
+
+    health_handler(HealthEventSignificantUpdate, this);
 }
 
 StepLayer *step_layer_create(void) {

@@ -28,7 +28,10 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_fill_color(data->text_layer, enamel_get_QUIET_TIME_COLOR());
     fctx_text_layer_set_offset(data->text_layer, FPointI(enamel_get_QUIET_TIME_X(), enamel_get_QUIET_TIME_Y()));
     fctx_text_layer_set_rotation(data->text_layer, DEG_TO_TRIGANGLE(enamel_get_QUIET_TIME_ROTATION()));
-    layer_mark_dirty(this);
+
+    static char s[32];
+    snprintf(s, sizeof(s), "%s%s%s", enamel_get_QUIET_TIME_PREFIX(), "QT", enamel_get_QUIET_TIME_SUFFIX());
+    fctx_text_layer_set_text(data->text_layer, s);
 }
 
 QuietTimeLayer *quiet_time_layer_create(void) {
@@ -38,7 +41,6 @@ QuietTimeLayer *quiet_time_layer_create(void) {
     Data *data = fctx_layer_get_data(this);
 
     data->text_layer = fctx_text_layer_create();
-    fctx_text_layer_set_text(data->text_layer, "QT");
     fctx_text_layer_set_font(data->text_layer, fonts_get(RESOURCE_ID_LECO_FFONT));
     fctx_text_layer_set_anchor(data->text_layer, FTextAnchorMiddle);
 
@@ -55,4 +57,4 @@ void quiet_time_layer_destroy(QuietTimeLayer *this) {
     fctx_text_layer_destroy(data->text_layer);
     fctx_layer_destroy(this);
 }
-#endif
+#endif // PBL_PLATFORM_APLITE

@@ -11,3 +11,4 @@ void weather_deinit(void);
 EventHandle events_weather_subscribe(EventWeatherHandler handler, void *context);
 void events_weather_unsubscribe(EventHandle handle);
 #define weather_peek generic_weather_peek
+GenericWeatherStatus weather_status_peek(void);

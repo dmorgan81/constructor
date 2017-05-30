@@ -7,7 +7,7 @@
 #include "heart-rate-layer.h"
 
 typedef struct {
-    char buf[8];
+    char buf[32];
     EventHandle health_event_handle;
     EventHandle settings_event_handle;
 } Data;
@@ -19,13 +19,15 @@ static void health_handler(HealthEventType event, void *this) {
     } else if (event == HealthEventHeartRateUpdate) {
         Data *data = fctx_text_layer_get_data(this);
         time_t now = time(NULL);
+        char s[8];
         HealthServiceAccessibilityMask mask = health_service_metric_accessible(HealthMetricHeartRateBPM, now, now);
         if (mask & HealthServiceAccessibilityMaskAvailable) {
             HealthValue value = health_service_peek_current_value(HealthMetricHeartRateBPM);
-            snprintf(data->buf, sizeof(data->buf), "%ld", value);
+            snprintf(s, sizeof(s), "%ld", value);
         } else {
-            data->buf[0] = '\0';
+            s[0] = '\0';
         }
+        snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_HEART_RATE_PREFIX(), s, enamel_get_HEART_RATE_SUFFIX());
         layer_mark_dirty(this);
     }
 }
@@ -37,6 +39,8 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_fill_color(this, enamel_get_HEART_RATE_COLOR());
     fctx_text_layer_set_offset(this, FPointI(enamel_get_HEART_RATE_X(), enamel_get_HEART_RATE_Y()));
     fctx_text_layer_set_rotation(this, DEG_TO_TRIGANGLE(enamel_get_HEART_RATE_ROTATION()));
+
+    health_handler(HealthEventSignificantUpdate, this);
 }
 
 HeartRateLayer *heart_rate_layer_create(void) {

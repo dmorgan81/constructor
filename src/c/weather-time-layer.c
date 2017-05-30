@@ -8,7 +8,7 @@
 #include "weather-time-layer.h"
 
 typedef struct {
-    char buf[8];
+    char buf[32];
     EventHandle settings_event_handle;
     EventHandle weather_event_handle;
 #ifdef PBL_COLOR
@@ -35,11 +35,13 @@ static void weather_handler(GenericWeatherInfo *info, GenericWeatherStatus statu
     if (status == GenericWeatherStatusAvailable) {
         Data *data = fctx_text_layer_get_data(this);
         struct tm *tick_time = localtime(&info->timestamp);
+        char s[8];
         if (enamel_get_WEATHER_TIME_LEADING_ZERO()) {
-            strftime(data->buf, sizeof(data->buf), clock_is_24h_style() ? "%H:%M" : "%I:%M", tick_time);
+            strftime(s, sizeof(s), clock_is_24h_style() ? "%H:%M" : "%I:%M", tick_time);
         } else {
-            strftime(data->buf, sizeof(data->buf), clock_is_24h_style() ? "%k:%M" : "%l:%M", tick_time);
+            strftime(s, sizeof(s), clock_is_24h_style() ? "%k:%M" : "%l:%M", tick_time);
         }
+        snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_WEATHER_TIME_PREFIX(), s, enamel_get_WEATHER_TIME_SUFFIX());
         layer_mark_dirty(this);
 
 #ifdef PBL_COLOR
@@ -59,7 +61,7 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_fill_color(this, enamel_get_WEATHER_TIME_COLOR());
 #endif
 
-    weather_handler(weather_peek(), GenericWeatherStatusAvailable, this);
+    weather_handler(weather_peek(), weather_status_peek(), this);
 
 #ifdef PBL_COLOR
     time_t now = time(NULL);

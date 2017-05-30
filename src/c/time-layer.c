@@ -6,7 +6,7 @@
 #include "time-layer.h"
 
 typedef struct {
-    char buf[8];
+    char buf[PBL_IF_LOW_MEM_ELSE(8, 32)];
     EventHandle tick_timer_event_handle;
     EventHandle settings_event_handle;
 } Data;
@@ -14,11 +14,17 @@ typedef struct {
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed, void *this) {
     log_func();
     Data *data = fctx_text_layer_get_data(this);
+#ifndef PBL_PLATFORM_APLITE
+    char s[8];
+#endif
     if (enamel_get_TIME_LEADING_ZERO()) {
-        strftime(data->buf, sizeof(data->buf), clock_is_24h_style() ? "%H:%M" : "%I:%M", tick_time);
+        strftime(PBL_IF_LOW_MEM_ELSE(data->buf, s), sizeof(PBL_IF_LOW_MEM_ELSE(data->buf, s)), clock_is_24h_style() ? "%H:%M" : "%I:%M", tick_time);
     } else {
-        strftime(data->buf, sizeof(data->buf), clock_is_24h_style() ? "%k:%M" : "%l:%M", tick_time);
+        strftime(PBL_IF_LOW_MEM_ELSE(data->buf, s), sizeof(PBL_IF_LOW_MEM_ELSE(data->buf, s)), clock_is_24h_style() ? "%k:%M" : "%l:%M", tick_time);
     }
+#ifndef PBL_PLATFORM_APLITE
+    snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_TIME_PREFIX(), s, enamel_get_TIME_SUFFIX());
+#endif
     layer_mark_dirty(this);
 }
 

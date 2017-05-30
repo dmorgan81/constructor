@@ -8,7 +8,7 @@
 #include "condition-layer.h"
 
 typedef struct {
-    char buf[8];
+    char buf[32];
     EventHandle settings_event_handle;
     EventHandle weather_event_handle;
 } Data;
@@ -16,36 +16,38 @@ typedef struct {
 static void weather_handler(GenericWeatherInfo *info, GenericWeatherStatus status, void *this) {
     log_func();
     Data *data = fctx_text_layer_get_data(this);
+    char s[8];
     if (status == GenericWeatherStatusAvailable) {
         switch (info->condition) {
              case GenericWeatherConditionClearSky:
-                snprintf(data->buf, sizeof(data->buf), "Clear");
+                snprintf(s, sizeof(s), "Clear");
                 break;
             case GenericWeatherConditionFewClouds:
             case GenericWeatherConditionScatteredClouds:
             case GenericWeatherConditionBrokenClouds:
-                snprintf(data->buf, sizeof(data->buf), "Clouds");
+                snprintf(s, sizeof(s), "Clouds");
                 break;
             case GenericWeatherConditionShowerRain:
             case GenericWeatherConditionRain:
-                snprintf(data->buf, sizeof(data->buf), "Rain");
+                snprintf(s, sizeof(s), "Rain");
                 break;
             case GenericWeatherConditionThunderstorm:
-                snprintf(data->buf, sizeof(data->buf), "Storm");
+                snprintf(s, sizeof(s), "Storm");
                 break;
             case GenericWeatherConditionSnow:
-                snprintf(data->buf, sizeof(data->buf), "Snow");
+                snprintf(s, sizeof(s), "Snow");
                 break;
             case GenericWeatherConditionMist:
-                snprintf(data->buf, sizeof(data->buf), "Mist");
+                snprintf(s, sizeof(s), "Mist");
                 break;
             default:
-                snprintf(data->buf, sizeof(data->buf), "Unknown");
+                snprintf(s, sizeof(s), "Unknown");
                 break;
         }
     } else if (status != GenericWeatherStatusPending) {
-        snprintf(data->buf, sizeof(data->buf), "Unknown");
+        snprintf(s, sizeof(s), "Unknown");
     }
+    snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_CONDITION_PREFIX(), s, enamel_get_CONDITION_SUFFIX());
     layer_mark_dirty(this);
 }
 
@@ -56,6 +58,8 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_fill_color(this, enamel_get_CONDITION_COLOR());
     fctx_text_layer_set_offset(this, FPointI(enamel_get_CONDITION_X(), enamel_get_CONDITION_Y()));
     fctx_text_layer_set_rotation(this, DEG_TO_TRIGANGLE(enamel_get_CONDITION_ROTATION()));
+
+    weather_handler(weather_peek(), weather_status_peek(), this);
 }
 
 ConditionLayer *condition_layer_create(void) {
@@ -70,7 +74,7 @@ ConditionLayer *condition_layer_create(void) {
     settings_handler(this);
     data->settings_event_handle = enamel_settings_received_subscribe(settings_handler, this);
 
-    weather_handler(weather_peek(), GenericWeatherStatusAvailable, this);
+    weather_handler(weather_peek(), weather_status_peek(), this);
     data->weather_event_handle = events_weather_subscribe(weather_handler, this);
 
     return this;

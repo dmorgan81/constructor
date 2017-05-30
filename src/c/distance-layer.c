@@ -7,7 +7,7 @@
 #include "distance-layer.h"
 
 typedef struct {
-    char buf[8];
+    char buf[32];
     EventHandle health_event_handle;
     EventHandle settings_event_handle;
 } Data;
@@ -20,32 +20,34 @@ static void health_handler(HealthEventType event, void *this) {
         Data *data = fctx_text_layer_get_data(this);
         time_t start = time_start_of_today();
         time_t end = time(NULL);
+        char s[8];
         HealthServiceAccessibilityMask mask = health_service_metric_accessible(HealthMetricWalkedDistanceMeters, start, end);
         if (mask & HealthServiceAccessibilityMaskAvailable) {
             HealthValue sum = health_service_sum_today(HealthMetricWalkedDistanceMeters);
             MeasurementSystem system = health_service_get_measurement_system_for_display(HealthMetricWalkedDistanceMeters);
             if (system != MeasurementSystemImperial) {
                 if (sum < 100) {
-                    snprintf(data->buf, sizeof(data->buf), "%ldm", sum);
+                    snprintf(s, sizeof(s), "%ldm", sum);
                 } else if (sum < 1000) {
                     sum /= 100;
-                    snprintf(data->buf, sizeof(data->buf), ".%ldkm", sum);
+                    snprintf(s, sizeof(s), ".%ldkm", sum);
                 } else {
                     sum /= 1000;
-                    snprintf(data->buf, sizeof(data->buf), "%ldkm", sum);
+                    snprintf(s, sizeof(s), "%ldkm", sum);
                 }
             } else {
                 int tenths = sum * 10 / 1609 % 10;
                 int whole = sum / 1609;
                 if (whole < 10) {
-                    snprintf(data->buf, sizeof(data->buf), "%d.%dmi", whole, tenths);
+                    snprintf(s, sizeof(s), "%d.%dmi", whole, tenths);
                 } else {
-                    snprintf(data->buf, sizeof(data->buf), "%dmi", whole);
+                    snprintf(s, sizeof(s), "%dmi", whole);
                 }
             }
         } else {
-            data->buf[0] = '\0';
+            s[0] = '\0';
         }
+        snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_DISTANCE_PREFIX(), s, enamel_get_DISTANCE_SUFFIX());
         layer_mark_dirty(this);
     }
 }
@@ -57,6 +59,8 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_fill_color(this, enamel_get_DISTANCE_COLOR());
     fctx_text_layer_set_offset(this, FPointI(enamel_get_DISTANCE_X(), enamel_get_DISTANCE_Y()));
     fctx_text_layer_set_rotation(this, DEG_TO_TRIGANGLE(enamel_get_DISTANCE_ROTATION()));
+
+    health_handler(HealthEventSignificantUpdate, this);
 }
 
 DistanceLayer *distance_layer_create(void) {

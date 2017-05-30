@@ -8,7 +8,7 @@
 #include "location-layer.h"
 
 typedef struct {
-    char buf[65];
+    char buf[128];
     EventHandle settings_event_handle;
     EventHandle weather_event_handle;
 } Data;
@@ -17,8 +17,7 @@ static void weather_handler(GenericWeatherInfo *info, GenericWeatherStatus statu
     log_func();
     if (status == GenericWeatherStatusAvailable) {
         Data *data = fctx_text_layer_get_data(this);
-        logi("location: %s", info->name);
-        snprintf(data->buf, sizeof(data->buf), "%s", info->name);
+        snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_LOCATION_PREFIX(), info->name, enamel_get_LOCATION_SUFFIX());
         layer_mark_dirty(this);
     }
 }
@@ -31,8 +30,7 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_offset(this, FPointI(enamel_get_LOCATION_X(), enamel_get_LOCATION_Y()));
     fctx_text_layer_set_rotation(this, DEG_TO_TRIGANGLE(enamel_get_LOCATION_ROTATION()));
 
-
-    weather_handler(weather_peek(), GenericWeatherStatusAvailable, this);
+    weather_handler(weather_peek(), weather_status_peek(), this);
 }
 
 LocationLayer *location_layer_create(void) {

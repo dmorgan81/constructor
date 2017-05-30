@@ -6,7 +6,7 @@
 #include "battery-layer.h"
 
 typedef struct {
-    char buf[8];
+    char buf[PBL_IF_LOW_MEM_ELSE(8, 32)];
     EventHandle battery_state_event_handle;
     EventHandle settings_event_handle;
 } Data;
@@ -14,7 +14,11 @@ typedef struct {
 static void battery_state_handler(BatteryChargeState state, void *this) {
     log_func();
     Data *data = fctx_text_layer_get_data(this);
+#ifdef PBL_PLATFORM_APLITE
     snprintf(data->buf, sizeof(data->buf), "%d%%", state.charge_percent);
+#else
+    snprintf(data->buf, sizeof(data->buf), "%s%d%s", enamel_get_BATTERY_PREFIX(), state.charge_percent, enamel_get_BATTERY_SUFFIX());
+#endif
     layer_mark_dirty(this);
 }
 
@@ -25,6 +29,8 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_fill_color(this, enamel_get_BATTERY_COLOR());
     fctx_text_layer_set_offset(this, FPointI(enamel_get_BATTERY_X(), enamel_get_BATTERY_Y()));
     fctx_text_layer_set_rotation(this, DEG_TO_TRIGANGLE(enamel_get_BATTERY_ROTATION()));
+
+    battery_state_handler(battery_state_service_peek(), this);
 }
 
 BatteryLayer *battery_layer_create(void) {

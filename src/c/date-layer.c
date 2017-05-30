@@ -6,7 +6,7 @@
 #include "date-layer.h"
 
 typedef struct {
-    char buf[48];
+    char buf[PBL_IF_LOW_MEM_ELSE(48, 128)];
     EventHandle tick_timer_event_handle;
     EventHandle settings_event_handle;
 } Data;
@@ -14,7 +14,13 @@ typedef struct {
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed, void *this) {
     log_func();
     Data *data = fctx_text_layer_get_data(this);
+#ifdef PBL_PLATFORM_APLITE
     strftime(data->buf, sizeof(data->buf), enamel_get_DATE_FORMAT(), tick_time);
+#else
+    char s[48];
+    strftime(s, sizeof(s), enamel_get_DATE_FORMAT(), tick_time);
+    snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_DATE_PREFIX(), s, enamel_get_DATE_SUFFIX());
+#endif
     layer_mark_dirty(this);
 }
 

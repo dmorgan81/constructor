@@ -135,10 +135,44 @@
     },
     {
         "type": "section",
+        "capabilities": [ "NOT_PLATFORM_APLITE" ],
+        "items": [
+            {
+                "type": "heading",
+                "defaultValue": "Prefixes & Suffixes"
+            },
+            {
+                "type": "text",
+                "defaultValue": "Most widgets can have a prefix and a suffix. Generally the max length of text is 32 characters including the prefix and suffix so consider prefixes and suffixes carefully."
+            },
+            {
+                "type": "text",
+                "defaultValue": "The following characters are available to use: 0-9, a-z, A-Z, ()[]{}<>\\/:%°.-"
+            }
+        ]
+    },
+    {
+        "type": "section",
         "items": [
             {
                 "type": "heading",
                 "defaultValue": "Time"
+            },
+            {
+                "type": "input",
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "messageKey": "TIME_PREFIX",
+                "label": "Prefix",
+                "defaultValue": "",
+                "groups": [ "live", "time" ]
+            },
+            {
+                "type": "input",
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "messageKey": "TIME_SUFFIX",
+                "label": "Suffix",
+                "defaultValue": "",
+                "groups": [ "live", "time" ]
             },
             {
                 "type": "color",
@@ -261,6 +295,22 @@
                 "label": "Enabled",
                 "defaultValue": true,
                 "groups": [ "live", "date", "section-toggle" ]
+            },
+            {
+                "type": "input",
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "messageKey": "DATE_PREFIX",
+                "label": "Prefix",
+                "defaultValue": "",
+                "groups": [ "live", "date" ]
+            },
+            {
+                "type": "input",
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "messageKey": "DATE_SUFFIX",
+                "label": "Suffix",
+                "defaultValue": "",
+                "groups": [ "live", "date" ]
             },
             {
                 "type": "color",
@@ -407,6 +457,22 @@
                 "groups": [ "live", "battery", "section-toggle" ]
             },
             {
+                "type": "input",
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "messageKey": "BATTERY_PREFIX",
+                "label": "Prefix",
+                "defaultValue": "",
+                "groups": [ "live", "battery" ]
+            },
+            {
+                "type": "input",
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "messageKey": "BATTERY_SUFFIX",
+                "label": "Suffix",
+                "defaultValue": "%",
+                "groups": [ "live", "battery" ]
+            },
+            {
                 "type": "color",
                 "messageKey": "BATTERY_COLOR",
                 "label": "Color",
@@ -524,9 +590,26 @@
             },
             {
                 "type": "toggle",
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
                 "messageKey": "CONNECTION_QT_HIDDEN",
                 "label": "Hide during Quiet Time",
                 "defaultValue": false,
+                "groups": [ "live", "connection" ]
+            },
+            {
+                "type": "input",
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "messageKey": "CONNECTION_PREFIX",
+                "label": "Prefix",
+                "defaultValue": "",
+                "groups": [ "live", "connection" ]
+            },
+            {
+                "type": "input",
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "messageKey": "CONNECTION_SUFFIX",
+                "label": "Suffix",
+                "defaultValue": "",
                 "groups": [ "live", "connection" ]
             },
             {
@@ -647,6 +730,20 @@
                 "groups": [ "live", "quiet-time", "section-toggle" ]
             },
             {
+                "type": "input",
+                "messageKey": "QUIET_TIME_PREFIX",
+                "label": "Prefix",
+                "defaultValue": "",
+                "groups": [ "live", "quiet-time" ]
+            },
+            {
+                "type": "input",
+                "messageKey": "QUIET_TIME_SUFFIX",
+                "label": "Suffix",
+                "defaultValue": "",
+                "groups": [ "live", "quiet-time" ]
+            },
+            {
                 "type": "color",
                 "messageKey": "QUIET_TIME_COLOR",
                 "label": "Color",
@@ -761,6 +858,20 @@
                 "label": "Enabled",
                 "defaultValue": false,
                 "groups": [ "live", "steps", "section-toggle" ]
+            },
+            {
+                "type": "input",
+                "messageKey": "STEPS_PREFIX",
+                "label": "Prefix",
+                "defaultValue": "",
+                "groups": [ "live", "steps" ]
+            },
+            {
+                "type": "input",
+                "messageKey": "STEPS_SUFFIX",
+                "label": "Suffix",
+                "defaultValue": "",
+                "groups": [ "live", "steps" ]
             },
             {
                 "type": "color",
@@ -879,6 +990,20 @@
                 "groups": [ "live", "distance", "section-toggle" ]
             },
             {
+                "type": "input",
+                "messageKey": "DISTANCE_PREFIX",
+                "label": "Prefix",
+                "defaultValue": "",
+                "groups": [ "live", "distance" ]
+            },
+            {
+                "type": "input",
+                "messageKey": "DISTANCE_SUFFIX",
+                "label": "Suffix",
+                "defaultValue": "",
+                "groups": [ "live", "distance" ]
+            },
+            {
                 "type": "color",
                 "messageKey": "DISTANCE_COLOR",
                 "label": "Color",
@@ -995,6 +1120,20 @@
                 "groups": [ "live", "heart-rate", "section-toggle" ]
             },
             {
+                "type": "input",
+                "messageKey": "HEART_RATE_PREFIX",
+                "label": "Prefix",
+                "defaultValue": "",
+                "groups": [ "live", "heart-rate" ]
+            },
+            {
+                "type": "input",
+                "messageKey": "HEART_RATE_SUFFIX",
+                "label": "Suffix",
+                "defaultValue": "",
+                "groups": [ "live", "heart-rate" ]
+            },
+            {
                 "type": "color",
                 "messageKey": "HEART_RATE_COLOR",
                 "label": "Color",
@@ -1076,6 +1215,20 @@
                 "label": "Enabled",
                 "defaultValue": false,
                 "groups": [ "live", "temperature", "section-toggle" ]
+            },
+            {
+                "type": "input",
+                "messageKey": "TEMPERATURE_PREFIX",
+                "label": "Prefix",
+                "defaultValue": "",
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "input",
+                "messageKey": "TEMPERATURE_SUFFIX",
+                "label": "Suffix",
+                "defaultValue": "\u00B0",
+                "groups": [ "live", "temperature" ]
             },
             {
                 "type": "color",
@@ -1194,6 +1347,20 @@
                 "groups": [ "live", "condition", "section-toggle" ]
             },
             {
+                "type": "input",
+                "messageKey": "CONDITION_PREFIX",
+                "label": "Prefix",
+                "defaultValue": "",
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "input",
+                "messageKey": "CONDITION_SUFFIX",
+                "label": "Suffix",
+                "defaultValue": "",
+                "groups": [ "live", "condition" ]
+            },
+            {
                 "type": "color",
                 "messageKey": "CONDITION_COLOR",
                 "label": "Color",
@@ -1310,6 +1477,20 @@
                 "groups": [ "live", "location", "section-toggle" ]
             },
             {
+                "type": "input",
+                "messageKey": "LOCATION_PREFIX",
+                "label": "Prefix",
+                "defaultValue": "",
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "input",
+                "messageKey": "LOCATION_SUFFIX",
+                "label": "Suffix",
+                "defaultValue": "",
+                "groups": [ "live", "location" ]
+            },
+            {
                 "type": "color",
                 "messageKey": "LOCATION_COLOR",
                 "label": "Color",
@@ -1424,6 +1605,20 @@
                 "label": "Enabled",
                 "defaultValue": false,
                 "groups": [ "live", "weather-time", "section-toggle" ]
+            },
+            {
+                "type": "input",
+                "messageKey": "WEATHER_TIME_PREFIX",
+                "label": "Prefix",
+                "defaultValue": "",
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "input",
+                "messageKey": "WEATHER_TIME_SUFFIX",
+                "label": "Suffix",
+                "defaultValue": "",
+                "groups": [ "live", "weather-time" ]
             },
             {
                 "type": "color",
