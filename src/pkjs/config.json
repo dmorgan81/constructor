@@ -1300,6 +1300,122 @@
         "items": [
             {
                 "type": "heading",
+                "defaultValue": "Location"
+            },
+            {
+                "type": "toggle",
+                "messageKey": "LOCATION_ENABLED",
+                "label": "Enabled",
+                "defaultValue": false,
+                "groups": [ "live", "location", "section-toggle" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "LOCATION_COLOR",
+                "label": "Color",
+                "defaultValue": "FFFFFF",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 24,
+                "min": 0,
+                "max": 52,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_FONT_SIZE",
+                "label": "Font Size",
+                "defaultValue": 28,
+                "min": 0,
+                "max": 64,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "select",
+                "messageKey": "LOCATION_ALIGNMENT",
+                "label": "Text Alignment",
+                "defaultValue": "2",
+                "options": [
+                    {
+                        "label": "Left",
+                        "value": "0"
+                    },
+                    {
+                        "label": "Center",
+                        "value": "1"
+                    },
+                    {
+                        "label": "Right",
+                        "value": "2"
+                    }
+                ],
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_ROTATION",
+                "label": "Rotation",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 359,
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_X",
+                "label": "X Position",
+                "defaultValue": 144,
+                "min": 0,
+                "max": 144,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_X",
+                "label": "X Position",
+                "defaultValue": 32,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_Y",
+                "label": "Y Position",
+                "defaultValue": 136,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_Y",
+                "label": "Y Position",
+                "defaultValue": 44,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "location" ]
+            }
+        ]
+    },
+    {
+        "type": "section",
+        "capabilities": [ "NOT_PLATFORM_APLITE" ],
+        "items": [
+            {
+                "type": "heading",
                 "defaultValue": "Weather Update Time"
             },
             {

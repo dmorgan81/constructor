@@ -14,6 +14,7 @@
 #include "temperature-layer.h"
 #include "condition-layer.h"
 #include "weather-time-layer.h"
+#include "location-layer.h"
 #endif
 #ifdef PBL_HEALTH
 #include "step-layer.h"
@@ -35,6 +36,7 @@ static QuietTimeLayer *s_quiet_time_layer;
 static TemperatureLayer *s_temperature_layer;
 static ConditionLayer *s_condition_layer;
 static WeatherTimeLayer *s_weather_time_layer;
+static LocationLayer *s_location_layer;
 #endif
 #ifdef PBL_HEALTH
 static StepLayer *s_step_layer;
@@ -116,6 +118,15 @@ static void settings_handler(void *context) {
         weather_time_layer_destroy(s_weather_time_layer);
         s_weather_time_layer = NULL;
     }
+
+    if (enamel_get_LOCATION_ENABLED() && !s_location_layer) {
+        s_location_layer = location_layer_create();
+        fctx_layer_add_child(s_root_layer, s_location_layer);
+    } else if (!enamel_get_LOCATION_ENABLED() && s_location_layer) {
+        fctx_layer_remove_child(s_root_layer, s_location_layer);
+        location_layer_destroy(s_location_layer);
+        s_location_layer = NULL;
+    }
 #endif
 
 #ifdef PBL_HEALTH
@@ -183,6 +194,7 @@ static void window_unload(Window *window) {
     if (s_temperature_layer) temperature_layer_destroy(s_temperature_layer);
     if (s_condition_layer) condition_layer_destroy(s_condition_layer);
     if (s_weather_time_layer) weather_time_layer_destroy(s_weather_time_layer);
+    if (s_location_layer) location_layer_destroy(s_location_layer);
 #endif
     if (s_connection_layer) connection_layer_destroy(s_connection_layer);
     if (s_battery_layer) battery_layer_destroy(s_battery_layer);

@@ -121,7 +121,14 @@
       "HEART_RATE_ROTATION",
       "HEART_RATE_FONT_SIZE",
       "HEART_RATE_X",
-      "HEART_RATE_Y"
+      "HEART_RATE_Y",
+      "LOCATION_ENABLED",
+      "LOCATION_COLOR",
+      "LOCATION_ALIGNMENT",
+      "LOCATION_ROTATION",
+      "LOCATION_FONT_SIZE",
+      "LOCATION_X",
+      "LOCATION_Y"
     ],
     "resources": {
       "media": [
