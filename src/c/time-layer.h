@@ -1,7 +1,7 @@
 #pragma once
-#include "fctx-text-layer.h"
+#include "fctx-layer.h"
 
-typedef FctxTextLayer TimeLayer;
+typedef FctxLayer TimeLayer;
 
 TimeLayer *time_layer_create(void);
 void time_layer_destroy(TimeLayer *this);

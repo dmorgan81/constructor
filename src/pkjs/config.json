@@ -279,6 +279,86 @@
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
                 "groups": [ "live" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "TIME_RECT_FILL_COLOR",
+                "label": "Box Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "groups": [ "live" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 144,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
+                "groups": [ "live" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
+                "groups": [ "live" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "TIME_RECT_BORDER_COLOR",
+                "label": "Box Border Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "groups": [ "live" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
+                "groups": [ "live" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TIME_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live" ]
             }
         ]
     },
