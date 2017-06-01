@@ -33,9 +33,9 @@ static void update_proc(Layer *this, GContext *ctx) {
 #endif
     FContext fctx;
     fctx_init_context(&fctx, ctx);
-    logi("heap used: %d", heap_bytes_used());
+    logd("heap used: %d", heap_bytes_used());
     if (data->children) linked_list_foreach(data->children, linked_list_update_proc_callback, &fctx);
-    logi("heap free: %d", heap_bytes_free());
+    logd("heap free: %d", heap_bytes_free());
     fctx_deinit_context(&fctx);
 }
 
@@ -105,6 +105,7 @@ void fctx_layer_remove_child(FctxLayer *this, FctxLayer *child) {
     int16_t index = linked_list_find(data->children, child);
     if (index != -1) {
         linked_list_remove(data->children, index);
+        layer_remove_from_parent(child);
     }
 }
 
