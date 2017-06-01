@@ -1,7 +1,7 @@
 #pragma once
-#include "fctx-text-layer.h"
+#include "fctx-layer.h"
 
-typedef FctxTextLayer LocationLayer;
+typedef FctxLayer LocationLayer;
 
 LocationLayer *location_layer_create(void);
 void location_layer_destroy(LocationLayer *this);

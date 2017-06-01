@@ -38,6 +38,7 @@ static void settings_handler(void *this) {
     Data *data = fctx_layer_get_data(this);
     FPoint offset = FPointI(enamel_get_TIME_X(), enamel_get_TIME_Y());
     uint32_t rotation = DEG_TO_TRIGANGLE(enamel_get_TIME_ROTATION());
+    GTextAlignment alignment = atoi(enamel_get_TIME_ALIGNMENT());
 
 #ifndef PBL_PLATFORM_APLITE
     fctx_rect_layer_set_fill_color(data->rect_layer, enamel_get_TIME_RECT_FILL_COLOR());
@@ -47,9 +48,10 @@ static void settings_handler(void *this) {
     fctx_rect_layer_set_rotation(data->rect_layer, rotation);
     fctx_rect_layer_set_border_color(data->rect_layer, enamel_get_TIME_RECT_BORDER_COLOR());
     fctx_rect_layer_set_border_width(data->rect_layer, enamel_get_TIME_RECT_BORDER_WIDTH());
+    fctx_rect_layer_set_alignment(data->rect_layer, alignment);
 #endif
 
-    fctx_text_layer_set_alignment(data->text_layer, atoi(enamel_get_TIME_ALIGNMENT()));
+    fctx_text_layer_set_alignment(data->text_layer, alignment);
     fctx_text_layer_set_em_height(data->text_layer, enamel_get_TIME_FONT_SIZE());
     fctx_text_layer_set_fill_color(data->text_layer, enamel_get_TIME_COLOR());
     fctx_text_layer_set_offset(data->text_layer, offset);

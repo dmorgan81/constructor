@@ -1,7 +1,7 @@
 #pragma once
-#include "fctx-text-layer.h"
+#include "fctx-layer.h"
 
-typedef FctxTextLayer WeatherTimeLayer;
+typedef FctxLayer WeatherTimeLayer;
 
 WeatherTimeLayer *weather_time_layer_create(void);
 void weather_time_layer_destroy(WeatherTimeLayer *this);

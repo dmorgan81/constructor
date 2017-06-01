@@ -296,7 +296,7 @@
                 "label": "Box Width",
                 "defaultValue": 0,
                 "min": 0,
-                "max": 144,
+                "max": 168,
                 "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
                 "groups": [ "live" ]
             },
@@ -519,6 +519,86 @@
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
                 "groups": [ "live", "date" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "DATE_RECT_FILL_COLOR",
+                "label": "Box Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "groups": [ "live", "date" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
+                "groups": [ "live", "date" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "date" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
+                "groups": [ "live", "date" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "date" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "DATE_RECT_BORDER_COLOR",
+                "label": "Box Border Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "groups": [ "live", "date" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
+                "groups": [ "live", "date" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DATE_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "date" ]
             }
         ]
     },
@@ -646,6 +726,86 @@
                 "messageKey": "BATTERY_Y",
                 "label": "Y Position",
                 "defaultValue": 44,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "battery" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "BATTERY_RECT_FILL_COLOR",
+                "label": "Box Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "groups": [ "live", "battery" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "BATTERY_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
+                "groups": [ "live", "battery" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "BATTERY_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "battery" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "BATTERY_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
+                "groups": [ "live", "battery" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "BATTERY_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "battery" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "BATTERY_RECT_BORDER_COLOR",
+                "label": "Box Border Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "groups": [ "live", "battery" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "BATTERY_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
+                "groups": [ "live", "battery" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "BATTERY_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
@@ -790,6 +950,86 @@
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
                 "groups": [ "live", "connection" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "CONNECTION_RECT_FILL_COLOR",
+                "label": "Box Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "groups": [ "live", "connection" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONNECTION_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
+                "groups": [ "live", "connection" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONNECTION_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "connection" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONNECTION_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
+                "groups": [ "live", "connection" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONNECTION_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "connection" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "CONNECTION_RECT_BORDER_COLOR",
+                "label": "Box Border Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "capabilities": [ "NOT_PLATFORM_APLITE" ],
+                "groups": [ "live", "connection" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONNECTION_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "DISPLAY_144x168" ],
+                "groups": [ "live", "connection" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONNECTION_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "connection" ]
             }
         ]
     },
@@ -917,6 +1157,84 @@
                 "messageKey": "QUIET_TIME_Y",
                 "label": "Y Position",
                 "defaultValue": 44,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "quiet-time" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "QUIET_TIME_RECT_FILL_COLOR",
+                "label": "Box Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "quiet-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "QUIET_TIME_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "quiet-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "QUIET_TIME_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "quiet-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "QUIET_TIME_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "quiet-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "QUIET_TIME_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "quiet-time" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "QUIET_TIME_RECT_BORDER_COLOR",
+                "label": "Box Border Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "quiet-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "QUIET_TIME_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "quiet-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "QUIET_TIME_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
@@ -1051,6 +1369,84 @@
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
                 "groups": [ "live", "steps" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "STEPS_RECT_FILL_COLOR",
+                "label": "Box Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "steps" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "STEPS_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "steps" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "STEPS_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "steps" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "STEPS_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "steps" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "STEPS_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "steps" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "STEPS_RECT_BORDER_COLOR",
+                "label": "Box Border Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "steps" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "STEPS_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "steps" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "STEPS_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "steps" ]
             }
         ]
     },
@@ -1181,6 +1577,84 @@
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
                 "groups": [ "live", "distance" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "DISTANCE_RECT_FILL_COLOR",
+                "label": "Box Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "distance" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "DISTANCE_RECT_BORDER_COLOR",
+                "label": "Box Border Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "distance" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "DISTANCE_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "distance" ]
             }
         ]
     },
@@ -1275,6 +1749,51 @@
                 "messageKey": "HEART_RATE_Y",
                 "label": "Y Position",
                 "defaultValue": 158,
+                "min": 0,
+                "max": 168,
+                "groups": [ "live", "heart-rate" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "HEART_RATE_RECT_FILL_COLOR",
+                "label": "Box Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "heart-rate" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "HEART_RATE_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "groups": [ "live", "heart-rate" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "HEART_RATE_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "groups": [ "live", "heart-rate" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "HEART_RATE_RECT_BORDER_COLOR",
+                "label": "Box Border Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "heart-rate" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "HEART_RATE_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
                 "min": 0,
                 "max": 168,
                 "groups": [ "live", "heart-rate" ]
@@ -1404,6 +1923,84 @@
                 "messageKey": "TEMPERATURE_Y",
                 "label": "Y Position",
                 "defaultValue": 44,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "TEMPERATURE_RECT_FILL_COLOR",
+                "label": "Box Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "TEMPERATURE_RECT_BORDER_COLOR",
+                "label": "Box Border Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "temperature" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "TEMPERATURE_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
@@ -1538,6 +2135,84 @@
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
                 "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "CONDITION_RECT_FILL_COLOR",
+                "label": "Box Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "CONDITION_RECT_BORDER_COLOR",
+                "label": "Box Border Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "condition" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "CONDITION_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "condition" ]
             }
         ]
     },
@@ -1664,6 +2339,84 @@
                 "messageKey": "LOCATION_Y",
                 "label": "Y Position",
                 "defaultValue": 44,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "LOCATION_RECT_FILL_COLOR",
+                "label": "Box Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "LOCATION_RECT_BORDER_COLOR",
+                "label": "Box Border Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "location" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "LOCATION_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],
@@ -1811,6 +2564,84 @@
                 "messageKey": "WEATHER_TIME_Y",
                 "label": "Y Position",
                 "defaultValue": 134,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "WEATHER_TIME_RECT_FILL_COLOR",
+                "label": "Box Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_RECT_SIZE_W",
+                "label": "Box Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_RECT_SIZE_H",
+                "label": "Box Height",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 180,
+                "capabilities": [ "DISPLAY_180x180_ROUND" ],
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "color",
+                "messageKey": "WEATHER_TIME_RECT_BORDER_COLOR",
+                "label": "Box Border Color",
+                "defaultValue": "000000",
+                "sunlight": false,
+                "allowGray": true,
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
+                "min": 0,
+                "max": 168,
+                "capabilities": [ "DISPLAY_144x168" ],
+                "groups": [ "live", "weather-time" ]
+            },
+            {
+                "type": "slider",
+                "messageKey": "WEATHER_TIME_RECT_BORDER_WIDTH",
+                "label": "Box Border Width",
+                "defaultValue": 0,
                 "min": 0,
                 "max": 180,
                 "capabilities": [ "DISPLAY_180x180_ROUND" ],

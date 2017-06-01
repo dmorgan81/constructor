@@ -1,7 +1,7 @@
 #pragma once
-#include "fctx-text-layer.h"
+#include "fctx-layer.h"
 
-typedef FctxTextLayer TemperatureLayer;
+typedef FctxLayer TemperatureLayer;
 
 TemperatureLayer *temperature_layer_create();
 void temperature_layer_destroy(TemperatureLayer *this);

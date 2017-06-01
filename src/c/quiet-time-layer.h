@@ -1,5 +1,5 @@
 #pragma once
-#include "fctx-text-layer.h"
+#include "fctx-layer.h"
 
 typedef FctxLayer QuietTimeLayer;
 

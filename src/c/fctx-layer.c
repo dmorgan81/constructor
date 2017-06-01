@@ -33,7 +33,9 @@ static void update_proc(Layer *this, GContext *ctx) {
 #endif
     FContext fctx;
     fctx_init_context(&fctx, ctx);
+    logi("heap used: %d", heap_bytes_used());
     if (data->children) linked_list_foreach(data->children, linked_list_update_proc_callback, &fctx);
+    logi("heap free: %d", heap_bytes_free());
     fctx_deinit_context(&fctx);
 }
 

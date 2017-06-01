@@ -1,7 +1,7 @@
 #pragma once
-#include "fctx-text-layer.h"
+#include "fctx-layer.h"
 
-typedef FctxTextLayer HeartRateLayer;
+typedef FctxLayer HeartRateLayer;
 
 HeartRateLayer *heart_rate_layer_create(void);
 void heart_rate_layer_destroy(HeartRateLayer *this);

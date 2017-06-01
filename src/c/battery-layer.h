@@ -1,7 +1,7 @@
 #pragma once
-#include "fctx-text-layer.h"
+#include "fctx-layer.h"
 
-typedef FctxTextLayer BatteryLayer;
+typedef FctxLayer BatteryLayer;
 
 BatteryLayer *battery_layer_create(void);
 void battery_layer_destroy(BatteryLayer *this);

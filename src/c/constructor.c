@@ -176,6 +176,9 @@ static void window_load(Window *window) {
 
     settings_handler(NULL);
     s_settings_event_handle = enamel_settings_received_subscribe(settings_handler, NULL);
+
+    logi("used heap: %d", heap_bytes_used());
+    logi("free heap: %d", heap_bytes_free());
 }
 
 static void window_unload(Window *window) {

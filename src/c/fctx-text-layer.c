@@ -11,7 +11,6 @@ typedef struct {
     GTextAlignment alignment;
     FTextAnchor anchor;
     char *text;
-    void *data;
 } Data;
 
 void fctx_text_layer_draw(FctxLayer *this, FContext* fctx) {
@@ -40,29 +39,12 @@ FctxTextLayer *fctx_text_layer_create(void) {
     data->em_height = 0;
     data->alignment = GTextAlignmentLeft;
     data->anchor = FTextAnchorBaseline;
-    data->data = NULL;
-    return this;
-}
-
-FctxTextLayer *fctx_text_layer_create_with_data(size_t data_size) {
-    log_func();
-    FctxTextLayer *this = fctx_text_layer_create();
-    Data *data = fctx_layer_get_data(this);
-    data->data = malloc(data_size);
     return this;
 }
 
 void fctx_text_layer_destroy(FctxTextLayer *this) {
     log_func();
-    Data *data = fctx_layer_get_data(this);
-    if (data->data) free(data->data);
     fctx_layer_destroy(this);
-}
-
-void *fctx_text_layer_get_data(FctxTextLayer *this) {
-    log_func();
-    Data *data = fctx_layer_get_data(this);
-    return data->data;
 }
 
 void fctx_text_layer_set_text(FctxTextLayer *this, char *text) {
