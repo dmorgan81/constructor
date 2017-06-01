@@ -165,6 +165,10 @@ static void settings_handler(void *context) {
     hourly_vibes_enable_health(s_step_layer != NULL || s_distance_layer != NULL);
 #endif // PBL_PLATFORM_DIORITE
 #endif // PBL_HEATH
+
+    // Ensure time layer is last layer so it draw "above" every other layer
+    fctx_layer_remove_child(s_root_layer, s_time_layer);
+    fctx_layer_add_child(s_root_layer, s_time_layer);
 }
 
 static void window_load(Window *window) {
@@ -177,8 +181,8 @@ static void window_load(Window *window) {
     settings_handler(NULL);
     s_settings_event_handle = enamel_settings_received_subscribe(settings_handler, NULL);
 
-    logi("used heap: %d", heap_bytes_used());
-    logi("free heap: %d", heap_bytes_free());
+    logd("used heap: %d", heap_bytes_used());
+    logd("free heap: %d", heap_bytes_free());
 }
 
 static void window_unload(Window *window) {
