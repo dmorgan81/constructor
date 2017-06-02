@@ -18,6 +18,10 @@ typedef struct {
 
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed, void *this) {
     log_func();
+    // This appears unnecessary but tick_time can become pushed forward in time somehow
+    time_t now = time(NULL);
+    struct tm *tick = localtime(&now);
+
     Data *data = fctx_layer_get_data(this);
 #ifndef PBL_PLATFORM_APLITE
     char s[16];
@@ -28,10 +32,11 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed, void *th
     } else {
         snprintf(format, sizeof(format), clock_is_24h_style() ? "%%k:%%M%s" : "%%l:%%M%s", enamel_get_TIME_ENABLE_SECONDS() ? ":%S" : "");
     }
-    strftime(PBL_IF_LOW_MEM_ELSE(data->buf, s), sizeof(PBL_IF_LOW_MEM_ELSE(data->buf, s)), format, tick_time);
+    strftime(PBL_IF_LOW_MEM_ELSE(data->buf, s), sizeof(PBL_IF_LOW_MEM_ELSE(data->buf, s)), format, tick);
 #ifndef PBL_PLATFORM_APLITE
     snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_TIME_PREFIX(), s, enamel_get_TIME_SUFFIX());
 #endif
+
     layer_mark_dirty(this);
 }
 
@@ -60,8 +65,7 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_rotation(data->text_layer, rotation);
 
     TimeUnits time_unit = enamel_get_TIME_ENABLE_SECONDS() ? SECOND_UNIT : MINUTE_UNIT;
-    time_t now = time(NULL);
-    tick_handler(localtime(&now), time_unit, this);
+    tick_handler(NULL, time_unit, this);
     if (data->tick_timer_event_handle) events_tick_timer_service_unsubscribe(data->tick_timer_event_handle);
     data->tick_timer_event_handle = events_tick_timer_service_subscribe_context(time_unit, tick_handler, this);
 }
