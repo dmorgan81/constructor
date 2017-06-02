@@ -15,6 +15,7 @@
     "pebble-events": "^1.2.0",
     "pebble-fctx": "^1.6.2",
     "pebble-generic-weather": "file:///home/david/code/pebble/pebble-generic-weather",
+    "pebble-geocode-mapquest": "^1.0.2",
     "pebble-hourly-vibes": "^1.1.0"
   },
   "pebble": {
@@ -38,6 +39,8 @@
       "WEATHER_FEELS_LIKE",
       "WEATHER_INTERVAL",
       "WEATHER_PROVIDER",
+      "WEATHER_USE_GPS",
+      "WEATHER_LOCATION_NAME",
       "BACKGROUND_COLOR",
       "HOURLY_VIBE",
       "CONNECTION_VIBE",

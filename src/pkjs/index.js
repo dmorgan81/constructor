@@ -8,8 +8,12 @@ var clay = new Clay(clayConfig, customClay, {autoHandleEvents: false});
 var GenericWeather = require('pebble-generic-weather');
 var genericWeather = new GenericWeather();
 
+var GeocodeMapquest = require('pebble-geocode-mapquest');
+var geocodeMapquest = new GeocodeMapquest();
+
 Pebble.addEventListener('appmessage', function(e) {
     genericWeather.appMessageHandler(e);
+    geocodeMapquest.appMessageHandler(e);
 });
 
 Pebble.addEventListener('showConfiguration', function(e) {

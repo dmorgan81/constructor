@@ -18,10 +18,12 @@ typedef struct {
 
 static void weather_handler(GenericWeatherInfo *info, GenericWeatherStatus status, void *this) {
     log_func();
+    Data *data = fctx_layer_get_data(this);
     if (status == GenericWeatherStatusAvailable) {
-        Data *data = fctx_layer_get_data(this);
         snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_LOCATION_PREFIX(), info->name, enamel_get_LOCATION_SUFFIX());
         layer_mark_dirty(this);
+    } else if (status != GenericWeatherStatusPending) {
+        data->buf[0] = '\0';
     }
 }
 

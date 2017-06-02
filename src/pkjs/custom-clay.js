@@ -17,6 +17,73 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
     var $ = minified.$;
     var HTML = minified.HTML;
 
+    var providers = {
+        "0": "owm",
+        "1": "wu",
+        "2": "forecast"
+    };
+
+    function configureWeather() {
+        console.log('configureWeather');
+        console.log(clayConfig);
+        var weatherProvider = Clay.getItemByMessageKey('WEATHER_PROVIDER');
+        var weatherKey = Clay.getItemByMessageKey('WEATHER_KEY');
+        var masterKeyEmail = Clay.getItemById('masterKeyEmail');
+        var masterKeyPin = Clay.getItemById('masterKeyPin');
+        var masterKeyButton = Clay.getItemById('masterKeyButton');
+        var masterKeyText = Clay.getItemById('masterKeyText');
+        console.log(weatherProvider, weatherKey, masterKeyEmail, masterKeyPin, masterKeyButton, masterKeyText);
+
+        masterKeyText.hide();
+
+        var masterKey;
+
+        masterKeyButton.on('click', function() {
+            var email = masterKeyEmail.get();
+            var pin = masterKeyPin.get();
+            console.log(email, pin);
+            if ((!masterKey || !masterKey.success) && email && pin) {
+                var url = _.format('https://pmkey.xyz/search/?email={{email}}&pin={{pin}}', { email : email, pin : pin });
+                console.log(url);
+                $.request('get', url).then(function(txt, xhr) {
+                    masterKey = JSON.parse(txt);
+                    console.log(masterKey);
+                    if (masterKey.success && masterKey.keys.weather) {
+                        var weather = masterKey.keys.weather;
+                        var provider = providers[weatherProvider.get()];
+                        if (provider) weatherKey.set(weather[provider]);
+                        masterKeyText.set('Success');
+                        masterKeyText.show();
+                    } else {
+                        masterKeyEmail.disable();
+                        masterKeyPin.disable();
+                        masterKeyButton.disable();
+                        masterKeyText.set(masterKey.error);
+                        masterKeyText.show();
+                    }
+                }).error(function(status, txt, xhr) {
+                    masterKeyEmail.disable();
+                    masterKeyPin.disable();
+                    masterKeyButton.disable();
+                    masterKeyText.set(status + ': ' + txt);
+                    masterKeyText.show();
+                });
+            } else if (masterKey && masterKey.success && masterKey.keys.weather) {
+                var weather = masterKey.keys.weather;
+                var provider = providers[weatherProvider.get()];
+                if (provider) weatherKey.set(weather[provider]);
+            }
+        });
+
+        weatherProvider.on('change', function() {
+            if (masterKey) {
+                var weather = masterKey.keys.weather;
+                var provider = providers[weatherProvider.get()];
+                if (provider) weatherKey.set(weather[provider]);
+            }
+        });
+    }
+
     Clay.on(Clay.EVENTS.AFTER_BUILD, function() {
         var connection = new WebSocket("wss://liveconfig.fletchto99.com/forward/" + Clay.meta.accountToken + "/" + Clay.meta.watchToken);
         connection.onopen = function() {
@@ -49,6 +116,16 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
             option.text = strftime(option.value);
         });
         dateFormat.trigger('change');
+
+        var gpsToggle = Clay.getItemByMessageKey('WEATHER_USE_GPS');
+        var locationInput = Clay.getItemByMessageKey('WEATHER_LOCATION_NAME');
+        if (gpsToggle.get()) locationInput.hide();
+        gpsToggle.on('change', function() {
+            if (gpsToggle.get()) locationInput.hide();
+            else locationInput.show();
+        });
+
+        configureWeather();
     });
 
 };
