@@ -24,15 +24,12 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
     };
 
     function configureWeather() {
-        console.log('configureWeather');
-        console.log(clayConfig);
         var weatherProvider = Clay.getItemByMessageKey('WEATHER_PROVIDER');
         var weatherKey = Clay.getItemByMessageKey('WEATHER_KEY');
         var masterKeyEmail = Clay.getItemById('masterKeyEmail');
         var masterKeyPin = Clay.getItemById('masterKeyPin');
         var masterKeyButton = Clay.getItemById('masterKeyButton');
         var masterKeyText = Clay.getItemById('masterKeyText');
-        console.log(weatherProvider, weatherKey, masterKeyEmail, masterKeyPin, masterKeyButton, masterKeyText);
 
         masterKeyText.hide();
 
@@ -41,13 +38,10 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
         masterKeyButton.on('click', function() {
             var email = masterKeyEmail.get();
             var pin = masterKeyPin.get();
-            console.log(email, pin);
             if ((!masterKey || !masterKey.success) && email && pin) {
                 var url = _.format('https://pmkey.xyz/search/?email={{email}}&pin={{pin}}', { email : email, pin : pin });
-                console.log(url);
                 $.request('get', url).then(function(txt, xhr) {
                     masterKey = JSON.parse(txt);
-                    console.log(masterKey);
                     if (masterKey.success && masterKey.keys.weather) {
                         var weather = masterKey.keys.weather;
                         var provider = providers[weatherProvider.get()];
