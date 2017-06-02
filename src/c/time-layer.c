@@ -7,7 +7,7 @@
 #include "time-layer.h"
 
 typedef struct {
-    char buf[PBL_IF_LOW_MEM_ELSE(8, 32)];
+    char buf[PBL_IF_LOW_MEM_ELSE(16, 48)];
 #ifndef PBL_PLATFORM_APLITE
     FctxRectLayer *rect_layer;
 #endif
@@ -20,13 +20,15 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed, void *th
     log_func();
     Data *data = fctx_layer_get_data(this);
 #ifndef PBL_PLATFORM_APLITE
-    char s[8];
+    char s[16];
 #endif
+    char format[16];
     if (enamel_get_TIME_LEADING_ZERO()) {
-        strftime(PBL_IF_LOW_MEM_ELSE(data->buf, s), sizeof(PBL_IF_LOW_MEM_ELSE(data->buf, s)), clock_is_24h_style() ? "%H:%M" : "%I:%M", tick_time);
+        snprintf(format, sizeof(format), clock_is_24h_style() ? "%%H:%%M%s" : "%%I:%%M%s", enamel_get_TIME_ENABLE_SECONDS() ? ":%S" : "");
     } else {
-        strftime(PBL_IF_LOW_MEM_ELSE(data->buf, s), sizeof(PBL_IF_LOW_MEM_ELSE(data->buf, s)), clock_is_24h_style() ? "%k:%M" : "%l:%M", tick_time);
+        snprintf(format, sizeof(format), clock_is_24h_style() ? "%%k:%%M%s" : "%%l:%%M%s", enamel_get_TIME_ENABLE_SECONDS() ? ":%S" : "");
     }
+    strftime(PBL_IF_LOW_MEM_ELSE(data->buf, s), sizeof(PBL_IF_LOW_MEM_ELSE(data->buf, s)), format, tick_time);
 #ifndef PBL_PLATFORM_APLITE
     snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_TIME_PREFIX(), s, enamel_get_TIME_SUFFIX());
 #endif
@@ -57,8 +59,11 @@ static void settings_handler(void *this) {
     fctx_text_layer_set_offset(data->text_layer, offset);
     fctx_text_layer_set_rotation(data->text_layer, rotation);
 
+    TimeUnits time_unit = enamel_get_TIME_ENABLE_SECONDS() ? SECOND_UNIT : MINUTE_UNIT;
     time_t now = time(NULL);
-    tick_handler(localtime(&now), MINUTE_UNIT, this);
+    tick_handler(localtime(&now), time_unit, this);
+    if (data->tick_timer_event_handle) events_tick_timer_service_unsubscribe(data->tick_timer_event_handle);
+    data->tick_timer_event_handle = events_tick_timer_service_subscribe_context(time_unit, tick_handler, this);
 }
 
 TimeLayer *time_layer_create(void) {
@@ -79,7 +84,6 @@ TimeLayer *time_layer_create(void) {
 
     settings_handler(this);
     data->settings_event_handle = enamel_settings_received_subscribe(settings_handler, this);
-    data->tick_timer_event_handle = events_tick_timer_service_subscribe_context(MINUTE_UNIT, tick_handler, this);
 
     return this;
 }

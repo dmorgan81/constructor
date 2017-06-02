@@ -191,6 +191,13 @@
                 "groups": [ "live" ]
             },
             {
+                "type": "toggle",
+                "messageKey": "TIME_ENABLE_SECONDS",
+                "label": "Show Seconds",
+                "defaultValue": false,
+                "groups": [ "live" ]
+            },
+            {
                 "type": "slider",
                 "messageKey": "TIME_FONT_SIZE",
                 "label": "Font Size",
