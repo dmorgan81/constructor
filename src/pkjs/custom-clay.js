@@ -12,6 +12,8 @@ v:"%e-%b-%Y",x:"%D"}},i=new p(x,0,!1),y=typeof module!=="undefined",j;y?(j=modul
 g+".strftimeTZ(format, date, tz)`","var s = "+g+".timezone(tz); s(format, [date])` or `"+g+".timezone(tz)(format, [date])");return(e?i.localize(e):i).timezone(j)(b,a)};j.strftimeUTC=function(b,a,e){e?k("`"+g+".strftimeUTC(format, date, locale)`","var s = "+g+".localize(locale).utc(); s(format, [date])"):k("`"+g+".strftimeUTC(format, [date])`","var s = "+g+".utc(); s(format, [date])");return(e?z.localize(e):z)(b,a)};j.localizedStrftime=function(b){k("`"+g+".localizedStrftime(locale)`",g+".localize(locale)");
 return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Date.now=function(){return+new Date}})();
 
+    var PROFILE_VERSION = 1;
+
     var Clay = this;
     var _ = minified._;
     var $ = minified.$;
@@ -78,6 +80,34 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
         });
     }
 
+    function saveProfile() {
+        var config = {};
+        Clay.getItemsByGroup('live').forEach(function(item) {
+            var value = item.get();
+            if (value) config[item.messageKey] = value;
+        });
+        var profile = {
+            version: PROFILE_VERSION,
+            device: Clay.meta.activeWatchInfo.platform,
+            config: config
+        };
+        var req = {
+            description: "Constructor profile, version " + PROFILE_VERSION,
+            public: true,
+            files: {
+                "profile.json": {
+                    content: JSON.stringify(profile, null, 2)
+                }
+            }
+        };
+        $.request('post', 'https://api.github.com/gists', JSON.stringify(req)).then(function(text, xhr) {
+            var res = JSON.parse(text);
+            prompt('Your profile has been saved. Copy and paste the ID below to share your profile.', res.id);
+        }).error(function(status, text, response) {
+            alert('Something went wrong. Try again later.')
+        });
+    }
+
     Clay.on(Clay.EVENTS.AFTER_BUILD, function() {
         var connection = new WebSocket("wss://liveconfig.fletchto99.com/forward/" + Clay.meta.accountToken + "/" + Clay.meta.watchToken);
         connection.onopen = function() {
@@ -124,6 +154,8 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
         });
 
         configureWeather();
+
+        Clay.getItemById('saveProfile').on('click', saveProfile);
     });
 
 };
