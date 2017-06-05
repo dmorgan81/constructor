@@ -31,8 +31,10 @@ Pebble.addEventListener('webviewclosed', function(e) {
 
   // Send settings to Pebble watchapp
   Pebble.sendAppMessage(clay.getSettings(e.response), function(e) {
+    liveconfig.close();
     console.log('Sent config data to Pebble');
   }, function() {
+    liveconfig.close();
     console.log('Failed to send config data!');
     console.log(JSON.stringify(e));
   });

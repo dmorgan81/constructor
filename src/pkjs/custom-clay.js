@@ -86,6 +86,10 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
                     connection.send(JSON.stringify({id: this.messageKey, value: this.get()}));
                 });
             });
+
+            Clay.getItemById('save').on('click', function() {
+                connection.close();
+            });
         };
 
         var toggles = Clay.getItemsByGroup('section-toggle');

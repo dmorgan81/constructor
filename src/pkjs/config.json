@@ -2703,6 +2703,7 @@
     },
     {
         "type": "submit",
+        "id": "save",
         "defaultValue": "Save"
     }
 ]
