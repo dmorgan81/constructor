@@ -177,15 +177,17 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
         });
         dateFormat.trigger('change');
 
-        var gpsToggle = Clay.getItemByMessageKey('WEATHER_USE_GPS');
-        var locationInput = Clay.getItemByMessageKey('WEATHER_LOCATION_NAME');
-        if (gpsToggle.get()) locationInput.hide();
-        gpsToggle.on('change', function() {
+        if (Clay.meta.activeWatchInfo.platform != 'aplite') {
+            var gpsToggle = Clay.getItemByMessageKey('WEATHER_USE_GPS');
+            var locationInput = Clay.getItemByMessageKey('WEATHER_LOCATION_NAME');
             if (gpsToggle.get()) locationInput.hide();
-            else locationInput.show();
-        });
+            gpsToggle.on('change', function() {
+                if (gpsToggle.get()) locationInput.hide();
+                else locationInput.show();
+            });
 
-        configureWeather();
+            configureWeather();
+        }
 
         Clay.getItemById('saveProfile').on('click', saveProfile);
         Clay.getItemById('loadProfile').on('click', loadProfile);
