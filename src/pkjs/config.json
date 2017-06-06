@@ -180,6 +180,21 @@
     },
     {
         "type": "section",
+        "items": [
+            {
+                "type": "button",
+                "id": "loadProfile",
+                "defaultValue": "Load Profile"
+            },
+            {
+                "type": "button",
+                "id": "saveProfile",
+                "defaultValue": "Save Profile"
+            }
+        ]
+    },
+    {
+        "type": "section",
         "capabilities": [ "NOT_PLATFORM_APLITE" ],
         "items": [
             {
@@ -2703,6 +2718,7 @@
     },
     {
         "type": "submit",
+        "id": "save",
         "defaultValue": "Save"
     }
 ]

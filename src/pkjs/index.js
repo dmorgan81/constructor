@@ -18,8 +18,12 @@ Pebble.addEventListener('appmessage', function(e) {
 
 Pebble.addEventListener('showConfiguration', function(e) {
   var settings = JSON.parse(localStorage.getItem('clay-settings')) || {};
-  liveconfig.connect(Pebble.getAccountToken(), function(id, value) {
-    settings[id] = value;
+  liveconfig.connect(Pebble.getAccountToken(), function(msg) {
+    if (msg.type == 'partial') {
+        settings[msg.id] = msg.value;
+    } else {
+        settings = msg.config;
+    }
     Pebble.sendAppMessage(Clay.prepareSettingsForAppMessage(settings));
   });
 
@@ -31,8 +35,10 @@ Pebble.addEventListener('webviewclosed', function(e) {
 
   // Send settings to Pebble watchapp
   Pebble.sendAppMessage(clay.getSettings(e.response), function(e) {
+    liveconfig.close();
     console.log('Sent config data to Pebble');
   }, function() {
+    liveconfig.close();
     console.log('Failed to send config data!');
     console.log(JSON.stringify(e));
   });

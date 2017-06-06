@@ -1,0 +1,4 @@
+Default aplite - 450da1ae5ec28e306346a307f526185e
+Default basalt - 4ac762780ff75b7d3d3bf5e2e8596375
+Default chalk - 521f9ff1d606c57f454ae3e019aebd09
+Default diorite - 3a973a88f161a6c817cb6a3ef83042a8
