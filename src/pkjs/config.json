@@ -74,6 +74,17 @@
                 "defaultValue": true
             },
             {
+                "type": "toggle",
+                "messageKey": "WEATHER_USE_GPS",
+                "label": "Use GPS",
+                "defaultValue": true
+            },
+            {
+                "type": "input",
+                "messageKey": "WEATHER_LOCATION_NAME",
+                "label": "Location"
+            },
+            {
                 "type": "select",
                 "messageKey": "WEATHER_INTERVAL",
                 "label": "Interval",
@@ -130,6 +141,55 @@
                 "messageKey": "WEATHER_KEY",
                 "label": "API Key",
                 "description": "API key for the selected weather provider. You can retrieve your key stored at https://www.pmkey.xyz by filling in the form below"
+            },
+            {
+                "type": "section",
+                "items": [
+                    {
+                        "type": "heading",
+                        "defaultValue": "Master Key"
+                    },
+                    {
+                        "type": "input",
+                        "id": "masterKeyEmail",
+                        "label": "Master Key Email",
+                        "attributes": {
+                            "type": "email"
+                        }
+                    },
+                    {
+                        "type": "input",
+                        "id": "masterKeyPin",
+                        "label": "Master Key Pin",
+                        "attributes": {
+                            "type": "tel"
+                        }
+                    },
+                    {
+                        "type": "button",
+                        "id": "masterKeyButton",
+                        "defaultValue": "Get Key"
+                    },
+                    {
+                        "type": "text",
+                        "id": "masterKeyText"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "section",
+        "items": [
+            {
+                "type": "button",
+                "id": "loadProfile",
+                "defaultValue": "Load Profile"
+            },
+            {
+                "type": "button",
+                "id": "saveProfile",
+                "defaultValue": "Save Profile"
             }
         ]
     },
@@ -188,6 +248,13 @@
                 "messageKey": "TIME_LEADING_ZERO",
                 "label": "Leading Zero",
                 "defaultValue": true,
+                "groups": [ "live" ]
+            },
+            {
+                "type": "toggle",
+                "messageKey": "TIME_ENABLE_SECONDS",
+                "label": "Show Seconds",
+                "defaultValue": false,
                 "groups": [ "live" ]
             },
             {
@@ -2651,6 +2718,7 @@
     },
     {
         "type": "submit",
+        "id": "save",
         "defaultValue": "Save"
     }
 ]

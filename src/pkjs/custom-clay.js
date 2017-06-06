@@ -12,18 +12,145 @@ v:"%e-%b-%Y",x:"%D"}},i=new p(x,0,!1),y=typeof module!=="undefined",j;y?(j=modul
 g+".strftimeTZ(format, date, tz)`","var s = "+g+".timezone(tz); s(format, [date])` or `"+g+".timezone(tz)(format, [date])");return(e?i.localize(e):i).timezone(j)(b,a)};j.strftimeUTC=function(b,a,e){e?k("`"+g+".strftimeUTC(format, date, locale)`","var s = "+g+".localize(locale).utc(); s(format, [date])"):k("`"+g+".strftimeUTC(format, [date])`","var s = "+g+".utc(); s(format, [date])");return(e?z.localize(e):z)(b,a)};j.localizedStrftime=function(b){k("`"+g+".localizedStrftime(locale)`",g+".localize(locale)");
 return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Date.now=function(){return+new Date}})();
 
+    var PROFILE_VERSION = 1;
+
     var Clay = this;
     var _ = minified._;
     var $ = minified.$;
     var HTML = minified.HTML;
 
-    Clay.on(Clay.EVENTS.AFTER_BUILD, function() {
-        var connection = new WebSocket("wss://liveconfig.fletchto99.com/forward/" + Clay.meta.accountToken + "/" + Clay.meta.watchToken);
-        connection.onopen = function() {
-            Clay.getItemsByGroup('live').map(function(item) {
-                item.on('change', function() {
-                    connection.send(JSON.stringify({id: this.messageKey, value: this.get()}));
+    var providers = {
+        "0": "owm",
+        "1": "wu",
+        "2": "forecast"
+    };
+
+    function configureWeather() {
+        var weatherProvider = Clay.getItemByMessageKey('WEATHER_PROVIDER');
+        var weatherKey = Clay.getItemByMessageKey('WEATHER_KEY');
+        var masterKeyEmail = Clay.getItemById('masterKeyEmail');
+        var masterKeyPin = Clay.getItemById('masterKeyPin');
+        var masterKeyButton = Clay.getItemById('masterKeyButton');
+        var masterKeyText = Clay.getItemById('masterKeyText');
+
+        masterKeyText.hide();
+
+        var masterKey;
+
+        masterKeyButton.on('click', function() {
+            var email = masterKeyEmail.get();
+            var pin = masterKeyPin.get();
+            if ((!masterKey || !masterKey.success) && email && pin) {
+                var url = _.format('https://pmkey.xyz/search/?email={{email}}&pin={{pin}}', { email : email, pin : pin });
+                $.request('get', url).then(function(txt, xhr) {
+                    masterKey = JSON.parse(txt);
+                    if (masterKey.success && masterKey.keys.weather) {
+                        var weather = masterKey.keys.weather;
+                        var provider = providers[weatherProvider.get()];
+                        if (provider) weatherKey.set(weather[provider]);
+                        masterKeyText.set('Success');
+                        masterKeyText.show();
+                    } else {
+                        masterKeyEmail.disable();
+                        masterKeyPin.disable();
+                        masterKeyButton.disable();
+                        masterKeyText.set(masterKey.error);
+                        masterKeyText.show();
+                    }
+                }).error(function(status, txt, xhr) {
+                    masterKeyEmail.disable();
+                    masterKeyPin.disable();
+                    masterKeyButton.disable();
+                    masterKeyText.set(status + ': ' + txt);
+                    masterKeyText.show();
                 });
+            } else if (masterKey && masterKey.success && masterKey.keys.weather) {
+                var weather = masterKey.keys.weather;
+                var provider = providers[weatherProvider.get()];
+                if (provider) weatherKey.set(weather[provider]);
+            }
+        });
+
+        weatherProvider.on('change', function() {
+            if (masterKey) {
+                var weather = masterKey.keys.weather;
+                var provider = providers[weatherProvider.get()];
+                if (provider) weatherKey.set(weather[provider]);
+            }
+        });
+    }
+
+    function saveProfile() {
+        var config = {};
+        Clay.getItemsByGroup('live').forEach(function(item) {
+            config[item.messageKey] = item.get();
+        });
+        var profile = {
+            version: PROFILE_VERSION,
+            device: Clay.meta.activeWatchInfo.platform,
+            config: config
+        };
+        var req = {
+            description: "Constructor profile, version " + PROFILE_VERSION,
+            public: true,
+            files: {
+                "profile.json": {
+                    content: JSON.stringify(profile, null, 2)
+                }
+            }
+        };
+        $.request('post', 'https://api.github.com/gists', JSON.stringify(req)).then(function(text, xhr) {
+            var res = JSON.parse(text);
+            prompt('Your profile has been saved. Copy and paste the ID below to share your profile.', res.id);
+        }).error(function(status, text, response) {
+            alert('Something went wrong. Try again later.')
+        });
+    }
+
+    function loadProfile() {
+        var id = prompt('Enter a profile ID:');
+        if (!id || id.length == 0) return;
+        $.request('get', 'https://api.github.com/gists/' + id).then(function(text) {
+            var req = JSON.parse(text);
+            var files = req.files;
+            if (!files['profile.json']) {
+                alert('That is not a valid Constructor profile');
+                return;
+            }
+
+            var profile = JSON.parse(files['profile.json'].content);
+            if (profile.device != Clay.meta.activeWatchInfo.platform) {
+                if (!confirm("This profile doesn't match your platform so some widgets might look strange. Do you still want to load this profile?")) return;
+            }
+            var config = profile.config;
+            $.off(itemChange);
+            Object.getOwnPropertyNames(config).forEach(function(messageKey) {
+                var item = Clay.getItemByMessageKey(messageKey);
+                if (!item) return;
+                item.set(config[messageKey]);
+                item.on('change', itemChange);
+            });
+            _connection.send(JSON.stringify({ type: 'full', config: config }));
+        }).error(function() {
+            alert('Profile ' + id + ' does not exist');
+        })
+    }
+
+    var _connection;
+
+    function itemChange() {
+        _connection.send(JSON.stringify({ type: 'partial', id: this.messageKey, value: this.get()}));
+    }
+
+    Clay.on(Clay.EVENTS.AFTER_BUILD, function() {
+        _connection = new WebSocket("wss://liveconfig.fletchto99.com/forward/" + Clay.meta.accountToken + "/" + Clay.meta.watchToken);
+        _connection.onopen = function() {
+            Clay.getItemsByGroup('live').map(function(item) {
+                item.on('change', itemChange);
+            });
+
+            Clay.getItemById('save').on('submit', function() {
+                _connection.close();
             });
         };
 
@@ -49,6 +176,21 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
             option.text = strftime(option.value);
         });
         dateFormat.trigger('change');
+
+        if (Clay.meta.activeWatchInfo.platform != 'aplite') {
+            var gpsToggle = Clay.getItemByMessageKey('WEATHER_USE_GPS');
+            var locationInput = Clay.getItemByMessageKey('WEATHER_LOCATION_NAME');
+            if (gpsToggle.get()) locationInput.hide();
+            gpsToggle.on('change', function() {
+                if (gpsToggle.get()) locationInput.hide();
+                else locationInput.show();
+            });
+
+            configureWeather();
+        }
+
+        Clay.getItemById('saveProfile').on('click', saveProfile);
+        Clay.getItemById('loadProfile').on('click', loadProfile);
     });
 
 };
