@@ -2532,7 +2532,7 @@
             {
                 "type": "color",
                 "messageKey": "WEATHER_TIME_STALE_COLOR",
-                "label": "Color",
+                "label": "Stale Color",
                 "defaultValue": "555555",
                 "sunlight": false,
                 "allowGray": true,
