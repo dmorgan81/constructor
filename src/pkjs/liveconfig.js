@@ -9,8 +9,7 @@ liveconfig.connect = function(uuid, onChange) {
     _websocket = new WebSocket("wss://liveconfig.fletchto99.com/receive/"+uuid+"/"+Pebble.getWatchToken());
 
     _websocket.onmessage = function(message) {
-        var attr = JSON.parse(message.data);
-        onChange(attr.id, attr.value);
+        onChange(JSON.parse(message.data));
     };
 };
 

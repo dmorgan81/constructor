@@ -18,8 +18,12 @@ Pebble.addEventListener('appmessage', function(e) {
 
 Pebble.addEventListener('showConfiguration', function(e) {
   var settings = JSON.parse(localStorage.getItem('clay-settings')) || {};
-  liveconfig.connect(Pebble.getAccountToken(), function(id, value) {
-    settings[id] = value;
+  liveconfig.connect(Pebble.getAccountToken(), function(msg) {
+    if (msg.type == 'partial') {
+        settings[msg.id] = msg.value;
+    } else {
+        settings = msg.config;
+    }
     Pebble.sendAppMessage(Clay.prepareSettingsForAppMessage(settings));
   });
 

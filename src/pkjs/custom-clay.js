@@ -83,8 +83,7 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
     function saveProfile() {
         var config = {};
         Clay.getItemsByGroup('live').forEach(function(item) {
-            var value = item.get();
-            if (value) config[item.messageKey] = value;
+            config[item.messageKey] = item.get();
         });
         var profile = {
             version: PROFILE_VERSION,
@@ -108,17 +107,50 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
         });
     }
 
+    function loadProfile() {
+        var id = prompt('Enter a profile ID:');
+        if (!id || id.length == 0) return;
+        $.request('get', 'https://api.github.com/gists/' + id).then(function(text) {
+            var req = JSON.parse(text);
+            var files = req.files;
+            if (!files['profile.json']) {
+                alert('That is not a valid Constructor profile');
+                return;
+            }
+
+            var profile = JSON.parse(files['profile.json'].content);
+            if (profile.device != Clay.meta.activeWatchInfo.platform) {
+                if (!confirm("This profile doesn't match your platform so some widgets might look strange. Do you still want to load this profile?")) return;
+            }
+            var config = profile.config;
+            $.off(itemChange);
+            Object.getOwnPropertyNames(config).forEach(function(messageKey) {
+                var item = Clay.getItemByMessageKey(messageKey);
+                if (!item) return;
+                item.set(config[messageKey]);
+                item.on('change', itemChange);
+            });
+            _connection.send(JSON.stringify({ type: 'full', config: config }));
+        }).error(function() {
+            alert('Profile ' + id + ' does not exist');
+        })
+    }
+
+    var _connection;
+
+    function itemChange() {
+        _connection.send(JSON.stringify({ type: 'partial', id: this.messageKey, value: this.get()}));
+    }
+
     Clay.on(Clay.EVENTS.AFTER_BUILD, function() {
-        var connection = new WebSocket("wss://liveconfig.fletchto99.com/forward/" + Clay.meta.accountToken + "/" + Clay.meta.watchToken);
-        connection.onopen = function() {
+        _connection = new WebSocket("wss://liveconfig.fletchto99.com/forward/" + Clay.meta.accountToken + "/" + Clay.meta.watchToken);
+        _connection.onopen = function() {
             Clay.getItemsByGroup('live').map(function(item) {
-                item.on('change', function() {
-                    connection.send(JSON.stringify({id: this.messageKey, value: this.get()}));
-                });
+                item.on('change', itemChange);
             });
 
-            Clay.getItemById('save').on('click', function() {
-                connection.close();
+            Clay.getItemById('save').on('submit', function() {
+                _connection.close();
             });
         };
 
@@ -156,6 +188,7 @@ return i.localize(b)};t(r);t(u);var z=i.utc();if(typeof Date.now!=="function")Da
         configureWeather();
 
         Clay.getItemById('saveProfile').on('click', saveProfile);
+        Clay.getItemById('loadProfile').on('click', loadProfile);
     });
 
 };
