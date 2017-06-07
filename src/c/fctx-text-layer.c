@@ -13,12 +13,16 @@ typedef struct {
     char *text;
 } Data;
 
-void fctx_text_layer_draw(FctxLayer *this, FContext* fctx) {
+static void update_proc(FctxLayer *this, FContext* fctx) {
     log_func();
     Data *data = fctx_layer_get_data(this);
     if (data->text && data->font && data->em_height > 0) {
         fctx_set_rotation(fctx, data->rotation);
+#ifdef PBL_QUICK_VIEW_ENABLED
+        fctx_set_offset(fctx, fpoint_add(fctx_layer_get_offset(this), data->offset));
+#else
         fctx_set_offset(fctx, data->offset);
+#endif
         fctx_set_text_em_height(fctx, data->font, data->em_height);
         fctx_set_fill_color(fctx, data->fill_color);
         fctx_begin_fill(fctx);
@@ -30,7 +34,7 @@ void fctx_text_layer_draw(FctxLayer *this, FContext* fctx) {
 FctxTextLayer *fctx_text_layer_create(void) {
     log_func();
     FctxTextLayer *this = fctx_layer_create_with_data(sizeof(Data));
-    fctx_layer_set_update_proc(this, fctx_text_layer_draw);
+    fctx_layer_set_update_proc(this, update_proc);
     Data *data = fctx_layer_get_data(this);
     data->text = NULL;
     data->fill_color = GColorBlack;

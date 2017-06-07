@@ -17,6 +17,7 @@ static inline FRect g2frect(GRect g) {
     };
 }
 
+void fctx_layer_update_proc(FctxLayer *this, FContext *fctx);
 FctxLayer *fctx_layer_get_root_layer(Window *window);
 FctxLayer *fctx_layer_create();
 FctxLayer *fctx_layer_create_with_data(size_t data_size);
@@ -25,6 +26,9 @@ void fctx_layer_set_update_proc(FctxLayer *this, FctxLayerUpdateProc update_proc
 void fctx_layer_add_child(FctxLayer *this, FctxLayer *child);
 void fctx_layer_remove_child(FctxLayer *this, FctxLayer *child);
 void *fctx_layer_get_data(FctxLayer *this);
+#ifdef PBL_QUICK_VIEW_ENABLED
+FPoint fctx_layer_get_offset(FctxLayer *this);
+#endif
 FRect fctx_layer_get_bounds(FctxLayer *this);
 #ifdef PBL_PLATFORM_APLITE
 #define fctx_layer_get_unobstructed_bounds(layer) fctx_layer_get_bounds(layer)

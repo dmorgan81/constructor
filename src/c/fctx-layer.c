@@ -5,24 +5,42 @@
 
 typedef struct {
     FctxLayerUpdateProc update_proc;
+#ifdef PBL_QUICK_VIEW_ENABLED
+    FPoint offset;
+#endif
     void *data;
     LinkedRoot *children;
 } Data;
 
 static bool linked_list_update_proc_callback(void *this, void *context) {
     log_func();
-    if (layer_get_hidden(this)) return true;
+    fctx_layer_update_proc(this, context);
+    return true;
+}
+
+void fctx_layer_update_proc(FctxLayer *this, FContext *fctx) {
+    log_func();
+    if (layer_get_hidden(this)) return;
 
     Data *data = layer_get_data(this);
     if (data->update_proc) {
-        fctx_set_pivot(context, FPointOne);
-        fctx_set_scale(context, FPointOne, FPointOne);
-        fctx_set_rotation(context, 0);
-        fctx_set_offset(context, FPointOne);
-        data->update_proc(this, context);
+#ifdef PBL_QUICK_VIEW_ENABLED
+        data->offset = FPointZero;
+        if (enamel_get_HANDLE_PEEKS()) {
+            GRect bounds = layer_get_bounds(this);
+            GRect unobstructed_bounds = layer_get_unobstructed_bounds(this);
+            data->offset = FPointI(0, -(bounds.size.h - unobstructed_bounds.size.h));
+        }
+        fctx_set_offset(fctx, data->offset);
+#else
+        fctx_set_offset(fctx, FPointZero);
+#endif
+        fctx_set_scale(fctx, FPointOne, FPointOne);
+        fctx_set_rotation(fctx, 0);
+
+        data->update_proc(this, fctx);
     }
-    if (data->children) linked_list_foreach(data->children, linked_list_update_proc_callback, context);
-    return true;
+    if (data->children) linked_list_foreach(data->children, linked_list_update_proc_callback, fctx);
 }
 
 static void update_proc(Layer *this, GContext *ctx) {
@@ -114,6 +132,14 @@ void *fctx_layer_get_data(FctxLayer *this) {
     Data *data = layer_get_data(this);
     return data->data;
 }
+
+#ifdef PBL_QUICK_VIEW_ENABLED
+FPoint fctx_layer_get_offset(FctxLayer *this) {
+    log_func();
+    Data *data = layer_get_data(this);
+    return data->offset;
+}
+#endif
 
 FRect fctx_layer_get_bounds(FctxLayer *this) {
     log_func();

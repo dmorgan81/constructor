@@ -18,8 +18,8 @@ static void update_proc(FctxLayer *this, FContext* fctx) {
     log_func();
     if (quiet_time_is_active()) {
         Data *data = fctx_layer_get_data(this);
-        fctx_rect_layer_draw(data->rect_layer, fctx);
-        fctx_text_layer_draw(data->text_layer, fctx);
+        fctx_layer_update_proc(data->rect_layer, fctx);
+        fctx_layer_update_proc(data->text_layer, fctx);
     }
 }
 

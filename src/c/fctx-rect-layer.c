@@ -40,14 +40,18 @@ static void fctx_draw_rect(FContext *fctx, GTextAlignment alignment, FSize size)
     fctx_end_fill(fctx);
 }
 
-void fctx_rect_layer_draw(FctxLayer *this, FContext *fctx) {
+static void update_proc(FctxLayer *this, FContext *fctx) {
     log_func();
     Data *data = fctx_layer_get_data(this);
     FSize size = data->size;
     if (size.w == 0 || size.h == 0) return;
 
     fctx_set_rotation(fctx, data->rotation);
+#ifdef PBL_QUICK_VIEW_ENABLED
+    fctx_set_offset(fctx, fpoint_add(fctx_layer_get_offset(this), data->offset));
+#else
     fctx_set_offset(fctx, data->offset);
+#endif
 
     if (!gcolor_equal(data->border_color, GColorClear) && data->border_width > 0) {
         fctx_set_fill_color(fctx, data->border_color);
@@ -66,7 +70,7 @@ void fctx_rect_layer_draw(FctxLayer *this, FContext *fctx) {
 FctxRectLayer *fctx_rect_layer_create(void) {
     log_func();
     FctxRectLayer *this = fctx_layer_create_with_data(sizeof(Data));
-    fctx_layer_set_update_proc(this, fctx_rect_layer_draw);
+    fctx_layer_set_update_proc(this, update_proc);
     Data *data = fctx_layer_get_data(this);
     data->border_color = GColorClear;
     data->border_width = 0;

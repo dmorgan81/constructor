@@ -17,6 +17,14 @@
             },
             {
                 "type": "toggle",
+                "messageKey": "HANDLE_PEEKS",
+                "label": "Handle Timeline Quick Views",
+                "description": "Shift the entire face up during a Timeline quick view",
+                "defaultValue": false,
+                "capabilities": [ "NOT_PLATFORM_APLITE", "NOT_PLATFORM_CHALK" ]
+            },
+            {
+                "type": "toggle",
                 "messageKey": "HOURLY_VIBE",
                 "label": "Vibrate on the Hour",
                 "defaultValue": true
