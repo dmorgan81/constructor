@@ -1,16 +1,22 @@
 #pragma once
-#include <pebble.h>
+#include "common.h"
 #include <pebble-fctx/fctx.h>
 #include "fctx-layer.h"
+
+typedef struct {
+    EnamelGColorFunction border_color;
+    EnamelInt32Function border_width;
+    EnamelGColorFunction fill_color;
+    EnamelStringFunction alignment;
+    EnamelInt32Function rotation;
+    EnamelInt32Function size_w;
+    EnamelInt32Function size_h;
+    EnamelInt32Function offset_x;
+    EnamelInt32Function offset_y;
+} FctxRectLayerHandles;
 
 typedef FctxLayer FctxRectLayer;
 
 FctxRectLayer *fctx_rect_layer_create(void);
 void fctx_rect_layer_destroy(FctxRectLayer *this);
-void fctx_rect_layer_set_border_color(FctxRectLayer *this, GColor color);
-void fctx_rect_layer_set_border_width(FctxRectLayer *this, uint16_t width);
-void fctx_rect_layer_set_fill_color(FctxRectLayer *this, GColor color);
-void fctx_rect_layer_set_alignment(FctxRectLayer *this, GTextAlignment alignment);
-void fctx_rect_layer_set_rotation(FctxRectLayer *this, uint32_t rotation);
-void fctx_rect_layer_set_size(FctxRectLayer *this, FSize size);
-void fctx_rect_layer_set_offset(FctxRectLayer *this, FPoint offset);
+void fctx_rect_layer_set_handles(FctxRectLayer *this, FctxRectLayerHandles handles);

@@ -34,17 +34,6 @@ static void settings_handler(void *this) {
     uint32_t rotation = DEG_TO_TRIGANGLE(enamel_get_BATTERY_ROTATION());
     GTextAlignment alignment = atoi(enamel_get_BATTERY_ALIGNMENT());
 
-#ifndef PBL_PLATFORM_APLITE
-    fctx_rect_layer_set_fill_color(data->rect_layer, enamel_get_BATTERY_RECT_FILL_COLOR());
-    FSize size = FSizeI(enamel_get_BATTERY_RECT_SIZE_W(), enamel_get_BATTERY_RECT_SIZE_H());
-    fctx_rect_layer_set_size(data->rect_layer, size);
-    fctx_rect_layer_set_offset(data->rect_layer, offset);
-    fctx_rect_layer_set_rotation(data->rect_layer, rotation);
-    fctx_rect_layer_set_border_color(data->rect_layer, enamel_get_BATTERY_RECT_BORDER_COLOR());
-    fctx_rect_layer_set_border_width(data->rect_layer, enamel_get_BATTERY_RECT_BORDER_WIDTH());
-    fctx_rect_layer_set_alignment(data->rect_layer, alignment);
-#endif
-
     fctx_text_layer_set_alignment(data->text_layer, alignment);
     fctx_text_layer_set_em_height(data->text_layer, enamel_get_BATTERY_FONT_SIZE());
     fctx_text_layer_set_fill_color(data->text_layer, enamel_get_BATTERY_COLOR());
@@ -61,6 +50,17 @@ BatteryLayer *battery_layer_create(void) {
 
 #ifndef PBL_PLATFORM_APLITE
     data->rect_layer = fctx_rect_layer_create();
+    fctx_rect_layer_set_handles(data->rect_layer, (FctxRectLayerHandles) {
+        .border_color = enamel_get_BATTERY_RECT_BORDER_COLOR,
+        .border_width = enamel_get_BATTERY_RECT_BORDER_WIDTH,
+        .fill_color = enamel_get_BATTERY_RECT_FILL_COLOR,
+        .alignment = enamel_get_BATTERY_ALIGNMENT,
+        .rotation = enamel_get_BATTERY_ROTATION,
+        .size_w = enamel_get_BATTERY_RECT_SIZE_W,
+        .size_h = enamel_get_BATTERY_RECT_SIZE_H,
+        .offset_x = enamel_get_BATTERY_X,
+        .offset_y = enamel_get_BATTERY_Y
+    });
     fctx_layer_add_child(this, data->rect_layer);
 #endif
 

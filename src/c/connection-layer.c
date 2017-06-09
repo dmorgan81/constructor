@@ -40,15 +40,6 @@ static void settings_handler(void *this) {
     GTextAlignment alignment = atoi(enamel_get_CONNECTION_ALIGNMENT());
 
 #ifndef PBL_PLATFORM_APLITE
-    fctx_rect_layer_set_fill_color(data->rect_layer, enamel_get_CONNECTION_RECT_FILL_COLOR());
-    FSize size = FSizeI(enamel_get_CONNECTION_RECT_SIZE_W(), enamel_get_CONNECTION_RECT_SIZE_H());
-    fctx_rect_layer_set_size(data->rect_layer, size);
-    fctx_rect_layer_set_offset(data->rect_layer, offset);
-    fctx_rect_layer_set_rotation(data->rect_layer, rotation);
-    fctx_rect_layer_set_border_color(data->rect_layer, enamel_get_CONNECTION_RECT_BORDER_COLOR());
-    fctx_rect_layer_set_border_width(data->rect_layer, enamel_get_CONNECTION_RECT_BORDER_WIDTH());
-    fctx_rect_layer_set_alignment(data->rect_layer, alignment);
-
     snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_CONNECTION_PREFIX(), "BT", enamel_get_CONNECTION_SUFFIX());
 #endif
 
@@ -68,6 +59,17 @@ ConnectionLayer *connection_layer_create(void) {
     fctx_layer_set_update_proc(this, update_proc);
 
     data->rect_layer = fctx_rect_layer_create();
+    fctx_rect_layer_set_handles(data->rect_layer, (FctxRectLayerHandles) {
+        .border_color = enamel_get_CONNECTION_RECT_BORDER_COLOR,
+        .border_width = enamel_get_CONNECTION_RECT_BORDER_WIDTH,
+        .fill_color = enamel_get_CONNECTION_RECT_FILL_COLOR,
+        .alignment = enamel_get_CONNECTION_ALIGNMENT,
+        .rotation = enamel_get_CONNECTION_ROTATION,
+        .size_w = enamel_get_CONNECTION_RECT_SIZE_W,
+        .size_h = enamel_get_CONNECTION_RECT_SIZE_H,
+        .offset_x = enamel_get_CONNECTION_X,
+        .offset_y = enamel_get_CONNECTION_Y
+    });
 #endif
 
     data->text_layer = fctx_text_layer_create();
