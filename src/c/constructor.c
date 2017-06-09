@@ -187,7 +187,6 @@ static void window_load(Window *window) {
 
 static void window_unload(Window *window) {
     log_func();
-#ifndef PBL_PLATFORM_APLITE
     enamel_settings_received_unsubscribe(s_settings_event_handle);
 
 #ifdef PBL_PLATFORM_DIORITE
@@ -197,17 +196,18 @@ static void window_unload(Window *window) {
     if (s_distance_layer) distance_layer_destroy(s_distance_layer);
     if (s_step_layer) step_layer_destroy(s_step_layer);
 #endif // PBL_HEALTH
+#ifndef PBL_PLATFORM_APLITE
     if (s_quiet_time_layer) quiet_time_layer_destroy(s_quiet_time_layer);
     if (s_temperature_layer) temperature_layer_destroy(s_temperature_layer);
     if (s_condition_layer) condition_layer_destroy(s_condition_layer);
     if (s_weather_time_layer) weather_time_layer_destroy(s_weather_time_layer);
     if (s_location_layer) location_layer_destroy(s_location_layer);
+#endif // PBL_PLATFORM_APLITE
     if (s_connection_layer) connection_layer_destroy(s_connection_layer);
     if (s_battery_layer) battery_layer_destroy(s_battery_layer);
     if (s_date_layer) date_layer_destroy(s_date_layer);
     time_layer_destroy(s_time_layer);
     fctx_layer_destroy(s_root_layer);
-#endif // PBL_PLATFORM_APLITE
 }
 
 static void init(void) {
@@ -239,12 +239,12 @@ static void deinit(void) {
     log_func();
     window_destroy(s_window);
 
-#ifndef PBL_PLATFORM_APLITE
     hourly_vibes_deinit();
     connection_vibes_deinit();
+#ifndef PBL_PLATFORM_APLITE
     weather_deinit();
-    fonts_deinit();
 #endif
+    fonts_deinit();
     enamel_deinit();
 }
 

@@ -1,7 +1,7 @@
 {
   "name": "constructor",
   "author": "David Morgan",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "license": "MIT",
   "keywords": [
     "pebble-app"
@@ -42,6 +42,7 @@
       "WEATHER_USE_GPS",
       "WEATHER_LOCATION_NAME",
       "BACKGROUND_COLOR",
+      "HANDLE_PEEKS",
       "HOURLY_VIBE",
       "CONNECTION_VIBE",
       "TIME_ENABLE_SECONDS",

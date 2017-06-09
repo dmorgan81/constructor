@@ -27,17 +27,32 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed, void *th
     time_t now = mktime(tick_time);
     uint16_t interval = atoi(enamel_get_WEATHER_INTERVAL()) * SECONDS_PER_MINUTE;
     if (now - info->timestamp > interval) {
-        fctx_text_layer_set_fill_color(data->text_layer, enamel_get_WEATHER_TIME_STALE_COLOR());
+        fctx_text_layer_set_handles(data->text_layer, (FctxTextLayerHandles) {
+            .fill_color = enamel_get_WEATHER_TIME_STALE_COLOR,
+            .alignment = enamel_get_WEATHER_TIME_ALIGNMENT,
+            .rotation = enamel_get_WEATHER_TIME_ROTATION,
+            .font_size = enamel_get_WEATHER_TIME_FONT_SIZE,
+            .offset_x = enamel_get_WEATHER_TIME_X,
+            .offset_y = enamel_get_WEATHER_TIME_Y
+        });
     } else {
-        fctx_text_layer_set_fill_color(data->text_layer, enamel_get_WEATHER_TIME_COLOR());
+        fctx_text_layer_set_handles(data->text_layer, (FctxTextLayerHandles) {
+            .fill_color = enamel_get_WEATHER_TIME_COLOR,
+            .alignment = enamel_get_WEATHER_TIME_ALIGNMENT,
+            .rotation = enamel_get_WEATHER_TIME_ROTATION,
+            .font_size = enamel_get_WEATHER_TIME_FONT_SIZE,
+            .offset_x = enamel_get_WEATHER_TIME_X,
+            .offset_y = enamel_get_WEATHER_TIME_Y
+        });
     }
+    layer_mark_dirty(this);
 }
 #endif
 
 static void weather_handler(GenericWeatherInfo *info, GenericWeatherStatus status, void *this) {
     log_func();
+    Data *data = fctx_layer_get_data(this);
     if (status == GenericWeatherStatusAvailable) {
-        Data *data = fctx_layer_get_data(this);
         struct tm *tick_time = localtime(&info->timestamp);
         char s[8];
         if (enamel_get_WEATHER_TIME_LEADING_ZERO()) {
@@ -52,39 +67,14 @@ static void weather_handler(GenericWeatherInfo *info, GenericWeatherStatus statu
         time_t now = time(NULL);
         tick_handler(localtime(&now), MINUTE_UNIT, this);
 #endif
+    } else if (status != GenericWeatherStatusAvailable) {
+        snprintf(data->buf, sizeof(data->buf), "%s--:--%s", enamel_get_WEATHER_TIME_PREFIX(), enamel_get_WEATHER_TIME_SUFFIX());
     }
 }
 
 static void settings_handler(void *this) {
     log_func();
-    Data *data = fctx_layer_get_data(this);
-    FPoint offset = FPointI(enamel_get_WEATHER_TIME_X(), enamel_get_WEATHER_TIME_Y());
-    uint32_t rotation = DEG_TO_TRIGANGLE(enamel_get_WEATHER_TIME_ROTATION());
-    GTextAlignment alignment = atoi(enamel_get_WEATHER_TIME_ALIGNMENT());
-
-    fctx_rect_layer_set_fill_color(data->rect_layer, enamel_get_WEATHER_TIME_RECT_FILL_COLOR());
-    FSize size = FSizeI(enamel_get_WEATHER_TIME_RECT_SIZE_W(), enamel_get_WEATHER_TIME_RECT_SIZE_H());
-    fctx_rect_layer_set_size(data->rect_layer, size);
-    fctx_rect_layer_set_offset(data->rect_layer, offset);
-    fctx_rect_layer_set_rotation(data->rect_layer, rotation);
-    fctx_rect_layer_set_border_color(data->rect_layer, enamel_get_WEATHER_TIME_RECT_BORDER_COLOR());
-    fctx_rect_layer_set_border_width(data->rect_layer, enamel_get_WEATHER_TIME_RECT_BORDER_WIDTH());
-    fctx_rect_layer_set_alignment(data->rect_layer, alignment);
-
-    fctx_text_layer_set_alignment(data->text_layer, atoi(enamel_get_WEATHER_TIME_ALIGNMENT()));
-    fctx_text_layer_set_em_height(data->text_layer, enamel_get_WEATHER_TIME_FONT_SIZE());
-    fctx_text_layer_set_offset(data->text_layer, FPointI(enamel_get_WEATHER_TIME_X(), enamel_get_WEATHER_TIME_Y()));
-    fctx_text_layer_set_rotation(data->text_layer, DEG_TO_TRIGANGLE(enamel_get_WEATHER_TIME_ROTATION()));
-#ifndef PBL_COLOR
-    fctx_text_layer_set_fill_color(data->text_layer, enamel_get_WEATHER_TIME_COLOR());
-#endif
-
     weather_handler(weather_peek(), weather_status_peek(), this);
-
-#ifdef PBL_COLOR
-    time_t now = time(NULL);
-    tick_handler(localtime(&now), MINUTE_UNIT, this);
-#endif
 }
 
 WeatherTimeLayer *weather_time_layer_create(void) {
@@ -93,13 +83,31 @@ WeatherTimeLayer *weather_time_layer_create(void) {
     Data *data = fctx_layer_get_data(this);
 
     data->rect_layer = fctx_rect_layer_create();
+    fctx_rect_layer_set_handles(data->rect_layer, (FctxRectLayerHandles) {
+        .border_color = enamel_get_WEATHER_TIME_RECT_BORDER_COLOR,
+        .border_width = enamel_get_WEATHER_TIME_RECT_BORDER_WIDTH,
+        .fill_color = enamel_get_WEATHER_TIME_RECT_FILL_COLOR,
+        .alignment = enamel_get_WEATHER_TIME_ALIGNMENT,
+        .rotation = enamel_get_WEATHER_TIME_ROTATION,
+        .size_w = enamel_get_WEATHER_TIME_RECT_SIZE_W,
+        .size_h = enamel_get_WEATHER_TIME_RECT_SIZE_H,
+        .offset_x = enamel_get_WEATHER_TIME_X,
+        .offset_y = enamel_get_WEATHER_TIME_Y
+    });
     fctx_layer_add_child(this, data->rect_layer);
 
     data->text_layer = fctx_text_layer_create();
-    fctx_layer_add_child(this, data->text_layer);
-    fctx_text_layer_set_anchor(data->text_layer, FTextAnchorMiddle);
+    fctx_text_layer_set_handles(data->text_layer, (FctxTextLayerHandles) {
+        .fill_color = enamel_get_WEATHER_TIME_COLOR,
+        .alignment = enamel_get_WEATHER_TIME_ALIGNMENT,
+        .rotation = enamel_get_WEATHER_TIME_ROTATION,
+        .font_size = enamel_get_WEATHER_TIME_FONT_SIZE,
+        .offset_x = enamel_get_WEATHER_TIME_X,
+        .offset_y = enamel_get_WEATHER_TIME_Y
+    });
     fctx_text_layer_set_font(data->text_layer, fonts_get(RESOURCE_ID_LECO_FFONT));
     fctx_text_layer_set_text(data->text_layer, data->buf);
+    fctx_layer_add_child(this, data->text_layer);
 
     settings_handler(this);
     data->settings_event_handle = enamel_settings_received_subscribe(settings_handler, this);
