@@ -1,7 +1,7 @@
 {
   "name": "constructor",
   "author": "David Morgan",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "license": "MIT",
   "keywords": [
     "pebble-app"
