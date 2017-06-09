@@ -29,17 +29,6 @@ static void battery_state_handler(BatteryChargeState state, void *this) {
 
 static void settings_handler(void *this) {
     log_func();
-    Data *data = fctx_layer_get_data(this);
-    FPoint offset = FPointI(enamel_get_BATTERY_X(), enamel_get_BATTERY_Y());
-    uint32_t rotation = DEG_TO_TRIGANGLE(enamel_get_BATTERY_ROTATION());
-    GTextAlignment alignment = atoi(enamel_get_BATTERY_ALIGNMENT());
-
-    fctx_text_layer_set_alignment(data->text_layer, alignment);
-    fctx_text_layer_set_em_height(data->text_layer, enamel_get_BATTERY_FONT_SIZE());
-    fctx_text_layer_set_fill_color(data->text_layer, enamel_get_BATTERY_COLOR());
-    fctx_text_layer_set_offset(data->text_layer, offset);
-    fctx_text_layer_set_rotation(data->text_layer, rotation);
-
     battery_state_handler(battery_state_service_peek(), this);
 }
 
@@ -65,10 +54,17 @@ BatteryLayer *battery_layer_create(void) {
 #endif
 
     data->text_layer = fctx_text_layer_create();
-    fctx_layer_add_child(this, data->text_layer);
-    fctx_text_layer_set_anchor(data->text_layer, FTextAnchorMiddle);
+    fctx_text_layer_set_handles(data->text_layer, (FctxTextLayerHandles) {
+        .fill_color = enamel_get_BATTERY_COLOR,
+        .alignment = enamel_get_BATTERY_ALIGNMENT,
+        .rotation = enamel_get_BATTERY_ROTATION,
+        .font_size = enamel_get_BATTERY_FONT_SIZE,
+        .offset_x = enamel_get_BATTERY_X,
+        .offset_y = enamel_get_BATTERY_Y
+    });
     fctx_text_layer_set_font(data->text_layer, fonts_get(RESOURCE_ID_LECO_FFONT));
     fctx_text_layer_set_text(data->text_layer, data->buf);
+    fctx_layer_add_child(this, data->text_layer);
 
     battery_state_handler(battery_state_service_peek(), this);
     data->battery_state_event_handle = events_battery_state_service_subscribe_context(battery_state_handler, this);

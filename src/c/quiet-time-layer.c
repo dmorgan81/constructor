@@ -9,6 +9,7 @@
 #include "quiet-time-layer.h"
 
 typedef struct {
+    char buf[32];
     FctxRectLayer *rect_layer;
     FctxTextLayer *text_layer;
     EventHandle settings_event_handle;
@@ -26,19 +27,8 @@ static void update_proc(FctxLayer *this, FContext* fctx) {
 static void settings_handler(void *this) {
     log_func();
     Data *data = fctx_layer_get_data(this);
-    FPoint offset = FPointI(enamel_get_QUIET_TIME_X(), enamel_get_QUIET_TIME_Y());
-    uint32_t rotation = DEG_TO_TRIGANGLE(enamel_get_QUIET_TIME_ROTATION());
-    GTextAlignment alignment = atoi(enamel_get_QUIET_TIME_ALIGNMENT());
-
-    fctx_text_layer_set_alignment(data->text_layer, alignment);
-    fctx_text_layer_set_em_height(data->text_layer, enamel_get_QUIET_TIME_FONT_SIZE());
-    fctx_text_layer_set_fill_color(data->text_layer, enamel_get_QUIET_TIME_COLOR());
-    fctx_text_layer_set_offset(data->text_layer, offset);
-    fctx_text_layer_set_rotation(data->text_layer, rotation);
-
-    static char s[32];
-    snprintf(s, sizeof(s), "%s%s%s", enamel_get_QUIET_TIME_PREFIX(), "QT", enamel_get_QUIET_TIME_SUFFIX());
-    fctx_text_layer_set_text(data->text_layer, s);
+    snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_QUIET_TIME_PREFIX(), "QT", enamel_get_QUIET_TIME_SUFFIX());
+    layer_mark_dirty(this);
 }
 
 QuietTimeLayer *quiet_time_layer_create(void) {
@@ -62,8 +52,16 @@ QuietTimeLayer *quiet_time_layer_create(void) {
     fctx_layer_add_child(this, data->rect_layer);
 
     data->text_layer = fctx_text_layer_create();
+    fctx_text_layer_set_handles(data->text_layer, (FctxTextLayerHandles) {
+        .fill_color = enamel_get_QUIET_TIME_COLOR,
+        .alignment = enamel_get_QUIET_TIME_ALIGNMENT,
+        .rotation = enamel_get_QUIET_TIME_ROTATION,
+        .font_size = enamel_get_QUIET_TIME_FONT_SIZE,
+        .offset_x = enamel_get_QUIET_TIME_X,
+        .offset_y = enamel_get_QUIET_TIME_Y
+    });
     fctx_text_layer_set_font(data->text_layer, fonts_get(RESOURCE_ID_LECO_FFONT));
-    fctx_text_layer_set_anchor(data->text_layer, FTextAnchorMiddle);
+    fctx_text_layer_set_text(data->text_layer, data->buf);
 
     settings_handler(this);
     data->settings_event_handle = enamel_settings_received_subscribe(settings_handler, this);

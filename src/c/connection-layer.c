@@ -14,7 +14,9 @@ typedef struct {
 #endif
     FctxTextLayer *text_layer;
     EventHandle connection_event_handle;
+#ifndef PBL_PLATFORM_APLITE
     EventHandle settings_event_handle;
+#endif
 } Data;
 
 static void connection_handler(bool connected, void *this) {
@@ -32,23 +34,14 @@ static void update_proc(FctxLayer *this, FContext* fctx) {
 }
 #endif
 
+#ifndef PBL_PLATFORM_APLITE
 static void settings_handler(void *this) {
     log_func();
     Data *data = fctx_layer_get_data(this);
-    FPoint offset = FPointI(enamel_get_CONNECTION_X(), enamel_get_CONNECTION_Y());
-    uint32_t rotation = DEG_TO_TRIGANGLE(enamel_get_CONNECTION_ROTATION());
-    GTextAlignment alignment = atoi(enamel_get_CONNECTION_ALIGNMENT());
-
-#ifndef PBL_PLATFORM_APLITE
     snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_CONNECTION_PREFIX(), "BT", enamel_get_CONNECTION_SUFFIX());
-#endif
-
-    fctx_text_layer_set_alignment(data->text_layer, alignment);
-    fctx_text_layer_set_em_height(data->text_layer, enamel_get_CONNECTION_FONT_SIZE());
-    fctx_text_layer_set_fill_color(data->text_layer, enamel_get_CONNECTION_COLOR());
-    fctx_text_layer_set_offset(data->text_layer, offset);
-    fctx_text_layer_set_rotation(data->text_layer, rotation);
+    layer_mark_dirty(this);
 }
+#endif
 
 ConnectionLayer *connection_layer_create(void) {
     log_func();
@@ -73,17 +66,26 @@ ConnectionLayer *connection_layer_create(void) {
 #endif
 
     data->text_layer = fctx_text_layer_create();
+    fctx_text_layer_set_handles(data->text_layer, (FctxTextLayerHandles) {
+        .fill_color = enamel_get_CONNECTION_COLOR,
+        .alignment = enamel_get_CONNECTION_ALIGNMENT,
+        .rotation = enamel_get_CONNECTION_ROTATION,
+        .font_size = enamel_get_CONNECTION_FONT_SIZE,
+        .offset_x = enamel_get_CONNECTION_X,
+        .offset_y = enamel_get_CONNECTION_Y
+    });
+    fctx_text_layer_set_font(data->text_layer, fonts_get(RESOURCE_ID_LECO_FFONT));
 #ifdef PBL_PLATFORM_APLITE
     fctx_text_layer_set_text(data->text_layer, "BT");
     fctx_layer_add_child(this, data->text_layer);
 #else
     fctx_text_layer_set_text(data->text_layer, data->buf);
 #endif
-    fctx_text_layer_set_font(data->text_layer, fonts_get(RESOURCE_ID_LECO_FFONT));
-    fctx_text_layer_set_anchor(data->text_layer, FTextAnchorMiddle);
 
+#ifndef PBL_PLATFORM_APLITE
     settings_handler(this);
     data->settings_event_handle = enamel_settings_received_subscribe(settings_handler, this);
+#endif
 
     connection_handler(connection_service_peek_pebble_app_connection(), this);
     data->connection_event_handle = events_connection_service_subscribe_context((EventConnectionHandlers) {
@@ -96,7 +98,9 @@ ConnectionLayer *connection_layer_create(void) {
 void connection_layer_destroy(ConnectionLayer *this) {
     log_func();
     Data *data = fctx_layer_get_data(this);
+#ifndef PBL_PLATFORM_APLITE
     enamel_settings_received_unsubscribe(data->settings_event_handle);
+#endif
     events_connection_service_unsubscribe(data->connection_event_handle);
     fctx_text_layer_destroy(data->text_layer);
 #ifndef PBL_PLATFORM_APLITE

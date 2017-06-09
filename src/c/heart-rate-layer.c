@@ -37,17 +37,6 @@ static void health_handler(HealthEventType event, void *this) {
 
 static void settings_handler(void *this) {
     log_func();
-    Data *data = fctx_layer_get_data(this);
-    FPoint offset = FPointI(enamel_get_HEART_RATE_X(), enamel_get_HEART_RATE_Y());
-    uint32_t rotation = DEG_TO_TRIGANGLE(enamel_get_HEART_RATE_ROTATION());
-    GTextAlignment alignment = atoi(enamel_get_HEART_RATE_ALIGNMENT());
-
-    fctx_text_layer_set_alignment(data->text_layer, alignment);
-    fctx_text_layer_set_em_height(data->text_layer, enamel_get_HEART_RATE_FONT_SIZE());
-    fctx_text_layer_set_fill_color(data->text_layer, enamel_get_HEART_RATE_COLOR());
-    fctx_text_layer_set_offset(data->text_layer, offset);
-    fctx_text_layer_set_rotation(data->text_layer, rotation);
-
     health_handler(HealthEventSignificantUpdate, this);
 }
 
@@ -71,10 +60,17 @@ HeartRateLayer *heart_rate_layer_create(void) {
     fctx_layer_add_child(this, data->rect_layer);
 
     data->text_layer = fctx_text_layer_create();
-    fctx_layer_add_child(this, data->text_layer);
-    fctx_text_layer_set_anchor(data->text_layer, FTextAnchorMiddle);
+    fctx_text_layer_set_handles(data->text_layer, (FctxTextLayerHandles) {
+        .fill_color = enamel_get_HEART_RATE_COLOR,
+        .alignment = enamel_get_HEART_RATE_ALIGNMENT,
+        .rotation = enamel_get_HEART_RATE_ROTATION,
+        .font_size = enamel_get_HEART_RATE_FONT_SIZE,
+        .offset_x = enamel_get_HEART_RATE_X,
+        .offset_y = enamel_get_HEART_RATE_Y
+    });
     fctx_text_layer_set_font(data->text_layer, fonts_get(RESOURCE_ID_LECO_FFONT));
     fctx_text_layer_set_text(data->text_layer, data->buf);
+    fctx_layer_add_child(this, data->text_layer);
 
     health_handler(HealthEventSignificantUpdate, this);
     data->health_event_handle = events_health_service_events_subscribe(health_handler, this);

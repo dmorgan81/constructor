@@ -56,17 +56,6 @@ static void weather_handler(GenericWeatherInfo *info, GenericWeatherStatus statu
 
 static void settings_handler(void *this) {
     log_func();
-    Data *data = fctx_layer_get_data(this);
-    FPoint offset = FPointI(enamel_get_CONDITION_X(), enamel_get_CONDITION_Y());
-    uint32_t rotation = DEG_TO_TRIGANGLE(enamel_get_CONDITION_ROTATION());
-    GTextAlignment alignment = atoi(enamel_get_CONDITION_ALIGNMENT());
-
-    fctx_text_layer_set_alignment(data->text_layer, alignment);
-    fctx_text_layer_set_em_height(data->text_layer, enamel_get_CONDITION_FONT_SIZE());
-    fctx_text_layer_set_fill_color(data->text_layer, enamel_get_CONDITION_COLOR());
-    fctx_text_layer_set_offset(data->text_layer, offset);
-    fctx_text_layer_set_rotation(data->text_layer, rotation);
-
     weather_handler(weather_peek(), weather_status_peek(), this);
 }
 
@@ -90,10 +79,17 @@ ConditionLayer *condition_layer_create(void) {
     fctx_layer_add_child(this, data->rect_layer);
 
     data->text_layer = fctx_text_layer_create();
-    fctx_layer_add_child(this, data->text_layer);
-    fctx_text_layer_set_anchor(data->text_layer, FTextAnchorMiddle);
+    fctx_text_layer_set_handles(data->text_layer, (FctxTextLayerHandles) {
+        .fill_color = enamel_get_CONDITION_COLOR,
+        .alignment = enamel_get_CONDITION_ALIGNMENT,
+        .rotation = enamel_get_CONDITION_ROTATION,
+        .font_size = enamel_get_CONDITION_FONT_SIZE,
+        .offset_x = enamel_get_CONDITION_X,
+        .offset_y = enamel_get_CONDITION_Y
+    });
     fctx_text_layer_set_font(data->text_layer, fonts_get(RESOURCE_ID_LECO_FFONT));
     fctx_text_layer_set_text(data->text_layer, data->buf);
+    fctx_layer_add_child(this, data->text_layer);
 
     settings_handler(this);
     data->settings_event_handle = enamel_settings_received_subscribe(settings_handler, this);
