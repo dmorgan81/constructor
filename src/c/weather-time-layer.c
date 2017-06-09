@@ -51,8 +51,8 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed, void *th
 
 static void weather_handler(GenericWeatherInfo *info, GenericWeatherStatus status, void *this) {
     log_func();
+    Data *data = fctx_layer_get_data(this);
     if (status == GenericWeatherStatusAvailable) {
-        Data *data = fctx_layer_get_data(this);
         struct tm *tick_time = localtime(&info->timestamp);
         char s[8];
         if (enamel_get_WEATHER_TIME_LEADING_ZERO()) {
@@ -67,6 +67,8 @@ static void weather_handler(GenericWeatherInfo *info, GenericWeatherStatus statu
         time_t now = time(NULL);
         tick_handler(localtime(&now), MINUTE_UNIT, this);
 #endif
+    } else if (status != GenericWeatherStatusAvailable) {
+        snprintf(data->buf, sizeof(data->buf), "%s--:--%s", enamel_get_WEATHER_TIME_PREFIX(), enamel_get_WEATHER_TIME_SUFFIX());
     }
 }
 

@@ -26,7 +26,7 @@ static void weather_handler(GenericWeatherInfo *info, GenericWeatherStatus statu
     } else if (status != GenericWeatherStatusPending) {
         snprintf(s, sizeof(s), "--");
     } else {
-        snprintf(s, sizeof(s), "00");
+        snprintf(s, sizeof(s), "??");
     }
 
     snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_TEMPERATURE_PREFIX(), s, enamel_get_TEMPERATURE_SUFFIX());

@@ -23,7 +23,9 @@ static void weather_handler(GenericWeatherInfo *info, GenericWeatherStatus statu
         snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_LOCATION_PREFIX(), info->name, enamel_get_LOCATION_SUFFIX());
         layer_mark_dirty(this);
     } else if (status != GenericWeatherStatusPending) {
-        data->buf[0] = '\0';
+        snprintf(data->buf, sizeof(data->buf), "ERROR");
+    } else {
+        snprintf(data->buf, sizeof(data->buf), "Pending");
     }
 }
 

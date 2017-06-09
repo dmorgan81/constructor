@@ -48,7 +48,9 @@ static void weather_handler(GenericWeatherInfo *info, GenericWeatherStatus statu
                 break;
         }
     } else if (status != GenericWeatherStatusPending) {
-        snprintf(s, sizeof(s), "Unknown");
+        snprintf(s, sizeof(s), "ERROR");
+    } else {
+        snprintf(s, sizeof(s), "Pending");
     }
     snprintf(data->buf, sizeof(data->buf), "%s%s%s", enamel_get_CONDITION_PREFIX(), s, enamel_get_CONDITION_SUFFIX());
     layer_mark_dirty(this);
